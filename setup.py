@@ -9,10 +9,6 @@ import urllib.request
 import urllib.error
 import socket
 
-
-TMRL_VERSION = '0.7.0'
-
-
 if sys.version_info < (3, 7):
     sys.exit('Sorry, Python < 3.7 is not supported.')
 
@@ -141,13 +137,13 @@ with open(os.path.join(README_FOLDER, "pypi.md")) as fid:
 
 setup(
     name='tmrl',
-    version=TMRL_VERSION,
+    version='0.6.6',
     description='Network-based framework for real-time robot learning',
     long_description=README,
     long_description_content_type='text/markdown',
     keywords='reinforcement learning, robot learning, trackmania, self driving, roborace',
     url='https://github.com/trackmania-rl/tmrl',
-    download_url=f'https://github.com/trackmania-rl/tmrl/archive/refs/tags/v{TMRL_VERSION}.tar.gz',
+    download_url='https://github.com/trackmania-rl/tmrl/archive/refs/tags/v0.6.6.tar.gz',
     author='Yann Bouteiller, Edouard Geze',
     author_email='yann.bouteiller@polymtl.ca, edouard.geze@hotmail.fr',
     license='MIT',
