@@ -14,6 +14,7 @@ from os.path import exists
 import numpy as np
 from requests import get
 from tlspyo import Relay, Endpoint
+import keyboard
 
 # local imports
 from tmrl.actor import ActorModule
@@ -625,6 +626,7 @@ class RolloutWorker:
                 sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
+            print(rew)
             self.buffer.append_sample(sample)  # CAUTION: in the buffer, act is for the PREVIOUS transition (act, obs(act))
         return new_obs, rew, terminated, truncated, info
 
@@ -1041,50 +1043,67 @@ class ImitationWorker:
     #def act(self, obs):
         #return self.actor.act_(obs)
 
-    def reset(self):
-        try:
-            act = self.env.unwrapped.default_action
-        except AttributeError:
-            act = None
+    def _get_keyboard_action(self):
+        # Default neutral inputs
+        steering = 0.0
+        throttle = 0.0
+        brake = 0.0
 
-        obs, info = self.env.reset()
+        # Left / Right
+        if keyboard.is_pressed('a'):
+            steering = -1.0
+        elif keyboard.is_pressed('d'):
+            steering = 1.0
 
+        # Throttle / Brake
+        if keyboard.is_pressed('w'):
+            throttle = 1.0
+        if keyboard.is_pressed('s'):
+            brake = 1.0  # separate brake axis
+
+        return np.array([steering, throttle, brake], dtype=np.float32)
+
+
+
+    def reset(self, collect_samples=True):
+        new_obs, info = self.env.reset()
         if self.obs_preprocessor:
-            obs = self.obs_preprocessor(obs)
+            new_obs = self.obs_preprocessor(new_obs)
+        return new_obs, info
 
-        rew = 0.0
-        terminated, truncated = False, False
 
-        # Get actual human action if possible
-        act = info.get("human_action") or getattr(self.env.unwrapped, "last_action", None)
-
-        sample = self._build_sample(act, obs, rew, terminated, truncated, info)
-
-        print("Sample going into buffer:")
-        for i, s in enumerate(sample):
-            print(f"  item {i}: type={type(s)} value={s}")
-        self.buffer.append_sample(sample)
-
-        return obs, info
 
 
     def step(self, obs, last_step=False):
-        # Instead of actor.predict(obs), just step the environment (user is controlling it)
         new_obs, rew, terminated, truncated, info = self.env.step(None)
 
-        # Retrieve the action from the env (assumes your env stores the last human action)
-        act = info.get("human_action") or getattr(self.env.unwrapped, "last_action", None)
+        act = self._get_keyboard_action()
+
+        if act is None:
+            act = np.zeros(self.env.action_space.shape, dtype=np.float32)
+        elif isinstance(act, list):
+            act = np.array(act, dtype=np.float32)
+        elif isinstance(act, np.ndarray):
+            act = act.astype(np.float32)
+
+        if isinstance(new_obs, tuple):
+            obs_to_store = new_obs  # store full tuple
+        else:
+            obs_to_store = new_obs
 
         if self.obs_preprocessor:
-            new_obs = self.obs_preprocessor(new_obs)
+            obs_to_store = self.obs_preprocessor(obs_to_store)
 
         if last_step and not terminated:
             truncated = True
 
-        sample = self._build_sample(act, new_obs, rew, terminated, truncated, info)
+        sample = (act, obs_to_store, rew, terminated, truncated, info)
+        print(obs_to_store)
         self.buffer.append_sample(sample)
 
         return new_obs, rew, terminated, truncated, info
+
+
 
 
     def _build_sample(self, act, obs, rew, terminated, truncated, info):
