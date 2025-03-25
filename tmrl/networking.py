@@ -972,3 +972,146 @@ class RolloutWorker:
         weights_list = self.__endpoint.receive_all(blocking=False)
         nb_received = len(weights_list)
         return nb_received
+
+
+
+# IMITATION WORKER: ===================================
+class ImitationWorker:
+    def __init__(
+        self,
+        env_cls,
+        actor_module_cls,
+        sample_compressor: callable = None,
+        device="cpu",
+        max_samples_per_episode=np.inf,
+        model_path=cfg.MODEL_PATH_WORKER,
+        obs_preprocessor: callable = None,
+        crc_debug=False,
+        model_path_history=cfg.MODEL_PATH_SAVE_HISTORY,
+        model_history=cfg.MODEL_HISTORY,
+        standalone=False,
+        server_ip=None,
+        server_port=cfg.PORT,
+        password=cfg.PASSWORD,
+        local_port=cfg.LOCAL_PORT_WORKER,
+        header_size=cfg.HEADER_SIZE,
+        max_buf_len=cfg.BUFFER_SIZE,
+        security=cfg.SECURITY,
+        keys_dir=cfg.CREDENTIALS_DIRECTORY,
+        hostname=cfg.HOSTNAME
+    ):
+        
+        self.obs_preprocessor = obs_preprocessor
+        self.get_local_buffer_sample = sample_compressor
+        self.env = env_cls()
+        obs_space = self.env.observation_space
+        act_space = self.env.action_space
+        self.model_path = model_path
+        self.device = device
+        self.actor = actor_module_cls(observation_space=obs_space, action_space=act_space).to_device(self.device)
+
+        if os.path.isfile(self.model_path):
+            logging.debug(f"Loading model from {self.model_path}")
+            self.actor = self.actor.load(self.model_path, device=self.device)
+        else:
+            logging.debug(f"No model found at {self.model_path}")
+
+        self.buffer = Buffer()
+        self.max_samples_per_episode = max_samples_per_episode
+        self.crc_debug = crc_debug
+
+        self.server_ip = server_ip
+        print_with_timestamp(f"server IP: {self.server_ip}")
+
+        if not self.standalone:
+            self.__endpoint = Endpoint(ip_server=self.server_ip,
+                                       port=server_port,
+                                       password=password,
+                                       groups="workers",
+                                       local_com_port=local_port,
+                                       header_size=header_size,
+                                       max_buf_len=max_buf_len,
+                                       security=security,
+                                       keys_dir=keys_dir,
+                                       hostname=hostname,
+                                       deserializer_mode="synchronous")
+        else:
+            self.__endpoint = None
+
+    def act(self, obs):
+        return self.actor.act_(obs)
+
+    def reset(self):
+        try:
+            act = self.env.unwrapped.default_action
+        except AttributeError:
+            act = None
+
+        obs, info = self.env.reset()
+        if self.obs_preprocessor:
+            obs = self.obs_preprocessor(obs)
+
+        rew = 0.0
+        terminated, truncated = False, False
+
+        sample = self._build_sample(act, obs, rew, terminated, truncated, info)
+        self.buffer.append_sample(sample)
+
+        return obs, info
+
+    def step(self, obs, last_step=False):
+        act = self.act(obs)
+        new_obs, rew, terminated, truncated, info = self.env.step(act)
+
+        if self.obs_preprocessor:
+            new_obs = self.obs_preprocessor(new_obs)
+
+        if last_step and not terminated:
+            truncated = True
+
+        sample = self._build_sample(act, new_obs, rew, terminated, truncated, info)
+        self.buffer.append_sample(sample)
+
+        return new_obs, rew, terminated, truncated, info
+
+    def _build_sample(self, act, obs, rew, terminated, truncated, info):
+        if self.get_local_buffer_sample:
+            return self.get_local_buffer_sample(act, obs, rew, terminated, truncated, info)
+        else:
+            return act, obs, rew, terminated, truncated, info
+
+    def collect_train_episode(self):
+        obs, info = self.reset()
+        done = False
+        ret, steps = 0.0, 0
+
+        for i in range(int(self.max_samples_per_episode)):
+            obs, rew, terminated, truncated, info = self.step(obs, last_step=i == self.max_samples_per_episode - 1)
+            ret += rew
+            steps += 1
+            if terminated or truncated:
+                break
+
+        self.buffer.stat_train_return = ret
+        self.buffer.stat_train_steps = steps
+
+    def run(self, nb_episodes=np.inf, verbose=True):
+        iterator = range(nb_episodes) if nb_episodes != np.inf else iter(int, 1)  # infinite loop
+
+        for _ in iterator:
+            if verbose:
+                print_with_timestamp("Collecting expert episode")
+            self.collect_train_episode()
+
+            if verbose:
+                print_with_timestamp("Sending buffer to trainer")
+            self.send_and_clear_buffer()
+
+            self.ignore_actor_weights()
+
+    def send_and_clear_buffer(self):
+        self.__endpoint.produce(self.buffer, "trainers")
+        self.buffer.clear()
+
+    def ignore_actor_weights(self):
+        _ = self.__endpoint.receive_all(blocking=False)
