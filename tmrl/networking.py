@@ -1066,15 +1066,44 @@ class ImitationWorker:
 
 
     def reset(self, collect_samples=True):
+        obs = None
+        try:
+            act = self.env.unwrapped.default_action
+        except AttributeError:
+            act = None  # e.g., if not available on reset
+
         new_obs, info = self.env.reset()
         if self.obs_preprocessor:
             new_obs = self.obs_preprocessor(new_obs)
+
+        rew = 0.0
+        terminated, truncated = False, False
+
+        if collect_samples:
+            if self.crc_debug:
+                self.debug_ts_cpt += 1
+                self.debug_ts_res_cpt = 0
+                info['crc_sample'] = (obs, act, new_obs, rew, terminated, truncated)
+                info['crc_sample_ts'] = (self.debug_ts_cpt, self.debug_ts_res_cpt)
+
+            # Use keyboard inputs at reset time too
+            act = self._get_keyboard_action()
+
+            if self.get_local_buffer_sample:
+                sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
+            else:
+                sample = act, new_obs, rew, terminated, truncated, info
+
+            self.buffer.append_sample(sample)
+
         return new_obs, info
 
 
 
 
+
     def step(self, obs, last_step=False):
+
         new_obs, rew, terminated, truncated, info = self.env.step(None)
 
         act = self._get_keyboard_action()
@@ -1086,6 +1115,7 @@ class ImitationWorker:
         elif isinstance(act, np.ndarray):
             act = act.astype(np.float32)
 
+
         if isinstance(new_obs, tuple):
             obs_to_store = new_obs  # store full tuple
         else:
@@ -1093,24 +1123,29 @@ class ImitationWorker:
 
         if self.obs_preprocessor:
             obs_to_store = self.obs_preprocessor(obs_to_store)
+            #print("hello")
 
         if last_step and not terminated:
             truncated = True
 
-        sample = (act, obs_to_store, rew, terminated, truncated, info)
-        print(obs_to_store)
+        if self.get_local_buffer_sample:
+            sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
+        else:
+            sample = (act, obs_to_store, rew, terminated, truncated, info)
+        #print(act)
         self.buffer.append_sample(sample)
+
 
         return new_obs, rew, terminated, truncated, info
 
 
 
 
-    def _build_sample(self, act, obs, rew, terminated, truncated, info):
-        if self.get_local_buffer_sample:
-            return self.get_local_buffer_sample(act, obs, rew, terminated, truncated, info)
-        else:
-            return act, obs, rew, terminated, truncated, info
+    #def _build_sample(self, act, obs, rew, terminated, truncated, info):
+        #if self.get_local_buffer_sample:
+            #return self.get_local_buffer_sample(act, obs, rew, terminated, truncated, info)
+        #else:
+            #return act, obs, rew, terminated, truncated, info
 
     def collect_train_episode(self):
         obs, info = self.reset()
@@ -1127,7 +1162,7 @@ class ImitationWorker:
         self.buffer.stat_train_return = ret
         self.buffer.stat_train_steps = steps
 
-    def run(self, nb_episodes=np.inf, verbose=True):
+    def run(self, nb_episodes=11, verbose=True):
         iterator = range(nb_episodes) if nb_episodes != np.inf else iter(int, 1)  # infinite loop
 
         for _ in iterator:
