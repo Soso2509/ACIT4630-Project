@@ -16,6 +16,10 @@ from requests import get
 from tlspyo import Relay, Endpoint
 import keyboard
 
+import pygame
+pygame.init()
+pygame.joystick.init()
+
 # local imports
 from tmrl.actor import ActorModule
 from tmrl.util import dump, load, partial_to_dict
@@ -535,6 +539,7 @@ class RolloutWorker:
         else:
             self.__endpoint = None
 
+
     def act(self, obs, test=False):
         """
         Select an action based on observation `obs`
@@ -626,7 +631,8 @@ class RolloutWorker:
                 sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
-            print(rew)
+            act_rounded = np.round(act, 2)
+            print(act_rounded)
             self.buffer.append_sample(sample)  # CAUTION: in the buffer, act is for the PREVIOUS transition (act, obs(act))
         return new_obs, rew, terminated, truncated, info
 
@@ -1038,28 +1044,46 @@ class ImitationWorker:
                                    keys_dir=keys_dir,
                                    hostname=hostname,
                                    deserializer_mode="synchronous")
+        
+        self.controller = None
+        if pygame.joystick.get_count() > 0:
+            self.controller = pygame.joystick.Joystick(0)
+            self.controller.init()
+            print_with_timestamp("Controller connected.")
+        else:
+            print_with_timestamp("No controller detected, using keyboard.")
 
 
     #def act(self, obs):
         #return self.actor.act_(obs)
 
-    def _get_keyboard_action(self):
-        # Default neutral inputs
+    def _get_human_action(self):
+        pygame.event.pump()  # Needed to update controller state
+
         steering = 0.0
-        throttle = 0.0
-        brake = 0.0
+        throttle = -1.0         # Not certain these values are correct#####
+        brake = 1.0
 
-        # Left / Right
-        if keyboard.is_pressed('a'):
-            steering = -1.0
-        elif keyboard.is_pressed('d'):
-            steering = 1.0
+        if self.controller:
+            # Example mapping: adjust these based on your controller model
+            steering = self.controller.get_axis(0)  # Left stick horizontal
+            trigger = self.controller.get_axis(5)   # Right trigger typically goes from -1 (released) to 1 (pressed)
+            brake_trigger = self.controller.get_axis(4)  # Left trigger
 
-        # Throttle / Brake
-        if keyboard.is_pressed('w'):
-            throttle = 1.0
-        if keyboard.is_pressed('s'):
-            brake = 1.0  # separate brake axis
+            # Normalize trigger values to [0, 1]
+            throttle = (trigger + 1) / 2
+            brake = brake_trigger
+        else:
+            # Keyboard fallback
+            if keyboard.is_pressed('a'):
+                steering = -1.0
+            elif keyboard.is_pressed('d'):
+                steering = 1.0
+
+            if keyboard.is_pressed('w'):
+                throttle = 1.0
+            if keyboard.is_pressed('s'):
+                brake = -1.0
 
         return np.array([steering, throttle, brake], dtype=np.float32)
 
@@ -1087,7 +1111,7 @@ class ImitationWorker:
                 info['crc_sample_ts'] = (self.debug_ts_cpt, self.debug_ts_res_cpt)
 
             # Use keyboard inputs at reset time too
-            act = self._get_keyboard_action()
+            act = self._get_human_action()
 
             if self.get_local_buffer_sample:
                 sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
@@ -1106,7 +1130,7 @@ class ImitationWorker:
 
         new_obs, rew, terminated, truncated, info = self.env.step(None)
 
-        act = self._get_keyboard_action()
+        act = self._get_human_action()
 
         if act is None:
             act = np.zeros(self.env.action_space.shape, dtype=np.float32)
@@ -1115,6 +1139,7 @@ class ImitationWorker:
         elif isinstance(act, np.ndarray):
             act = act.astype(np.float32)
 
+        print(act)
 
         if isinstance(new_obs, tuple):
             obs_to_store = new_obs  # store full tuple

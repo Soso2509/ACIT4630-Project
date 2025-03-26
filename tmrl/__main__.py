@@ -14,6 +14,10 @@ from tmrl.tools.record import record_reward_dist
 from tmrl.util import partial
 
 
+#import importlib
+#import tmrl.networking
+#importlib.reload(tmrl.networking)
+
 def main(args):
     if args.server:
         serv = Server()
@@ -113,7 +117,7 @@ if __name__ == "__main__":
     parser.add_argument('--server', action='store_true', help='launches the server')
     parser.add_argument('--trainer', action='store_true', help='launches the trainer')
     parser.add_argument('--worker', action='store_true', help='launches a rollout worker')
-    parser.add_argument('--imitation', action='store_true', help='launches a imitation worker')
+    parser.add_argument('--imitation', action='store_true', help='launches an imitation worker')
     parser.add_argument('--expert', action='store_true', help='launches an expert rollout worker (no model update)')
     parser.add_argument('--test', action='store_true', help='runs inference without training')
     parser.add_argument('--benchmark', action='store_true', help='runs a benchmark of the environment')
