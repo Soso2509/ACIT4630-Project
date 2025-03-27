@@ -27,6 +27,7 @@ import tmrl.config.config_constants as cfg
 import tmrl.config.config_objects as cfg_obj
 
 import logging
+import wandb
 
 
 __docformat__ = "google"
@@ -299,7 +300,6 @@ def run_with_wandb(entity, project, run_id, interface, run_cls, checkpoint_path:
     load_run_instance_fn = load_run_instance_fn or load_run_instance
     wandb_dir = tempfile.mkdtemp()  # prevent wandb from polluting the home directory
     atexit.register(shutil.rmtree, wandb_dir, ignore_errors=True)  # clean up after wandb atexit handler finishes
-    import wandb
     logging.debug(f" run_cls: {run_cls}")
     config = partial_to_dict(run_cls)
     config['environ'] = log_environment_variables()
@@ -1008,7 +1008,7 @@ class ImitationWorker:
         keys_dir=cfg.CREDENTIALS_DIRECTORY,
         hostname=cfg.HOSTNAME
     ):
-        
+
         self.obs_preprocessor = obs_preprocessor
         self.get_local_buffer_sample = sample_compressor
         self.env = env_cls()
@@ -1044,7 +1044,7 @@ class ImitationWorker:
                                    keys_dir=keys_dir,
                                    hostname=hostname,
                                    deserializer_mode="synchronous")
-        
+
         self.controller = None
         if pygame.joystick.get_count() > 0:
             self.controller = pygame.joystick.Joystick(0)
