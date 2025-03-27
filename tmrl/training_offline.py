@@ -150,7 +150,7 @@ class TrainingOffline:
             update_buf_time = t2 - t1
             train_time = t3 - t2
             logging.debug(f"round_time:{round_time}, idle_time:{idle_time}, update_buf_time:{update_buf_time}, train_time:{train_time}")
-            stats += pandas_dict(memory_len=len(self.memory), round_time=round_time, idle_time=idle_time, **DataFrame(stats_training).mean(skipna=True)),
+            stats += pandas_dict(epoch=self.epoch, memory_len=len(self.memory), round_time=round_time, idle_time=idle_time, **DataFrame(stats_training).mean(skipna=True)),
 
             logging.info(stats[-1].add_prefix("  ").to_string() + '\n')
 
