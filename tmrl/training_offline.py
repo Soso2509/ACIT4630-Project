@@ -93,7 +93,7 @@ class TrainingOffline:
             self.agent_scheduler(self.agent, self.epoch)
 
         for rnd in range(self.rounds):
-            logging.info(f"=== epoch {self.epoch}/{self.epochs} ".ljust(20, '=') + f" round {rnd}/{self.rounds} ".ljust(50, '='))
+            logging.info(f"=== epoch {self.epoch+1}/{self.epochs} ".ljust(20, '=') + f" round {rnd+1}/{self.rounds} ".ljust(50, '='))
             logging.debug(f"(Training): current memory size:{len(self.memory)}")
 
             stats_training = []
