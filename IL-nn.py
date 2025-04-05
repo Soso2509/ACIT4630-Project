@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 
 # === Load and preprocess data ===
-df = pd.read_csv('expert.csv')
+df = pd.read_csv('expert_filtered.csv')
 
 # Parse strings into Python objects
 df['Action'] = df['Action'].apply(ast.literal_eval)
