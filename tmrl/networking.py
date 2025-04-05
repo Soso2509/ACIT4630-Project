@@ -15,6 +15,10 @@ import numpy as np
 from requests import get
 from tlspyo import Relay, Endpoint
 import keyboard
+import csv
+
+import torch
+import torch.nn as nn
 
 import pygame
 pygame.init()
@@ -983,8 +987,85 @@ class RolloutWorker:
 
 
 
-# IMITATION WORKER: ===================================
+# IMITATION WORKER (This runs the model)
+class BCNet(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, output_dim)
+        )
+
+
+    def forward(self, x):
+        return self.net(x)
+
 class ImitationWorker:
+    def __init__(self, env_cls, device="cpu", model_path="bc_model.pth", max_samples_per_episode=np.inf):
+        self.device = torch.device(device)
+        self.env = env_cls()
+        self.model_path = model_path
+        self.max_samples_per_episode = max_samples_per_episode
+
+        # === Setup BC model ===
+        # Observation shape: assuming (velocity + lidar)
+        obs_sample, _ = self.env.reset()
+        flat_obs = self.flatten_obs(obs_sample)
+        self.model = BCNet(input_dim=len(flat_obs)).to(self.device)
+        self.model.load_state_dict(torch.load(self.model_path, map_location=self.device))
+        self.model.eval()
+
+    def flatten_obs(self, obs):
+        velocity, lidar = obs[0], obs[1]
+        return velocity.tolist() + lidar.flatten().tolist()
+
+
+
+    def act(self, obs):
+        flat_obs = self.flatten_obs(obs)
+        x = torch.tensor(flat_obs, dtype=torch.float32).unsqueeze(0).to(self.device)
+        with torch.no_grad():
+            act = self.model(x).squeeze().cpu().numpy()
+        act = np.clip(act, -1.0, 1.0) 
+        #act = [0, 0, -1]
+        print(act)
+        return act
+
+    def run(self, nb_episodes=np.inf, verbose=True):
+        episode_iter = range(nb_episodes) if nb_episodes != np.inf else iter(int, 1)
+
+        for episode in episode_iter:
+            if verbose:
+                print(f"\n[EPISODE {episode+1}] Starting episode...")
+
+            obs, info = self.env.reset()
+            done = False
+            total_rew = 0.0
+            steps = 0
+
+            for _ in range(int(self.max_samples_per_episode)):
+                act = self.act(obs)
+                obs, rew, terminated, truncated, info = self.env.step(act)
+                total_rew += rew
+                steps += 1
+
+                if terminated or truncated:
+                    break
+
+            if verbose:
+                print(f"[EPISODE {episode+1}] Finished: reward={total_rew:.2f}, steps={steps}")
+
+
+
+
+
+# IMITATION learner (data extractor): ===================================
+class Imitation:
     def __init__(
         self,
         env_cls,
@@ -1061,8 +1142,8 @@ class ImitationWorker:
         pygame.event.pump()  # Needed to update controller state
 
         steering = 0.0
-        throttle = -1.0         # Not certain these values are correct#####
-        brake = 1.0
+        throttle = 0.0         # Not certain these values are correct#####
+        brake = 0.0
 
         if self.controller:
             # Example mapping: adjust these based on your controller model
@@ -1083,9 +1164,9 @@ class ImitationWorker:
             if keyboard.is_pressed('w'):
                 throttle = 1.0
             if keyboard.is_pressed('s'):
-                brake = -1.0
+                brake = 1.0
 
-        return np.array([steering, throttle, brake], dtype=np.float32)
+        return np.array([throttle, brake, steering], dtype=np.float32)
 
 
 
@@ -1118,7 +1199,7 @@ class ImitationWorker:
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
 
-            self.buffer.append_sample(sample)
+            #self.buffer.append_sample(sample)
 
         return new_obs, info
 
@@ -1158,9 +1239,36 @@ class ImitationWorker:
         else:
             sample = (act, obs_to_store, rew, terminated, truncated, info)
         #print(act)
-        self.buffer.append_sample(sample)
 
+        # Extract expert action and observation
+        first_obs = None
+        rest_obs = []
 
+        for i, item in enumerate(obs_to_store):
+            if isinstance(item, np.ndarray):
+                item = item.tolist()
+            if i == 0:
+                first_obs = item if not isinstance(item, list) else item[0]
+            else:
+                rest_obs.append(item)
+
+        # Structure: [action, first_obs, rest_obs_array]
+        expert_data = [act.tolist(), first_obs, rest_obs]
+        csv_path = 'expert.csv'
+
+        
+        # Check if the file exists and is empty
+        write_header = not os.path.isfile(csv_path) or os.stat(csv_path).st_size == 0
+
+        # Write the row
+        with open(csv_path, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            if write_header:
+                header = ['Action'] + ['Velocity'] + ['LiDAR']
+                writer.writerow(header)  # Header row
+            writer.writerow([str(expert_data[0]), expert_data[1], str(expert_data[2])])
+
+        #self.buffer.append_sample(sample)
         return new_obs, rew, terminated, truncated, info
 
 
