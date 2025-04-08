@@ -8,6 +8,7 @@ import json
 import shutil
 import tempfile
 import itertools
+import csv
 from os.path import exists
 
 # third-party imports
@@ -558,6 +559,7 @@ class RolloutWorker:
         # if self.obs_preprocessor is not None:
         #     obs = self.obs_preprocessor(obs)
         action = self.actor.act_(obs, test=test)
+        print(action)
         return action
 
     def reset(self, collect_samples):
@@ -1126,6 +1128,8 @@ class Imitation:
                                    hostname=hostname,
                                    deserializer_mode="synchronous")
         
+        self.current_lap_id = 0
+        
         self.controller = None
         if pygame.joystick.get_count() > 0:
             self.controller = pygame.joystick.Joystick(0)
@@ -1211,6 +1215,10 @@ class Imitation:
 
         new_obs, rew, terminated, truncated, info = self.env.step(None)
 
+        print(f"Observation received: {new_obs}")
+        # print(f"Info received: {info}")
+        # print(f"Observation space: {self.env.observation_space}")
+
         act = self._get_human_action()
 
         if act is None:
@@ -1229,10 +1237,20 @@ class Imitation:
 
         if self.obs_preprocessor:
             obs_to_store = self.obs_preprocessor(obs_to_store)
-            #print("hello")
 
         if last_step and not terminated:
             truncated = True
+
+    
+        rotation = obs_to_store[2]  
+        if np.array_equal(rotation, [0.0, 0.0, 0.0]): # This only happens on a new lap
+            self.current_lap_id += 1  
+            run_id = self.current_lap_id  
+        else:
+            run_id = getattr(self, "current_lap_id", 0)  
+
+        self.write_to_csv(run_id, act, obs_to_store, terminated, truncated, info)
+
 
         if self.get_local_buffer_sample:
             sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
@@ -1240,37 +1258,40 @@ class Imitation:
             sample = (act, obs_to_store, rew, terminated, truncated, info)
         #print(act)
 
-        # Extract expert action and observation
-        first_obs = None
-        rest_obs = []
+        return obs, rew, terminated, truncated, info
 
-        for i, item in enumerate(obs_to_store):
-            if isinstance(item, np.ndarray):
-                item = item.tolist()
-            if i == 0:
-                first_obs = item if not isinstance(item, list) else item[0]
-            else:
-                rest_obs.append(item)
-
-        # Structure: [action, first_obs, rest_obs_array]
-        expert_data = [act.tolist(), first_obs, rest_obs]
-        csv_path = 'expert.csv'
-
+    def write_to_csv(self, run_id, act, obs_to_store, terminated, truncated, info):
+        velocity = obs_to_store[0] if len(obs_to_store) > 0 else None
+        lidar = obs_to_store[1] if len(obs_to_store) > 0 else None
+        rotation = obs_to_store[2] if len(obs_to_store) > 0 else None
+        position = obs_to_store[3] if len(obs_to_store) > 0 else None
         
-        # Check if the file exists and is empty
-        write_header = not os.path.isfile(csv_path) or os.stat(csv_path).st_size == 0
 
-        # Write the row
-        with open(csv_path, mode='a', newline='') as file:
+        velocity = velocity.tolist() if isinstance(velocity, np.ndarray) else velocity
+        lidar = lidar.flatten().tolist() if isinstance(lidar, np.ndarray) else lidar
+        rotation = rotation.tolist() if isinstance(rotation, np.ndarray) else rotation
+        position = position.tolist() if isinstance(position, np.ndarray) else position
+
+        csv_file = "demonstration_data.csv"
+        file_exists = os.path.isfile(csv_file)
+
+        with open(csv_file, mode='a', newline='') as file:
             writer = csv.writer(file)
-            if write_header:
-                header = ['Action'] + ['Velocity'] + ['LiDAR']
-                writer.writerow(header)  # Header row
-            writer.writerow([str(expert_data[0]), expert_data[1], str(expert_data[2])])
 
-        #self.buffer.append_sample(sample)
-        return new_obs, rew, terminated, truncated, info
+            if not file_exists:
+                writer.writerow([
+                    "Run_ID", "Forward Throttle", "Backward throttle", "Steering",
+                    "Velocity", "Lidar", "Rotation", "Position",
+                    "Truncated", "Terminated", "Info"
+                ])
 
+            writer.writerow([
+                run_id, act[0], act[1], act[2],
+                velocity, lidar, rotation, position,
+                truncated, terminated, info
+            ])
+
+        print(f"Data written to {csv_file}: Run {run_id}")
 
 
 

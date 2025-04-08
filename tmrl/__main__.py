@@ -3,12 +3,16 @@ import logging
 import time
 from argparse import ArgumentParser, ArgumentTypeError
 import numpy as np
+import importlib
+import tmrl.networking
+importlib.reload(tmrl.networking)
+
+from networking import Server, RolloutWorker, Trainer, ImitationWorker
 
 # local imports
 import tmrl.config.config_constants as cfg
 import tmrl.config.config_objects as cfg_obj
 from tmrl.envs import GenericGymEnv
-from tmrl.networking import Server, Trainer, RolloutWorker, ImitationWorker
 from tmrl.tools.check_environment import check_env_tm20lidar, check_env_tm20full
 from tmrl.tools.record import record_reward_dist
 from tmrl.util import partial
@@ -17,11 +21,6 @@ import numpy as np
 from tmrl.envs import GenericGymEnv
 from networking import BCNet  
 from networking import Imitation
-
-
-#import importlib
-#import tmrl.networking
-#importlib.reload(tmrl.networking)
 
 def main(args):
     if args.server:
