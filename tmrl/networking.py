@@ -1034,7 +1034,7 @@ class ImitationWorker:
         with torch.no_grad():
             act = self.model(x).squeeze().cpu().numpy()
         act = np.clip(act, -1.0, 1.0) 
-        act = [0, 0.6, 0]
+        #act = [0.51, 0.0, 0]
         print(act)
         return act
 
