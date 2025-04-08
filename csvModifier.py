@@ -15,7 +15,7 @@ for _, row in df.iterrows():
     velocity = ast.literal_eval(row['Velocity'])[0] if isinstance(row['Velocity'], str) else row['Velocity']
     
     # Skip if velocity < 5 and both throttle values are 0 or less
-    if steer == 0 and fwd <= 0 and back <= 0:
+    if velocity <= 5 and fwd <= 0 and back <= 0 and steer == 0:
         continue
 
     # Build action

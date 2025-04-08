@@ -469,7 +469,8 @@ class RolloutWorker:
             max_buf_len=cfg.BUFFER_SIZE,
             security=cfg.SECURITY,
             keys_dir=cfg.CREDENTIALS_DIRECTORY,
-            hostname=cfg.HOSTNAME
+            hostname=cfg.HOSTNAME,
+            model_path_IL="bc_model.pth"
     ):
         """
         Args:
@@ -525,6 +526,24 @@ class RolloutWorker:
         self.debug_ts_cpt = 0
         self.debug_ts_res_cpt = 0
 
+        self.IL_chance = 0.95
+        self.prev_episode_reward = 0.0
+
+        self.device = torch.device(device)
+
+
+        self.max_samples_per_episode = max_samples_per_episode
+
+        # === Setup BC model ===
+        # Observation shape: assuming (velocity + lidar)
+        obs_sample, _ = self.env.reset()
+        flat_obs = self.flatten_obs(obs_sample)
+        self.model_path_IL = model_path_IL  # e.g., "bc_model.pth"
+        self.model_IL = BCNet(input_dim=len(flat_obs)).to(self.device)
+        self.model_IL.load_state_dict(torch.load(self.model_path_IL, map_location=self.device))
+        self.model_IL.eval()
+
+
         self.server_ip = server_ip if server_ip is not None else '127.0.0.1'
 
         print_with_timestamp(f"server IP: {self.server_ip}")
@@ -545,22 +564,37 @@ class RolloutWorker:
             self.__endpoint = None
 
 
-    def act(self, obs, test=False):
+    def flatten_obs(self, obs):
+        velocity, lidar = obs[0], obs[1]
+        return velocity.tolist() + lidar.flatten().tolist()
+
+
+    def act(self, obs, rew=0.0, test=False):
         """
-        Select an action based on observation `obs`
+        Select an action based on observation obs
 
         Args:
             obs (nested structure): observation
-            test (bool): directly passed to the `act()` method of the `ActorModule`
+            test (bool): directly passed to the act() method of the ActorModule
 
         Returns:
-            numpy.array: action computed by the `ActorModule`
+            numpy.array: action computed by the ActorModule
         """
         # if self.obs_preprocessor is not None:
         #     obs = self.obs_preprocessor(obs)
-        action = self.actor.act_(obs, test=test)
-        print(action)
-        return action
+        flat_obs = self.flatten_obs(obs)
+        x = torch.tensor(flat_obs, dtype=torch.float32).unsqueeze(0).to(self.device)
+
+        with torch.no_grad():
+            IL_act = self.model_IL(x).squeeze().cpu().numpy()
+        IL_act = np.clip(IL_act, -1.0, 1.0)
+
+        RL_act = self.actor.act_(obs, test=test)
+
+        print(f"IL_chance: {np.round(self.IL_chance, 3)}, RL: {np.round(RL_act, 2)}, IL: {np.round(IL_act, 2)}")
+
+        return IL_act if np.random.rand() < self.IL_chance else RL_act
+
 
     def reset(self, collect_samples):
         """
@@ -574,6 +608,11 @@ class RolloutWorker:
             (nested structure: observation retrieved from the environment,
             dict: information retrieved from the environment)
         """
+        RL_chance = self.prev_episode_reward * 0.002
+        self.IL_chance = max(0.0, min(1.0, 0.99 - RL_chance))  # Keep within [0, 1]
+
+        print_with_timestamp(f"New episode: IL_chance set to {np.round(self.IL_chance, 3)} based on previous reward: {np.round(self.prev_episode_reward, 2)}")
+
         obs = None
         try:
             # Faster than hasattr() in real-time environments
@@ -605,7 +644,6 @@ class RolloutWorker:
 
         A full RL transition is `obs` -> `act` -> `new_obs`, `rew`, `terminated`, `truncated`, `info`.
         Note that, in the Real-Time RL setting, `act` is appended to a buffer which is part of `new_obs`.
-        This is because is does not directly affect the new observation, due to real-time delays.
 
         Args:
             obs (nested structure): previous observation
@@ -621,26 +659,42 @@ class RolloutWorker:
             bool: episode truncation signal,
             dict: information dictionary)
         """
-        act = self.act(obs, test=test)
+
+        # Pass previous reward to act()
+        act = self.act(obs, test=test) #rew=self.prev_rew,
+
+        # Step in environment
         new_obs, rew, terminated, truncated, info = self.env.step(act)
+
+        # Update previous reward for next step
+        self.prev_rew = rew
+
+        # Preprocess new observation
         if self.obs_preprocessor is not None:
             new_obs = self.obs_preprocessor(new_obs)
+
         if collect_samples:
             if last_step and not terminated:
                 truncated = True
+
             if self.crc_debug:
                 self.debug_ts_cpt += 1
                 self.debug_ts_res_cpt += 1
                 info['crc_sample'] = (obs, act, new_obs, rew, terminated, truncated)
                 info['crc_sample_ts'] = (self.debug_ts_cpt, self.debug_ts_res_cpt)
+
             if self.get_local_buffer_sample:
                 sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
+
             act_rounded = np.round(act, 2)
             print(act_rounded)
-            self.buffer.append_sample(sample)  # CAUTION: in the buffer, act is for the PREVIOUS transition (act, obs(act))
+
+            self.buffer.append_sample(sample)
+
         return new_obs, rew, terminated, truncated, info
+
 
     def collect_train_episode(self, max_samples=None):
         """
@@ -669,6 +723,7 @@ class RolloutWorker:
                 break
         self.buffer.stat_train_return = ret
         self.buffer.stat_train_steps = steps
+        self.prev_episode_reward = ret  # Save reward for next episode’s IL chance
 
     def run_episodes(self, max_samples_per_episode=None, nb_episodes=np.inf, train=False):
         """
