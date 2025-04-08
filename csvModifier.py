@@ -2,27 +2,38 @@ import pandas as pd
 import ast
 import csv
 
-INPUT_CSV = 'expert.csv'
-OUTPUT_CSV = 'expert_filtered.csv'
+# === Load original dataset ===
+df = pd.read_csv('demonstration_data.csv')
 
-def should_keep(action_str, velocity):
-    try:
-        action = ast.literal_eval(action_str)
-        if velocity < 5 and not (action[0] > 0 or action[1] > 0):
-            return False
-    except:
-        return False 
-    return True
+# === Clean and filter ===
+filtered_rows = []
 
-# Load and filter
-with open(INPUT_CSV, 'r') as infile, open(OUTPUT_CSV, 'w', newline='') as outfile:
-    reader = csv.DictReader(infile)
-    writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
-    writer.writeheader()
+for _, row in df.iterrows():
+    fwd = row['Forward Throttle']
+    back = row['Backward throttle']
+    steer = row['Steering']
+    velocity = ast.literal_eval(row['Velocity'])[0] if isinstance(row['Velocity'], str) else row['Velocity']
+    
+    # Skip if velocity < 5 and both throttle values are 0 or less
+    if steer == 0 and fwd <= 0 and back <= 0:
+        continue
 
-    for row in reader:
-        velocity = float(row['Velocity'])
-        if should_keep(row['Action'], velocity):
-            writer.writerow(row)
+    # Build action
+    action = [fwd, back, steer]
+    
+    # Format LiDAR (ensure it stays a string, as expected)
+    lidar_str = row['Lidar']
+    
+    # Create mock LiDAR object like original dataset: [lidar_array, [0.0, 0.0, 0.0], None]
+    formatted_lidar = f"[{lidar_str}, [0.0, 0.0, 0.0], None]"
+    
+    # Append formatted row
+    filtered_rows.append([str(action), velocity, formatted_lidar])
 
-print(f"Filtered rows saved to {OUTPUT_CSV}")
+# === Write to new CSV ===
+with open('demonstration_filtered.csv', mode='w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['Action', 'Velocity', 'LiDAR'])
+    writer.writerows(filtered_rows)
+
+print(f"Filtered data saved to demonstration_filtered.csv")

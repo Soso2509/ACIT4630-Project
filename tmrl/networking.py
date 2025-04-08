@@ -1034,7 +1034,7 @@ class ImitationWorker:
         with torch.no_grad():
             act = self.model(x).squeeze().cpu().numpy()
         act = np.clip(act, -1.0, 1.0) 
-        #act = [0, 0, -1]
+        act = [0, 0.6, 0]
         print(act)
         return act
 
@@ -1215,7 +1215,7 @@ class Imitation:
 
         new_obs, rew, terminated, truncated, info = self.env.step(None)
 
-        print(f"Observation received: {new_obs}")
+        #print(f"Observation received: {new_obs}")
         # print(f"Info received: {info}")
         # print(f"Observation space: {self.env.observation_space}")
 
@@ -1256,7 +1256,7 @@ class Imitation:
             sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
         else:
             sample = (act, obs_to_store, rew, terminated, truncated, info)
-        #print(act)
+        print(act)
 
         return obs, rew, terminated, truncated, info
 
