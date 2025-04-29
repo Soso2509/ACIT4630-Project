@@ -688,8 +688,29 @@ class RolloutWorker:
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
 
-            act_rounded = np.round(act, 2)
-            print(act_rounded)
+            #act_rounded = np.round(act, 2)
+            #print(terminated, truncated)
+
+        # Save when the agent made it to the goal within time
+        if obs[0] > 5 and terminated == True and truncated == False:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            data = {"timestamp": timestamp}
+
+            filename = "goal_timestamps.json"
+
+            # If file exists, load existing list
+            if os.path.exists(filename):
+                with open(filename, "r") as f:
+                    existing_data = json.load(f)
+            else:
+                existing_data = []
+
+            # Add the new timestamp
+            existing_data.append(data)
+
+            # Write back updated list
+            with open(filename, "w") as f:
+                json.dump(existing_data, f, indent=4)
 
             self.buffer.append_sample(sample)
 
@@ -1283,7 +1304,7 @@ class Imitation:
         elif isinstance(act, np.ndarray):
             act = act.astype(np.float32)
 
-        print(act)
+        #print(act)
 
         if isinstance(new_obs, tuple):
             obs_to_store = new_obs  # store full tuple
@@ -1296,7 +1317,6 @@ class Imitation:
         if last_step and not terminated:
             truncated = True
 
-    
         rotation = obs_to_store[2]  
         if np.array_equal(rotation, [0.0, 0.0, 0.0]): # This only happens on a new lap
             self.current_lap_id += 1  
@@ -1306,12 +1326,32 @@ class Imitation:
 
         self.write_to_csv(run_id, act, obs_to_store, terminated, truncated, info)
 
+        # Save when the agent made it to the goal within time
+        #if obs_to_store[0] > 5 and terminated == True and truncated == False:
+            #timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            #data = {"timestamp": timestamp}
+
+            #filename = "goal_timestamps.json"
+
+            # If file exists, load existing list
+            #if os.path.exists(filename):
+                #with open(filename, "r") as f:
+                    #existing_data = json.load(f)
+            #else:
+                #existing_data = []
+
+            # Add the new timestamp
+            #existing_data.append(data)
+
+            # Write back updated list
+            #with open(filename, "w") as f:
+                #json.dump(existing_data, f, indent=4)
 
         if self.get_local_buffer_sample:
             sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
         else:
             sample = (act, obs_to_store, rew, terminated, truncated, info)
-        print(act)
+        #print(terminated, truncated)
 
         return obs, rew, terminated, truncated, info
 
@@ -1321,6 +1361,7 @@ class Imitation:
         rotation = obs_to_store[2] if len(obs_to_store) > 0 else None
         position = obs_to_store[3] if len(obs_to_store) > 0 else None
         
+        print(velocity)
 
         velocity = velocity.tolist() if isinstance(velocity, np.ndarray) else velocity
         lidar = lidar.flatten().tolist() if isinstance(lidar, np.ndarray) else lidar
