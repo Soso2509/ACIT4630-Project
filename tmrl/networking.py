@@ -692,7 +692,7 @@ class RolloutWorker:
             #print(terminated, truncated)
 
         # Save when the agent made it to the goal within time
-        if obs[0] > 5 and terminated == True and truncated == False:
+        if obs[0] > 15 and terminated == True and truncated == False:
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             data = {"timestamp": timestamp}
 
@@ -712,7 +712,7 @@ class RolloutWorker:
             with open(filename, "w") as f:
                 json.dump(existing_data, f, indent=4)
 
-            self.buffer.append_sample(sample)
+        self.buffer.append_sample(sample)
 
         return new_obs, rew, terminated, truncated, info
 
