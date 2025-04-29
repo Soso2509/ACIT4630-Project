@@ -526,7 +526,7 @@ class RolloutWorker:
         self.debug_ts_cpt = 0
         self.debug_ts_res_cpt = 0
 
-        self.IL_chance = 0.95
+        self.IL_chance = 0.75
         self.prev_episode_reward = 0.0
 
         self.device = torch.device(device)
@@ -591,7 +591,7 @@ class RolloutWorker:
 
         RL_act = self.actor.act_(obs, test=test)
 
-        print(f"IL_chance: {np.round(self.IL_chance, 3)}, RL: {np.round(RL_act, 2)}, IL: {np.round(IL_act, 2)}")
+        print(f"IL_chance: {np.round(self.IL_chance, 2)}, RL: {np.round(RL_act, 2)}, IL: {np.round(IL_act, 2)}")
 
         return IL_act if np.random.rand() < self.IL_chance else RL_act
 
@@ -609,7 +609,7 @@ class RolloutWorker:
             dict: information retrieved from the environment)
         """
         RL_chance = self.prev_episode_reward * 0.002
-        self.IL_chance = max(0.0, min(1.0, 0.99 - RL_chance))  # Keep within [0, 1]
+        self.IL_chance = max(0.0, min(1.0, 0.8 - RL_chance))  # Keep within [0, 1]
 
         print_with_timestamp(f"New episode: IL_chance set to {np.round(self.IL_chance, 3)} based on previous reward: {np.round(self.prev_episode_reward, 2)}")
 
@@ -689,10 +689,10 @@ class RolloutWorker:
                 sample = act, new_obs, rew, terminated, truncated, info
 
             #act_rounded = np.round(act, 2)
-            #print(terminated, truncated)
+            print(rew)
 
         # Save when the agent made it to the goal within time
-        if obs[0] > 15 and terminated == True and truncated == False:
+        if obs[0] > 10 and terminated == True and truncated == False and rew > 10:
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             data = {"timestamp": timestamp}
 
@@ -1351,7 +1351,7 @@ class Imitation:
             sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
         else:
             sample = (act, obs_to_store, rew, terminated, truncated, info)
-        #print(terminated, truncated)
+        print(rew)
 
         return obs, rew, terminated, truncated, info
 
@@ -1361,7 +1361,6 @@ class Imitation:
         rotation = obs_to_store[2] if len(obs_to_store) > 0 else None
         position = obs_to_store[3] if len(obs_to_store) > 0 else None
         
-        print(velocity)
 
         velocity = velocity.tolist() if isinstance(velocity, np.ndarray) else velocity
         lidar = lidar.flatten().tolist() if isinstance(lidar, np.ndarray) else lidar
