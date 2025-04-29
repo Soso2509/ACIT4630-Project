@@ -991,21 +991,34 @@ class RolloutWorker:
 
 # IMITATION WORKER (This runs the model)
 class BCNet(nn.Module):
-    def __init__(self, input_dim, output_dim=3):
+    def __init__(self, input_dim, output_dim=3, hidden_dim=32):
         super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(input_dim, 256),
-            nn.ReLU(),
-            nn.Linear(256, 128),
-            nn.ReLU(),
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Linear(64, output_dim)
-        )
+        self.rnn = nn.LSTM(input_dim, hidden_dim, batch_first=True)
 
+        self.fc1 = nn.Linear(hidden_dim, 32)
+        self.tanh1 = nn.Tanh()
+
+        self.fc2 = nn.Linear(32, 32)
+        self.tanh2 = nn.Tanh()
+
+        self.out = nn.Linear(32, output_dim)
+
+    dropout = nn.Dropout(p=0.3)
 
     def forward(self, x):
-        return self.net(x)
+        if len(x.shape) == 2:
+            x = x.unsqueeze(1)
+        rnn_out, _ = self.rnn(x)
+
+        if rnn_out.shape[1] == 1:
+            x = rnn_out.unsqueeze(1)
+
+        else:
+            x = rnn_out[:, -1, :]
+            
+        x = self.dropout(self.tanh1(self.fc1(x)))
+        x = self.dropout(self.tanh2(self.fc2(x)))
+        return self.out(x)
 
 class ImitationWorker:
     def __init__(self, env_cls, device="cpu", model_path="bc_model.pth", max_samples_per_episode=np.inf):
@@ -1015,7 +1028,6 @@ class ImitationWorker:
         self.max_samples_per_episode = max_samples_per_episode
 
         # === Setup BC model ===
-        # Observation shape: assuming (velocity + lidar)
         obs_sample, _ = self.env.reset()
         flat_obs = self.flatten_obs(obs_sample)
         self.model = BCNet(input_dim=len(flat_obs)).to(self.device)
