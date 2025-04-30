@@ -528,6 +528,8 @@ class RolloutWorker:
 
         self.IL_chance = 0.7
         self.prev_episode_reward = 0.0
+        self.episode_start_time = time.time()
+
 
         self.device = torch.device(device)
 
@@ -636,6 +638,7 @@ class RolloutWorker:
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
             self.buffer.append_sample(sample)
+        self.episode_start_time = time.time()
         return new_obs, info
 
     def step(self, obs, test, collect_samples, last_step=False):
@@ -659,6 +662,8 @@ class RolloutWorker:
             bool: episode truncation signal,
             dict: information dictionary)
         """
+        elapsed_time = round(time.time() - self.episode_start_time, 2)
+        #print(f"Elapsed episode time: {elapsed_time} seconds")
 
         # Pass previous reward to act()
         act = self.act(obs, test=test) #rew=self.prev_rew,
@@ -688,13 +693,20 @@ class RolloutWorker:
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
 
+
             #act_rounded = np.round(act, 2)
             print(rew)
+                
 
         # Save when the agent made it to the goal within time
-        if obs[0] > 10 and terminated == True and truncated == False and rew > 10:
+        if terminated and not truncated and rew > 40:
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            data = {"timestamp": timestamp}
+            elapsed_time = round(time.time() - self.episode_start_time, 2)
+
+            data = {
+                "timestamp": timestamp,
+                "elapsed_time_seconds": elapsed_time
+            }
 
             filename = "goal_timestamps.json"
 
@@ -705,14 +717,19 @@ class RolloutWorker:
             else:
                 existing_data = []
 
-            # Add the new timestamp
+            # Add the new entry
             existing_data.append(data)
 
             # Write back updated list
             with open(filename, "w") as f:
                 json.dump(existing_data, f, indent=4)
 
+
         self.buffer.append_sample(sample)
+
+        if terminated == True or truncated == True:
+            self.episode_start_time = time.time()
+
 
         return new_obs, rew, terminated, truncated, info
 
@@ -1251,6 +1268,7 @@ class Imitation:
 
 
     def reset(self, collect_samples=True):
+        self.episode_start_time = time.time()
         obs = None
         try:
             act = self.env.unwrapped.default_action
@@ -1327,25 +1345,30 @@ class Imitation:
         self.write_to_csv(run_id, act, obs_to_store, terminated, truncated, info)
 
         # Save when the agent made it to the goal within time
-        #if obs_to_store[0] > 5 and terminated == True and truncated == False:
-            #timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            #data = {"timestamp": timestamp}
+        if terminated and not truncated and rew > 40:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            elapsed_time = round(time.time() - self.episode_start_time, 2)
 
-            #filename = "goal_timestamps.json"
+            data = {
+                "timestamp": timestamp,
+                "elapsed_time_seconds": elapsed_time
+            }
+
+            filename = "goal_timestamps.json"
 
             # If file exists, load existing list
-            #if os.path.exists(filename):
-                #with open(filename, "r") as f:
-                    #existing_data = json.load(f)
-            #else:
-                #existing_data = []
+            if os.path.exists(filename):
+                with open(filename, "r") as f:
+                    existing_data = json.load(f)
+            else:
+                existing_data = []
 
-            # Add the new timestamp
-            #existing_data.append(data)
+            # Add the new entry
+            existing_data.append(data)
 
             # Write back updated list
-            #with open(filename, "w") as f:
-                #json.dump(existing_data, f, indent=4)
+            with open(filename, "w") as f:
+                json.dump(existing_data, f, indent=4)
 
         if self.get_local_buffer_sample:
             sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
