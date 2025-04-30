@@ -515,6 +515,8 @@ class RolloutWorker:
         self.debug_ts_cpt = 0
         self.debug_ts_res_cpt = 0
 
+        self.episode_start_time = None
+
         self.server_ip = server_ip if server_ip is not None else '127.0.0.1'
 
         print_with_timestamp(f"server IP: {self.server_ip}")
@@ -562,6 +564,7 @@ class RolloutWorker:
             (nested structure: observation retrieved from the environment,
             dict: information retrieved from the environment)
         """
+        self.episode_start_time = time.time()
         obs = None
         try:
             # Faster than hasattr() in real-time environments
@@ -626,6 +629,33 @@ class RolloutWorker:
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
             self.buffer.append_sample(sample)  # CAUTION: in the buffer, act is for the PREVIOUS transition (act, obs(act))
+        
+         # Save when the agent made it to the goal within time
+        if rew > 60:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            elapsed_time = round(time.time() - self.episode_start_time, 2)
+
+            data = {
+                "timestamp": timestamp,
+                "elapse_time_seconds": elapsed_time
+                    }
+
+            filename = "goal_timestamps.json"
+
+            # If file exists, load existing list
+            if os.path.exists(filename):
+                with open(filename, "r") as f:
+                    existing_data = json.load(f)
+            else:
+                existing_data = []
+
+            # Add the new timestamp
+            existing_data.append(data)
+
+            # Write back updated list
+            with open(filename, "w") as f:
+                json.dump(existing_data, f, indent=4)
+
         return new_obs, rew, terminated, truncated, info
 
     def collect_train_episode(self, max_samples=None):
