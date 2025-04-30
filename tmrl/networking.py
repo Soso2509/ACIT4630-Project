@@ -526,7 +526,7 @@ class RolloutWorker:
         self.debug_ts_cpt = 0
         self.debug_ts_res_cpt = 0
 
-        self.IL_chance = 0.75
+        self.IL_chance = 0.7
         self.prev_episode_reward = 0.0
 
         self.device = torch.device(device)
@@ -608,7 +608,7 @@ class RolloutWorker:
             (nested structure: observation retrieved from the environment,
             dict: information retrieved from the environment)
         """
-        RL_chance = self.prev_episode_reward * 0.002
+        RL_chance = self.prev_episode_reward * 0.005
         self.IL_chance = max(0.0, min(1.0, 0.8 - RL_chance))  # Keep within [0, 1]
 
         print_with_timestamp(f"New episode: IL_chance set to {np.round(self.IL_chance, 3)} based on previous reward: {np.round(self.prev_episode_reward, 2)}")
