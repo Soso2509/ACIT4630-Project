@@ -991,22 +991,33 @@ class RolloutWorker:
 
 # IMITATION WORKER (This runs the model)
 class BCNet(nn.Module):
-    def __init__(self, input_dim, output_dim=3, hidden_dim=32):
+    def __init__(self, input_dim, output_dim=3, hidden_dim=256):
         super().__init__()
-        self.rnn = nn.LSTM(input_dim, hidden_dim, batch_first=True)
+        self.rnn = nn.LSTM(
+            input_dim, 
+            hidden_dim,
+            num_layers=4, 
+            batch_first=True)
 
-        self.fc1 = nn.Linear(hidden_dim, 32)
+        self.fc1 = nn.Linear(hidden_dim, 512)
         self.tanh1 = nn.Tanh()
 
-        self.fc2 = nn.Linear(32, 32)
+        self.fc2 = nn.Linear(512, 512)
         self.tanh2 = nn.Tanh()
 
-        self.out = nn.Linear(32, output_dim)
+        self.fc3 = nn.Linear(512, 512)
+        self.tanh3 = nn.Tanh()
+
+        self.fc4 = nn.Linear(512, 256)
+        self.tanh4 = nn.Tanh()
+
+        self.out = nn.Linear(256, output_dim)
 
     dropout = nn.Dropout(p=0.3)
 
+    # Forward pass
     def forward(self, x):
-        if len(x.shape) == 2:
+        if len(x.shape) == 2: # Making sure the data is right shape
             x = x.unsqueeze(1)
         rnn_out, _ = self.rnn(x)
 
@@ -1015,9 +1026,11 @@ class BCNet(nn.Module):
 
         else:
             x = rnn_out[:, -1, :]
-            
-        x = self.dropout(self.tanh1(self.fc1(x)))
+
+        x = self.dropout(self.tanh1(self.fc1(x))) # Dropout layers help prevent overfitting
         x = self.dropout(self.tanh2(self.fc2(x)))
+        x = self.dropout(self.tanh3(self.fc3(x)))
+        x = self.dropout(self.tanh4(self.fc4(x)))
         return self.out(x)
 
 class ImitationWorker:

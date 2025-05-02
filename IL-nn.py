@@ -4,10 +4,19 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import time
+import random
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 
+print(torch.version.hip)
+print(torch.backends.mps.is_available())  
+print(torch.cuda.is_available()) 
+print(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
+print(torch.device("mps" if torch.backends.mps.is_available() else "cpu"))
+
 # === Load and preprocess data ===
+# NOTE: This might have data leakage problems? 
 df = pd.read_csv('demonstration_filtered.csv')
 
 df['Action'] = df['Action'].apply(ast.literal_eval)
@@ -22,15 +31,15 @@ y = np.stack(df['Action'].values)
 X_train, X_val, y_train, y_val = train_test_split(x, y, test_size=0.2, random_state=42)
 
 # === PyTorch DataLoaders ===
-batch_size = 100
-SEQ_LEN = 10
+batch_size = 200 # 100 seems best | test with new data
+SEQ_LEN = 30 # increasing massively increases training time, but helps a lot
 
 x_seq = []
 y_seq = []
 
 for i in range(len(x) - SEQ_LEN):
     x_seq.append(x[i:i + SEQ_LEN])
-    y_seq.append(y[i + SEQ_LEN - 1])  
+    y_seq.append(y[i + SEQ_LEN - 1])
 
 x_seq = np.array(x_seq)
 y_seq = np.array(y_seq)
@@ -45,22 +54,33 @@ val_loader = DataLoader(val_dataset, batch_size=batch_size)
 
 # === Model Definition ===
 class BCNet(nn.Module):
-    def __init__(self, input_dim, output_dim=3, hidden_dim=32):
+    def __init__(self, input_dim, output_dim=3, hidden_dim=256):
         super().__init__()
-        self.rnn = nn.LSTM(input_dim, hidden_dim, batch_first=True)
+        self.rnn = nn.LSTM(
+            input_dim, 
+            hidden_dim,
+            num_layers=4, 
+            batch_first=True)
 
-        self.fc1 = nn.Linear(hidden_dim, 32)
+        self.fc1 = nn.Linear(hidden_dim, 512)
         self.tanh1 = nn.Tanh()
 
-        self.fc2 = nn.Linear(32, 32)
+        self.fc2 = nn.Linear(512, 512)
         self.tanh2 = nn.Tanh()
 
-        self.out = nn.Linear(32, output_dim)
+        self.fc3 = nn.Linear(512, 512)
+        self.tanh3 = nn.Tanh()
+
+        self.fc4 = nn.Linear(512, 256)
+        self.tanh4 = nn.Tanh()
+
+        self.out = nn.Linear(256, output_dim)
 
     dropout = nn.Dropout(p=0.3)
 
+    # Forward pass
     def forward(self, x):
-        if len(x.shape) == 2:
+        if len(x.shape) == 2: # Making sure the data is right shape
             x = x.unsqueeze(1)
         rnn_out, _ = self.rnn(x)
 
@@ -70,21 +90,36 @@ class BCNet(nn.Module):
         else:
             x = rnn_out[:, -1, :]
 
-        x = self.dropout(self.tanh1(self.fc1(x)))
+        x = self.dropout(self.tanh1(self.fc1(x))) # Dropout layers help prevent overfitting
         x = self.dropout(self.tanh2(self.fc2(x)))
+        x = self.dropout(self.tanh3(self.fc3(x)))
+        x = self.dropout(self.tanh4(self.fc4(x)))
         return self.out(x)
 
 # === Setup ===
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.version.cuda else "cpu")
 model = BCNet(input_dim=x.shape[1]).to(device)
-optimizer = optim.Adam(model.parameters(), lr=1e-4, weight_decay=1e-5)
-criterion = nn.MSELoss()
+optimizer = optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-5) # L2 regularization and 0.0001 learning rate
+criterion = nn.MSELoss() # Is MSE the best loss here?
+
+# def set_seed(seed=42): # for reproducability when tuning ! Might not be working correctly
+#     random.seed()
+#     np.random.seed(seed)
+#     torch.manual_seed(seed)
+#     torch.cuda.manual_seed_all(seed)
+#     torch.backends.cudnn.deterministic = True
+#     torch.backends.cudnn.benchmark = False
+    
+# set_seed(42)
 
 # === Training Loop ===
-num_epochs = 200
+num_epochs = 400 # Usually early stops anyways
 best_val_loss = float('inf')
-patience = 15
+patience = 10
 counter = 0
+train_losses = []
+val_losses = []
+start_time = time.time()
 
 for epoch in range(num_epochs):
     model.train()
@@ -110,6 +145,9 @@ for epoch in range(num_epochs):
     avg_train_loss = train_loss / len(train_loader)
     avg_val_loss = val_loss / len(val_loader)
 
+    train_losses.append(avg_train_loss)
+    val_losses.append(avg_val_loss)
+
     print(f"Epoch {epoch+1}/{num_epochs} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f}")
 
     if avg_val_loss < best_val_loss:
@@ -122,7 +160,26 @@ for epoch in range(num_epochs):
             print(f"Early stopping triggered after {epoch+1} epochs.")
             break
 
+# === Metrics ===
+finish_time = time.time() - start_time
+print(f'Model finished training in {finish_time:.2f} seconds')
+print(f'Best loss was {best_val_loss:.4f}')
+
+
 # === Saving the trained model ===
 model_path = "bc_model.pth"
 torch.save(model.state_dict(), model_path)
 print(f"Model saved to {model_path}")
+
+# === Plotting ===
+
+import matplotlib.pyplot as plt
+
+plt.plot(train_losses, label='Train Loss')
+plt.plot(val_losses, label='Val Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.title('Training vs Validation Loss')
+plt.legend()
+plt.grid(True)
+plt.show()
