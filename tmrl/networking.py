@@ -996,7 +996,7 @@ class BCNet(nn.Module):
         self.rnn = nn.LSTM(
             input_dim, 
             hidden_dim,
-            num_layers=4, 
+            num_layers=1, 
             batch_first=True)
 
         self.fc1 = nn.Linear(hidden_dim, 512)
@@ -1008,31 +1008,65 @@ class BCNet(nn.Module):
         self.fc3 = nn.Linear(512, 512)
         self.tanh3 = nn.Tanh()
 
-        self.fc4 = nn.Linear(512, 256)
+        self.fc4 = nn.Linear(512, 512)
         self.tanh4 = nn.Tanh()
+
+        self.fc5 = nn.Linear(512, 512)
+        self.tanh5 = nn.Tanh()
+
+        self.fc6 = nn.Linear(512, 512)
+        self.tanh6 = nn.Tanh()
+
+        self.fc7 = nn.Linear(512, 512)
+        self.tanh7 = nn.Tanh()
+
+        self.fc8 = nn.Linear(512, 512)
+        self.tanh8 = nn.Tanh()
+
+        self.fc9 = nn.Linear(512, 512)
+        self.tanh9 = nn.Tanh()
+
+        self.fc10 = nn.Linear(512, 256)
+        self.tanh10 = nn.Tanh()
 
         self.out = nn.Linear(256, output_dim)
 
+        self.throttle_head = nn.Sequential(nn.Linear(256, 1), nn.Sigmoid())
+        self.brake_head = nn.Sequential(nn.Linear(256, 1), nn.Sigmoid())
+        self.steer_head = nn.Sequential(nn.Linear(256, 1), nn.Tanh())
+
     dropout = nn.Dropout(p=0.3)
+
+
 
     # Forward pass
     def forward(self, x):
-        if len(x.shape) == 2: # Making sure the data is right shape
+        if len(x.shape) == 2:
             x = x.unsqueeze(1)
         rnn_out, _ = self.rnn(x)
 
         if rnn_out.shape[1] == 1:
-            x = rnn_out.unsqueeze(1)
-
+            x = rnn_out.squeeze(1)
         else:
             x = rnn_out[:, -1, :]
 
-        x = self.dropout(self.tanh1(self.fc1(x))) # Dropout layers help prevent overfitting
+        x = self.dropout(self.tanh1(self.fc1(x)))
         x = self.dropout(self.tanh2(self.fc2(x)))
         x = self.dropout(self.tanh3(self.fc3(x)))
         x = self.dropout(self.tanh4(self.fc4(x)))
-        return self.out(x)
+        x = self.dropout(self.tanh5(self.fc5(x)))
+        x = self.dropout(self.tanh6(self.fc6(x)))
+        x = self.dropout(self.tanh7(self.fc7(x)))
+        x = self.dropout(self.tanh8(self.fc8(x)))
+        x = self.dropout(self.tanh9(self.fc9(x)))
+        x = self.dropout(self.tanh10(self.fc10(x)))
 
+        throttle = self.throttle_head(x)
+        brake = self.brake_head(x)
+        steer = self.steer_head(x)
+
+        return torch.cat([throttle, brake, steer], dim=1)
+        
 class ImitationWorker:
     def __init__(self, env_cls, device="cpu", model_path="bc_model.pth", max_samples_per_episode=np.inf):
         self.device = torch.device(device)
