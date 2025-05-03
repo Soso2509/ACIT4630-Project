@@ -128,6 +128,11 @@ class TrainingOffline:
 
                 t_train = time.time()
 
+                if self.memory.stat_train_return > 60:
+                    stats_training_dict["full_lap"] = 1
+                else:
+                    stats_training_dict["full_lap"] = 0
+
                 stats_training_dict["return_test"] = self.memory.stat_test_return
                 stats_training_dict["return_train"] = self.memory.stat_train_return
                 stats_training_dict["episode_length_test"] = self.memory.stat_test_steps
