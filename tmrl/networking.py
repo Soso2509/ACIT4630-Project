@@ -704,8 +704,9 @@ class RolloutWorker:
             elapsed_time = round(time.time() - self.episode_start_time, 2)
 
             data = {
-                "timestamp": timestamp,
-                "elapsed_time_seconds": elapsed_time
+            "timestamp": timestamp,
+            "elapsed_time_seconds": elapsed_time,
+            "IL_chance": round(self.IL_chance, 3)  # safely rounded to 3 decimals
             }
 
             filename = "goal_timestamps.json"
