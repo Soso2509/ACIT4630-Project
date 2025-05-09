@@ -1,79 +1,78 @@
 import json
 import matplotlib.pyplot as plt
 from datetime import datetime
-import pandas as pd
 import numpy as np
+import os
 
-# Reload the files after kernel reset
-rl_path = "goal_timestamps_RL.json"
-hybrid_path = "goal_timestamps_Hybrid.json"
-hybrid_j_path = "goal_timestamps_Hybrid_J.json"
-hybrid_slow_path = "goal_timestamps_Hybrid_slower_failed.json"
-hybrid_slow2_path = "goal_timestamps_slow2.json"
+# Define agents and the number of max runs per agent type
+agent_types = ['rl', 'j', 'p', 'slow']
+max_runs_per_agent = 5
 
-# Load the JSON files
-with open(rl_path, "r") as f:
-    data_rl = json.load(f)
+# Define the configurations for all agents and runs
+configs = {
+    'rl': ['goal_timestamps_RL1.json', 'goal_timestamps_RL2.json'],         # , 'goal_timestamps_RL3.json'
+    'j': ['goal_timestamps_j2.json'],             # 'goal_timestamps_j1.json', , 'goal_timestamps_j3.json'
+    'p': ['goal_timestamps_p1.json'],             # , 'goal_timestamps_p2.json', 'goal_timestamps_p3.json'
+    'slow': ['goal_timestamps_slow3.json']  # 'goal_timestamps_slow1.json', 'goal_timestamps_slow2.json', 
+}
 
-with open(hybrid_path, "r") as f:
-    data_hybrid_p = json.load(f)
+start_times = {
+    'rl1': "2025-05-01 18:07", 'rl2': "2025-05-08 12:37",                 # 'rl3': "2025-05-10 09:00",
+    'j2': "2025-05-04 18:40",                   # 'j1': "2025-05-04 18:40",  , 'j3': "2025-05-12 10:00" 
+    'p1': "2025-05-02 21:35",                   # , 'p2': "2025-05-13 12:00", 'p3': "2025-05-14 12:00"
+    'slow3': "2025-05-07 12:23"           # 'slow1': "2025-05-06 15:23", 'slow2': "2025-05-07 12:23", 
+}
 
-with open(hybrid_j_path, "r") as f:
-    data_hybrid_j = json.load(f)
+colors = {
+    'rl': 'blue',
+    'j': 'orange',
+    'p': 'green',
+    'slow': 'red'
+}
 
-with open(hybrid_slow_path, "r") as f:
-    data_hybrid_slow = json.load(f)
+# Storage for plotting
+all_hours = []
+all_counts = []
+labels = []
+plot_colors = []
 
-with open(hybrid_slow2_path, "r") as f:
-    data_hybrid_slow2 = json.load(f)
+# Loop through each agent type and attempt up to 5 runs
+for agent in agent_types:
+    for i in range(1, max_runs_per_agent + 1):
+        name = f"{agent}{i}"
+        filename = f"goal_timestamps_{name.upper()}.json"
+        if not os.path.exists(filename):
+            continue
+        try:
+            with open(filename, "r") as f:
+                data = json.load(f)
+            start_str = start_times[name]
+            start_time = datetime.strptime(start_str, "%Y-%m-%d %H:%M")
+            times = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data]
+            hours_since_start = [(t - start_time).total_seconds() / 3600 for t in times]
+            counts = list(range(1, len(hours_since_start) + 1))
+            all_hours.append(hours_since_start)
+            all_counts.append(counts)
+            labels.append(name.upper())
+            plot_colors.append(colors[agent])
+        except KeyError:
+            print(f"Missing start time for {name}, skipping...")
+        except Exception as e:
+            print(f"Error processing {filename}: {e}")
 
-# Define the start times for each dataset
-start_time_rl = datetime.strptime("2025-05-01 18:07", "%Y-%m-%d %H:%M")
-start_time_hybrid = datetime.strptime("2025-05-02 21:35", "%Y-%m-%d %H:%M") 
-start_time_hybrid_j = datetime.strptime("2025-05-04 18:40", "%Y-%m-%d %H:%M") 
-start_time_hybrid_slow = datetime.strptime("2025-05-06 15:23", "%Y-%m-%d %H:%M") 
-start_time_hybrid_slow2 = datetime.strptime("2025-05-07 12:23", "%Y-%m-%d %H:%M") 
-
-# Process RL data
-times_rl = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data_rl]
-hours_since_start_rl = [(t - start_time_rl).total_seconds() / 3600 for t in times_rl]
-counts_rl = list(range(1, len(hours_since_start_rl) + 1))
-
-# Process Hybrid P data
-times_hybrid_p = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data_hybrid_p]
-hours_since_start_hybrid_p = [(t - start_time_hybrid).total_seconds() / 3600 for t in times_hybrid_p]
-counts_hybrid_p = list(range(1, len(hours_since_start_hybrid_p) + 1))
-
-# Process Hybrid J data
-times_hybrid_j = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data_hybrid_j]
-hours_since_start_hybrid_j = [(t - start_time_hybrid_j).total_seconds() / 3600 for t in times_hybrid_j]
-counts_hybrid_j = list(range(1, len(hours_since_start_hybrid_j) + 1))
-
-# Process Hybrid Slow (failed) data
-times_hybrid_slow = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data_hybrid_slow]
-hours_since_start_hybrid_slow = [(t - start_time_hybrid_slow).total_seconds() / 3600 for t in times_hybrid_slow]
-counts_hybrid_slow = list(range(1, len(hours_since_start_hybrid_slow) + 1))
-
-# Process Hybrid Slow2 data
-times_hybrid_slow2 = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data_hybrid_slow2]
-hours_since_start_hybrid_slow2 = [(t - start_time_hybrid_slow2).total_seconds() / 3600 for t in times_hybrid_slow2]
-counts_hybrid_slow2 = list(range(1, len(hours_since_start_hybrid_slow2) + 1))
-
-
-# Determine the x-axis range
-max_hour = int(max(max(hours_since_start_rl, default=0), max(hours_since_start_hybrid_p, default=0), max(hours_since_start_hybrid_j, default=0), max(hours_since_start_hybrid_slow, default=0), max(hours_since_start_hybrid_slow2, default=0))) + 1
+# Determine the x-axis range for all data
+max_hour = int(max([max(h, default=0) for h in all_hours], default=0)) + 1
 x_ticks = np.arange(0, max_hour + 1, 1)
 
 # Plotting
-plt.figure(figsize=(12, 6))
-plt.plot(hours_since_start_rl, counts_rl, label='RL Agent', color='blue')
-plt.plot(hours_since_start_hybrid_p, counts_hybrid_p, label='Hybrid Agent P', color='green')
-plt.plot(hours_since_start_hybrid_j, counts_hybrid_j, label='Hybrid Agent J', color='orange')
-plt.plot(hours_since_start_hybrid_slow, counts_hybrid_slow, label='Hybrid Agent Slow', color='yellow')
-plt.plot(hours_since_start_hybrid_slow2, counts_hybrid_slow2, label='Hybrid Agent Slow2', color='red')
+plt.figure(figsize=(14, 7))
+for hours, counts, label, color in zip(all_hours, all_counts, labels, plot_colors):
+    plt.plot(hours, counts, label=label, color=color)
+
+plt.xticks(ticks=x_ticks)
 plt.xlabel("Hours Since Start")
 plt.ylabel("Total Timestamps")
-plt.title("Goal Reaches Over Time")
+plt.title("Goal Reaches Over Time for All Agents")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()

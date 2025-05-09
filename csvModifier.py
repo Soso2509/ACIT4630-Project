@@ -3,7 +3,7 @@ import ast
 import csv
 
 # === Load original dataset ===
-df = pd.read_csv('demonstration_data.csv')
+df = pd.read_csv('demonstration_data_slow.csv')
 
 # === Clean and filter ===
 filtered_rows = []

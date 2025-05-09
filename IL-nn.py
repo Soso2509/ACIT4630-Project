@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 
 # === Load and preprocess data ===
-df = pd.read_csv('demonstration_filtered.csv')
+df = pd.read_csv('demonstration_filtered_J.csv')
 
 # Parse strings into Python objects
 df['Action'] = df['Action'].apply(ast.literal_eval)
@@ -38,13 +38,7 @@ class BCNet(nn.Module):
     def __init__(self, input_dim, output_dim=3):
         super().__init__()
         self.net = nn.Sequential(
-        nn.Linear(input_dim, 512),
-        nn.ReLU(),
-        nn.Linear(512, 1024),
-        nn.ReLU(),
-        nn.Linear(1024, 512),
-        nn.ReLU(),
-        nn.Linear(512, 256),
+        nn.Linear(input_dim, 256),
         nn.ReLU(),
         nn.Linear(256, 128),
         nn.ReLU(),
@@ -64,7 +58,7 @@ optimizer = optim.Adam(model.parameters(), lr=1e-3)
 criterion = nn.MSELoss()
 
 # === Training Loop ===
-num_epochs = 70
+num_epochs = 100
 for epoch in range(num_epochs):
     model.train()
     train_loss = 0.0
