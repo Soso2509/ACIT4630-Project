@@ -1,0 +1,152 @@
+[
+    {
+        "run_ID": 1,
+        "total_rew": 185.75,
+        "run_time": 52.24
+    },
+    {
+        "run_ID": 2,
+        "total_rew": 44.84,
+        "run_time": 21.15
+    },
+    {
+        "run_ID": 3,
+        "total_rew": 176.21,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 4,
+        "total_rew": 149.34,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 5,
+        "total_rew": 183.42,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 6,
+        "total_rew": 182.16,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 7,
+        "total_rew": 173.95,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 8,
+        "total_rew": 177.35,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 9,
+        "total_rew": 175.02,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 10,
+        "total_rew": 169.87,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 11,
+        "total_rew": 166.42,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 12,
+        "total_rew": 47.32,
+        "run_time": 22.95
+    },
+    {
+        "run_ID": 13,
+        "total_rew": 169.59,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 14,
+        "total_rew": 184.52,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 15,
+        "total_rew": 179.4,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 16,
+        "total_rew": 174.36,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 17,
+        "total_rew": 62.35,
+        "run_time": 32.45
+    },
+    {
+        "run_ID": 18,
+        "total_rew": 167.74,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 19,
+        "total_rew": 158.09,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 20,
+        "total_rew": 171.01,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 21,
+        "total_rew": 175.37,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 22,
+        "total_rew": 174.29,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 23,
+        "total_rew": 186.27,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 24,
+        "total_rew": 181.26,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 25,
+        "total_rew": 173.44,
+        "run_time": 52.42
+    },
+    {
+        "run_ID": 26,
+        "total_rew": 170.15,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 27,
+        "total_rew": 181.65,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 28,
+        "total_rew": 175.87,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 29,
+        "total_rew": 168.21,
+        "run_time": 52.2
+    },
+    {
+        "run_ID": 30,
+        "total_rew": 177.76,
+        "run_time": 52.2
+    }
+]

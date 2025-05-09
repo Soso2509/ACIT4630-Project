@@ -1145,6 +1145,9 @@ class ImitationWorker:
             if verbose:
                 print(f"\n[EPISODE {episode+1}] Starting episode...")
 
+            # Start timer
+            run_start_time = time.time()
+
             obs, info = self.env.reset()
             done = False
             total_rew = 0.0
@@ -1159,8 +1162,31 @@ class ImitationWorker:
                 if terminated or truncated:
                     break
 
+            # End timer
+            run_time = round(time.time() - run_start_time, 2)
+
             if verbose:
-                print(f"[EPISODE {episode+1}] Finished: reward={total_rew:.2f}, steps={steps}")
+                print(f"[EPISODE {episode+1}] Finished: reward={total_rew:.2f}, steps={steps}, time={run_time}s")
+
+            # Save results to IL_rew.json
+            log_entry = {
+                "run_ID": episode + 1,
+                "total_rew": round(float(total_rew), 2),
+                "run_time": run_time
+            }
+
+            filename = "IL_rew.json"
+            if os.path.exists(filename):
+                with open(filename, "r") as f:
+                    data = json.load(f)
+            else:
+                data = []
+
+            data.append(log_entry)
+
+            with open(filename, "w") as f:
+                json.dump(data, f, indent=4)
+            
 
 
 
