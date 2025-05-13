@@ -3,7 +3,7 @@ import json
 import matplotlib.pyplot as plt
 
 # Load the IL_rew.json file
-with open('IL_rew.json', 'r') as f:
+with open('IL_rew_slow3.json', 'r') as f:
     data = json.load(f)
 
 # Limit to the first X iterations
@@ -34,7 +34,7 @@ plt.figure(figsize=(12, 6))
 bars = plt.bar(iterations, progressions, color=colors)
 plt.xlabel('Lap nr.')
 plt.ylabel('Lap Progression (%)')
-plt.title('IL-J (bad) Analysis of Model Runs')
+plt.title('IL-Slow3 Analysis of Model Runs')
 plt.ylim(0, 110)
 plt.grid(axis='y')
 

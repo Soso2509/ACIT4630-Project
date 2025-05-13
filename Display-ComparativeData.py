@@ -11,16 +11,16 @@ max_runs_per_agent = 5
 # Define the configurations for all agents and runs
 configs = {
     'rl': ['goal_timestamps_RL1.json', 'goal_timestamps_RL2.json'],         # , 'goal_timestamps_RL3.json'
-    'j': ['goal_timestamps_j2.json'],             # 'goal_timestamps_j1.json', , 'goal_timestamps_j3.json'
-    'p': ['goal_timestamps_p1.json'],             # , 'goal_timestamps_p2.json', 'goal_timestamps_p3.json'
-    'slow': ['goal_timestamps_slow3.json']  # 'goal_timestamps_slow1.json', 'goal_timestamps_slow2.json', 
+    'j': ['goal_timestamps_j2.json', 'goal_timestamps_j3.json'],             # 'goal_timestamps_j1.json', 
+    'p': ['goal_timestamps_p1.json', 'goal_timestamps_p2.json'],             # , 'goal_timestamps_p3.json'
+    'slow': ['goal_timestamps_slow2.json', 'goal_timestamps_slow3.json']  # 'goal_timestamps_slow1.json', 
 }
 
 start_times = {
     'rl1': "2025-05-01 18:07", 'rl2': "2025-05-08 12:37",                 # 'rl3': "2025-05-10 09:00",
-    'j2': "2025-05-04 18:40",                   # 'j1': "2025-05-04 18:40",  , 'j3': "2025-05-12 10:00" 
-    'p1': "2025-05-02 21:35",                   # , 'p2': "2025-05-13 12:00", 'p3': "2025-05-14 12:00"
-    'slow3': "2025-05-07 12:23"           # 'slow1': "2025-05-06 15:23", 'slow2': "2025-05-07 12:23", 
+    'j2': "2025-05-04 18:40", 'j3': "2025-05-09 12:48" ,                   # 'j1': "2025-05-12 15:38",  
+    'p1': "2025-05-02 21:35", 'p2': "2025-05-10 12:56",                   # , 'p3': "2025-05-14 12:00"
+    'slow2': "2025-05-11 15:26", 'slow3': "2025-05-07 12:23"           # 'slow1': "2025-05-06 15:23", 
 }
 
 colors = {

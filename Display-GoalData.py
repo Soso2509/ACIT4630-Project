@@ -4,12 +4,26 @@ from datetime import datetime
 import pandas as pd
 
 # Load the JSON data from the uploaded file
-file_path = "goal_timestamps_Hybrid.json"
+file_path = "goal_timestamps_slow2.json"
 with open(file_path, "r") as f:
     data = json.load(f)
 
 # Define the start time 
-start_time = datetime.strptime("2025-05-02 21:35", "%Y-%m-%d %H:%M") #2025-05-01 18:07
+'''
+Test RL1: 2025-05-01 18:07
+Test_RL2: 2025-05-08 12:48 
+
+Test P1: 2025-05-02 21:35 **(3-layer)**
+Test P2: 2025-05-10 12:56 **(4-layer)**
+
+Test J1: 2025-05-12 15:38 **(3-layer)**
+Test J2: 2025-05-04 18:40 **(4-layer)**
+Test J3 (J-good): 2025-05-09 12:48 **(6-layer)**
+
+Test slow2: 2025-05-11 15:26 **(4-layer)**
+Test slow3: 2025-05-07 12:23 **( 6-layer)**
+'''
+start_time = datetime.strptime("2025-05-11 15:26", "%Y-%m-%d %H:%M")
 
 # Parse timestamps and count occurrences
 timestamps = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data]
