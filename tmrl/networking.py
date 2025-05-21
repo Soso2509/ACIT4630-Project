@@ -14,6 +14,11 @@ from os.path import exists
 import numpy as np
 from requests import get
 from tlspyo import Relay, Endpoint
+import keyboard
+
+import pygame
+pygame.init()
+pygame.joystick.init()
 
 # local imports
 from tmrl.actor import ActorModule
@@ -22,6 +27,7 @@ import tmrl.config.config_constants as cfg
 import tmrl.config.config_objects as cfg_obj
 
 import logging
+import wandb
 
 
 __docformat__ = "google"
@@ -294,7 +300,6 @@ def run_with_wandb(entity, project, run_id, interface, run_cls, checkpoint_path:
     load_run_instance_fn = load_run_instance_fn or load_run_instance
     wandb_dir = tempfile.mkdtemp()  # prevent wandb from polluting the home directory
     atexit.register(shutil.rmtree, wandb_dir, ignore_errors=True)  # clean up after wandb atexit handler finishes
-    import wandb
     logging.debug(f" run_cls: {run_cls}")
     config = partial_to_dict(run_cls)
     config['environ'] = log_environment_variables()
@@ -536,6 +541,7 @@ class RolloutWorker:
         else:
             self.__endpoint = None
 
+
     def act(self, obs, test=False):
         """
         Select an action based on observation `obs`
@@ -628,6 +634,8 @@ class RolloutWorker:
                 sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
             else:
                 sample = act, new_obs, rew, terminated, truncated, info
+            act_rounded = np.round(act, 2)
+            print(act_rounded)
             self.buffer.append_sample(sample)  # CAUTION: in the buffer, act is for the PREVIOUS transition (act, obs(act))
         
          # Save when the agent made it to the goal within time
@@ -1002,3 +1010,230 @@ class RolloutWorker:
         weights_list = self.__endpoint.receive_all(blocking=False)
         nb_received = len(weights_list)
         return nb_received
+
+
+
+# IMITATION WORKER: ===================================
+class ImitationWorker:
+    def __init__(
+        self,
+        env_cls,
+        actor_module_cls,
+        sample_compressor: callable = None,
+        device="cpu",
+        max_samples_per_episode=np.inf,
+        model_path=cfg.MODEL_PATH_WORKER,
+        obs_preprocessor: callable = None,
+        crc_debug=False,
+        model_path_history=cfg.MODEL_PATH_SAVE_HISTORY,
+        model_history=cfg.MODEL_HISTORY,
+        standalone=False,
+        server_ip=None,
+        server_port=cfg.PORT,
+        password=cfg.PASSWORD,
+        local_port=cfg.LOCAL_PORT_WORKER,
+        header_size=cfg.HEADER_SIZE,
+        max_buf_len=cfg.BUFFER_SIZE,
+        security=cfg.SECURITY,
+        keys_dir=cfg.CREDENTIALS_DIRECTORY,
+        hostname=cfg.HOSTNAME
+    ):
+
+        self.obs_preprocessor = obs_preprocessor
+        self.get_local_buffer_sample = sample_compressor
+        self.env = env_cls()
+        obs_space = self.env.observation_space
+        act_space = self.env.action_space
+        self.model_path = model_path
+        self.device = device
+        self.standalone = standalone
+        self.actor = actor_module_cls(observation_space=obs_space, action_space=act_space).to_device(self.device)
+
+        if os.path.isfile(self.model_path):
+            logging.debug(f"Loading model from {self.model_path}")
+            self.actor = self.actor.load(self.model_path, device=self.device)
+        else:
+            logging.debug(f"No model found at {self.model_path}")
+
+        self.buffer = Buffer()
+        self.max_samples_per_episode = max_samples_per_episode
+        self.crc_debug = crc_debug
+
+        self.server_ip = server_ip
+        print_with_timestamp(f"server IP: {self.server_ip}")
+
+
+        self.__endpoint = Endpoint(ip_server=self.server_ip,
+                                   port=server_port,
+                                   password=password,
+                                   groups="workers",
+                                   local_com_port=local_port,
+                                   header_size=header_size,
+                                   max_buf_len=max_buf_len,
+                                   security=security,
+                                   keys_dir=keys_dir,
+                                   hostname=hostname,
+                                   deserializer_mode="synchronous")
+
+        self.controller = None
+        if pygame.joystick.get_count() > 0:
+            self.controller = pygame.joystick.Joystick(0)
+            self.controller.init()
+            print_with_timestamp("Controller connected.")
+        else:
+            print_with_timestamp("No controller detected, using keyboard.")
+
+
+    #def act(self, obs):
+        #return self.actor.act_(obs)
+
+    def _get_human_action(self):
+        pygame.event.pump()  # Needed to update controller state
+
+        steering = 0.0
+        throttle = -1.0         # Not certain these values are correct#####
+        brake = 1.0
+
+        if self.controller:
+            # Example mapping: adjust these based on your controller model
+            steering = self.controller.get_axis(0)  # Left stick horizontal
+            trigger = self.controller.get_axis(5)   # Right trigger typically goes from -1 (released) to 1 (pressed)
+            brake_trigger = self.controller.get_axis(4)  # Left trigger
+
+            # Normalize trigger values to [0, 1]
+            throttle = (trigger + 1) / 2
+            brake = brake_trigger
+        else:
+            # Keyboard fallback
+            if keyboard.is_pressed('a'):
+                steering = -1.0
+            elif keyboard.is_pressed('d'):
+                steering = 1.0
+
+            if keyboard.is_pressed('w'):
+                throttle = 1.0
+            if keyboard.is_pressed('s'):
+                brake = -1.0
+
+        return np.array([steering, throttle, brake], dtype=np.float32)
+
+
+
+    def reset(self, collect_samples=True):
+        obs = None
+        try:
+            act = self.env.unwrapped.default_action
+        except AttributeError:
+            act = None  # e.g., if not available on reset
+
+        new_obs, info = self.env.reset()
+        if self.obs_preprocessor:
+            new_obs = self.obs_preprocessor(new_obs)
+
+        rew = 0.0
+        terminated, truncated = False, False
+
+        if collect_samples:
+            if self.crc_debug:
+                self.debug_ts_cpt += 1
+                self.debug_ts_res_cpt = 0
+                info['crc_sample'] = (obs, act, new_obs, rew, terminated, truncated)
+                info['crc_sample_ts'] = (self.debug_ts_cpt, self.debug_ts_res_cpt)
+
+            # Use keyboard inputs at reset time too
+            act = self._get_human_action()
+
+            if self.get_local_buffer_sample:
+                sample = self.get_local_buffer_sample(act, new_obs, rew, terminated, truncated, info)
+            else:
+                sample = act, new_obs, rew, terminated, truncated, info
+
+            self.buffer.append_sample(sample)
+
+        return new_obs, info
+
+
+
+
+
+    def step(self, obs, last_step=False):
+
+        new_obs, rew, terminated, truncated, info = self.env.step(None)
+
+        act = self._get_human_action()
+
+        if act is None:
+            act = np.zeros(self.env.action_space.shape, dtype=np.float32)
+        elif isinstance(act, list):
+            act = np.array(act, dtype=np.float32)
+        elif isinstance(act, np.ndarray):
+            act = act.astype(np.float32)
+
+        print(act)
+
+        if isinstance(new_obs, tuple):
+            obs_to_store = new_obs  # store full tuple
+        else:
+            obs_to_store = new_obs
+
+        if self.obs_preprocessor:
+            obs_to_store = self.obs_preprocessor(obs_to_store)
+            #print("hello")
+
+        if last_step and not terminated:
+            truncated = True
+
+        if self.get_local_buffer_sample:
+            sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
+        else:
+            sample = (act, obs_to_store, rew, terminated, truncated, info)
+        #print(act)
+        self.buffer.append_sample(sample)
+
+
+        return new_obs, rew, terminated, truncated, info
+
+
+
+
+    #def _build_sample(self, act, obs, rew, terminated, truncated, info):
+        #if self.get_local_buffer_sample:
+            #return self.get_local_buffer_sample(act, obs, rew, terminated, truncated, info)
+        #else:
+            #return act, obs, rew, terminated, truncated, info
+
+    def collect_train_episode(self):
+        obs, info = self.reset()
+        done = False
+        ret, steps = 0.0, 0
+
+        for i in range(int(self.max_samples_per_episode)):
+            obs, rew, terminated, truncated, info = self.step(obs, last_step=i == self.max_samples_per_episode - 1)
+            ret += rew
+            steps += 1
+            if terminated or truncated:
+                break
+
+        self.buffer.stat_train_return = ret
+        self.buffer.stat_train_steps = steps
+
+    def run(self, nb_episodes=11, verbose=True):
+        iterator = range(nb_episodes) if nb_episodes != np.inf else iter(int, 1)  # infinite loop
+
+        for _ in iterator:
+            if verbose:
+                print_with_timestamp("Collecting expert episode")
+            self.collect_train_episode()
+
+            if verbose:
+                print_with_timestamp("Sending buffer to trainer")
+            self.send_and_clear_buffer()
+
+            self.ignore_actor_weights()
+
+    def send_and_clear_buffer(self):
+        self.__endpoint.produce(self.buffer, "trainers")
+        self.buffer.clear()
+
+    def ignore_actor_weights(self):
+        _ = self.__endpoint.receive_all(blocking=False)
