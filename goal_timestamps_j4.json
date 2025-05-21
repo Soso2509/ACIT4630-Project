@@ -1,0 +1,462 @@
+[
+    {
+        "timestamp": "2025-05-18 00:37:06",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:11:04",
+        "elapsed_time_seconds": 49.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:12:48",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:20:38",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:24:07",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:25:51",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:34:33",
+        "elapsed_time_seconds": 50.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:37:10",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:39:46",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:44:59",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:48:28",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 01:49:19",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:02:23",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:04:59",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:05:51",
+        "elapsed_time_seconds": 50.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:06:43",
+        "elapsed_time_seconds": 50.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:07:35",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:08:26",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:09:18",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:11:02",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:11:54",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:12:46",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:13:37",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:14:28",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:15:20",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:16:12",
+        "elapsed_time_seconds": 50.52,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:17:03",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:20:32",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:21:24",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:22:16",
+        "elapsed_time_seconds": 50.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:23:07",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:24:51",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:26:35",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:28:18",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:32:39",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:33:31",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:35:15",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:36:07",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:37:52",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:38:44",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:42:11",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:43:03",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:44:48",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:45:39",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:49:07",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:53:28",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 02:59:33",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:01:17",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:03:01",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:05:37",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:08:13",
+        "elapsed_time_seconds": 50.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:10:50",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:11:42",
+        "elapsed_time_seconds": 50.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:15:10",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:18:39",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 03:39:03",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.754
+    },
+    {
+        "timestamp": "2025-05-18 03:57:42",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 04:00:38",
+        "elapsed_time_seconds": 50.69,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 04:29:26",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.795
+    },
+    {
+        "timestamp": "2025-05-18 04:38:46",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.795
+    },
+    {
+        "timestamp": "2025-05-18 05:36:27",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.791
+    },
+    {
+        "timestamp": "2025-05-18 05:56:30",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 06:27:05",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 06:28:03",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 06:30:53",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.791
+    },
+    {
+        "timestamp": "2025-05-18 06:31:51",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 06:35:30",
+        "elapsed_time_seconds": 50.31,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 07:34:22",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 07:38:10",
+        "elapsed_time_seconds": 50.01,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 08:01:39",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 08:13:57",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.792
+    },
+    {
+        "timestamp": "2025-05-18 08:51:04",
+        "elapsed_time_seconds": 50.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 10:16:50",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 10:21:37",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 12:20:25",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 12:23:02",
+        "elapsed_time_seconds": 47.85,
+        "IL_chance": 0.792
+    },
+    {
+        "timestamp": "2025-05-18 12:29:40",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.793
+    },
+    {
+        "timestamp": "2025-05-18 13:18:27",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 13:56:52",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 14:24:05",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.792
+    },
+    {
+        "timestamp": "2025-05-18 15:03:31",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 15:06:08",
+        "elapsed_time_seconds": 50.61,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 15:11:22",
+        "elapsed_time_seconds": 50.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 15:51:25",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 17:01:45",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 19:46:14",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 20:43:43",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 21:43:15",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 21:45:12",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.795
+    },
+    {
+        "timestamp": "2025-05-18 21:49:06",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.794
+    },
+    {
+        "timestamp": "2025-05-18 22:08:22",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-18 22:58:00",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    }
+]
