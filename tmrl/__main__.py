@@ -7,7 +7,7 @@ import importlib
 import tmrl.networking
 importlib.reload(tmrl.networking)
 
-from networking import Server, RolloutWorker, Trainer, ImitationWorker
+from networking import Server, RolloutWorker, Trainer, ImitationWorker, OriginalRolloutWorker
 
 # local imports
 import tmrl.config.config_constants as cfg
@@ -92,6 +92,34 @@ def main(args):
         else:  # --test
             rw.run_episodes(10000)
 
+    elif args.rl_worker or args.test or args.benchmark or args.expert:
+        config = cfg_obj.CONFIG_DICT
+        config_modifiers = args.config
+        for k, v in config_modifiers.items():
+            config[k] = v
+
+        rw = OriginalRolloutWorker(
+            env_cls=partial(GenericGymEnv, id=cfg.RTGYM_VERSION, gym_kwargs={"config": config}),
+            actor_module_cls=cfg_obj.POLICY,
+            sample_compressor=cfg_obj.SAMPLE_COMPRESSOR,
+            device='cuda' if cfg.CUDA_INFERENCE else 'cpu',
+            server_ip=cfg.SERVER_IP_FOR_WORKER,
+            max_samples_per_episode=cfg.RW_MAX_SAMPLES_PER_EPISODE,
+            model_path=cfg.MODEL_PATH_WORKER,
+            obs_preprocessor=cfg_obj.OBS_PREPROCESSOR,
+            crc_debug=cfg.CRC_DEBUG,
+            standalone=args.test
+        )
+
+        if args.rl_worker:
+            rw.run()
+        elif args.expert:
+            rw.run(expert=True)
+        elif args.benchmark:
+            rw.run_env_benchmark(nb_steps=1000, test=False)
+        else:  # --test
+            rw.run_episodes(10000)
+
     elif args.trainer:
         trainer = Trainer(
             training_cls=cfg_obj.TRAINER,
@@ -137,6 +165,7 @@ if __name__ == "__main__":
     parser.add_argument('--server', action='store_true', help='launches the server')
     parser.add_argument('--trainer', action='store_true', help='launches the trainer')
     parser.add_argument('--worker', action='store_true', help='launches a rollout worker')
+    parser.add_argument('--rl-worker', action='store_true', help='launches a rl rollout worker')
     parser.add_argument('--imitation', action='store_true', help='launches an imitation data extractor')
     parser.add_argument('--imitation-worker', action='store_true', help='launches an imitation worker')
     parser.add_argument('--expert', action='store_true', help='launches an expert rollout worker (no model update)')
