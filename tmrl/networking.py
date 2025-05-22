@@ -54,6 +54,67 @@ def print_ip():
 
 # BUFFER: ===========================================
 
+# Imitation Learning Neural Networks ================
+
+class BCNetSmall(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, output_dim)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+
+class BCNetMedium(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 512),
+            nn.ReLU(),
+            nn.Linear(512, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, output_dim)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+
+class BCNetLarge(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, 512),
+            nn.ReLU(),
+            nn.Linear(512, 1024),
+            nn.ReLU(),
+            nn.Linear(1024, 512),
+            nn.ReLU(),
+            nn.Linear(512, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, output_dim)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+# =================================================
 
 class Buffer:
     """
@@ -541,7 +602,7 @@ class RolloutWorker:
         obs_sample, _ = self.env.reset()
         flat_obs = self.flatten_obs(obs_sample)
         self.model_path_IL = model_path_IL  # e.g., "bc_model.pth"
-        self.model_IL = BCNet(input_dim=len(flat_obs)).to(self.device)
+        self.model_IL = self._load_best_bcnet_model(len(flat_obs), self.model_path_IL)
         self.model_IL.load_state_dict(torch.load(self.model_path_IL, map_location=self.device))
         self.model_IL.eval()
 
@@ -564,6 +625,20 @@ class RolloutWorker:
                                        deserializer_mode="synchronous")
         else:
             self.__endpoint = None
+
+
+    def _load_best_bcnet_model(self, input_dim, path, output_dim=3):
+        model_classes = [BCNetSmall, BCNetMedium, BCNetLarge]
+        for ModelCls in model_classes:
+            try:
+                model = ModelCls(input_dim, output_dim).to(self.device)
+                model.load_state_dict(torch.load(path, map_location=self.device))
+                model.eval()
+                print(f"[INFO] Successfully loaded: {ModelCls.__name__}")
+                return model
+            except Exception as e:
+                print(f"[WARNING] Failed to load {ModelCls.__name__}: {e}")
+        raise RuntimeError("No compatible BCNet model variant could be loaded.")
 
 
     def flatten_obs(self, obs):

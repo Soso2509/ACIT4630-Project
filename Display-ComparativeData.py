@@ -7,6 +7,8 @@ import os
 # Define agents and the number of max runs per agent type
 agent_types = ['rl', 'j', 'p', 'slow']
 max_runs_per_agent = 5
+time_limit = 24  # hours
+goals_axis_max = 1100  # maximum number of goals to display on y-axis
 
 # Slow4 = Rerun of slow1
 # J4 = Rerun of J1
@@ -52,44 +54,59 @@ for agent in agent_types:
                 data = json.load(f)
 
             start_time = datetime.strptime(start_times[name], "%Y-%m-%d %H:%M")
+            
+            if not data:
+                # File exists but is empty
+                print(f"{name.upper()} | Never Completed a Lap")
+                all_hours.append([0])
+                all_counts.append([0])
+                labels.append(f"{name.upper()}: 0 laps")
+                plot_colors.append(colors.get(name, "#000000"))
+                continue
+
             timestamps = [datetime.strptime(entry["timestamp"], "%Y-%m-%d %H:%M:%S") for entry in data]
             hours_since_start = [(t - start_time).total_seconds() / 3600 for t in timestamps]
-            counts = list(range(1, len(hours_since_start) + 1))
 
-            # Metric: hours until first goal
-            hours_to_first = round(hours_since_start[0], 2) if hours_since_start else None
+            # Filter to only include laps within 24 hours
+            filtered = [(h, idx + 1) for idx, h in enumerate(hours_since_start) if h <= time_limit]
 
-            # Metric: finishes/hour after 5th
-            if len(hours_since_start) > 5:
-                hours_range = hours_since_start[5:]  # After 5th
-                time_span = hours_range[-1] - hours_range[0] if len(hours_range) > 1 else 0.0001
-                finishes_per_hour = round((len(hours_range)) / time_span, 2)
+            if filtered:
+                hours_within_limit, counts_within_limit = zip(*filtered)
+                hours_to_first = round(hours_within_limit[0], 2)
+                if len(hours_within_limit) > 5:
+                    delta = hours_within_limit[5:]
+                    time_span = delta[-1] - delta[0] if len(delta) > 1 else 0.0001
+                    finishes_per_hour = round(len(delta) / time_span, 2)
+                else:
+                    finishes_per_hour = 0.0
+
+                print(f"{name.upper()} | First Completed Lap After: {hours_to_first} hrs | Finishes/hr (after 5th): {finishes_per_hour}")
+                all_hours.append(hours_within_limit)
+                all_counts.append(counts_within_limit)
+                labels.append(f"{name.upper()}: {len(hours_within_limit)} laps")
             else:
-                finishes_per_hour = 0.0
+                print(f"{name.upper()} | Never Completed a Lap")
+                all_hours.append([0])
+                all_counts.append([0])
+                labels.append(f"{name.upper()}: 0 laps")
 
-            print(f"{name.upper()} | First goal after: {hours_to_first} hrs | Finishes/hr (after 5th): {finishes_per_hour}")
-
-            # Append plotting data
-            all_hours.append(hours_since_start)
-            all_counts.append(counts)
-            labels.append(f"{name.upper()}: {len(data)} laps")
             plot_colors.append(colors.get(name, "#000000"))
-
         except Exception as e:
             print(f"Error with {filename}: {e}")
 
 # Plot
-max_hour = int(max([max(h, default=0) for h in all_hours], default=0)) + 1
-x_ticks = np.arange(0, max_hour + 1, 1)
+x_ticks = np.arange(0, time_limit + 1, 1)
 
 plt.figure(figsize=(14, 7))
 for hours, counts, label, color in zip(all_hours, all_counts, labels, plot_colors):
     plt.plot(hours, counts, label=label, color=color)
 
 plt.xticks(ticks=x_ticks)
+plt.xlim(0, time_limit)
+plt.ylim(0, goals_axis_max)
 plt.xlabel("Hours Since Start")
-plt.ylabel("Total Timestamps")
-plt.title("Goal Reaches Over Time for All Agents")
+plt.ylabel("Total Completed Laps")
+plt.title("Completed Laps Within 24 Hours")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
