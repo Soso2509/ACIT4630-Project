@@ -14,27 +14,27 @@ Content
 
 Link to the TMRL library [README](/Environment_README.md)
 
-## Instructions & Setup
+# Instructions & Setup
 Before using the TMRL library, there are a few external applications you need to install and some initial setup steps to follow.
 This section covers all of that in detail.
 
-### 1. Required Applications
+## 1. Required Applications
 
-#### Ubisoft Account & TrackMania
+### Ubisoft Account & TrackMania
 - Create a Ubisoft account via the [official website](https://www.ubisoft.com/).
 - Download and install **Ubisoft Connect (Uplay)** from [here](https://ubisoftconnect.com/).
 - Use Ubisoft Connect to install **TrackMania**.
+> [!NOTE]  
+> TrackMania is available on Steam as well, but it still requires a Ubisoft account and Ubisoft Connect to run.
 
-*Note: TrackMania is available on Steam as well, but it still requires a Ubisoft account and Ubisoft Connect to run.*
-
-#### Openplanet Client
+### Openplanet Client
 - Download the Openplanet client for TrackMania from [openplanet.dev](https://openplanet.dev/download).
 - This is a required tool that enables custom scripting and external interaction with TrackMania during training and evaluation.
 
-### 2. Library Setup
+## 2. Library Setup
 Once the applications above are ready, you can move on to setting up the TMRL library itself.
 
-#### Run setup.bat
+### Run setup.bat
 Start by running the setup.bat script in your project directory.
 This script will sequentially execute:
 ``` bash
@@ -46,27 +46,42 @@ python tmrl/__main__.py --install
 ```
 
 These commands will create **two important folders**:
+| Egg Folder |
+|:---------------------------|
+| **Path:** C:\Users\[Your_User]\AppData\Local\Programs\Python\Python313\Lib\site-packages\tmrl-0.7.0-py3.13.egg\tmrl  <br /> **Contents**: A clone of the tmrl library, including files such as `networking.py`, `__main__.py`, and others. |
 
-##### Egg Folder
-**Path:** `C:\Users\[Your_User]\AppData\Local\Programs\Python\Python313\Lib\site-packages\tmrl-0.7.0-py3.13.egg\tmrl`
+> [!CAUTION]
+>These files must exactly match the versions in your main TMRL project folder.\
+> If they are not identical, you will likely run into runtime errors or inconsistencies during execution.
 
-**Contents**
-- A clone of the tmrl library, including files such as `networking.py`, `__main__.py`, and others.
-- These files must exactly match the versions in your main TMRL project folder.
+<table>
+  <thead>
+    <tr>
+      <td align="left">
+        <b>Model Data Folder</b>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          <b>Path:</b> C:\Users\[Your_user]\TmrlData  <br/>
+          <b>Purpose:</b> <br />
+          This folder stores all model-related data, including:
+            <ul> 
+                <li>Trained weights</li>
+                <li>Reward function settings</li>
+                <li>Checkpoints</li>
+                <li>Configuration files</li>
+            </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-:warning: If they are not identical, you will likely run into runtime errors or inconsistencies during execution.
 
-##### Model Data Folder
-**Path:** `C:\Users\[Your_user]\TmrlData`
 
-**Purpose:**
-- This folder stores all model-related data, including:
-    - Trained weights
-    - Reward function settings
-    - Checkpoints
-    - Configuration files
-
-### 3. Training Models
+## 3. Training Models
 All model weights, logs, and configuration are stored in the TmrlData folder located at:
 ```
 C:\Users\[Your_user]\TmrlData
@@ -78,7 +93,7 @@ If you want to start training from scratch, you need to:
 >[!IMPORTANT]
 > Make sure the `"RUN_NAME"` field is set to something **unique**
 
-#### Pure Reinforcement Learning (RL) Models
+### Pure Reinforcement Learning (RL) Models
 To train a model using pure reinforcement learning run `Train RL-model.bat`
 
 The batch file will
@@ -89,7 +104,7 @@ The batch file will
 
 These components work together to generate rollouts and update the RL model in real-time.
 
-#### Hybrid Models (RL + Imitation Learning)
+### Hybrid Models (RL + Imitation Learning)
 Hybrid models combine reinforcement learning with imitation learning, and each implemented variant has its own batch file.
 
 To train a hybrid model:
@@ -101,7 +116,7 @@ This script behaves like the RL trainer but starts with a few key steps:
 - Copies the desired IL model (f.ex. P1) and renames it to `bc_model.pth`
 - And then it runs `--worker` instead of `--rl-worker`
 
-### 4. Running Existing Models
+## 4. Running Existing Models
 If you want to **resume training or continue from a previously trained model:**
 1. Navigate to the `All Models TmrlData` folder — this contains saved `TmrlData` directories from earlier test runs.
 2. Pick the model folder you want to use.
@@ -115,20 +130,20 @@ Start the server and training using the **corresponding hybrid batch file**, e.g
 > [!NOTE]
 > Even though the batch script will run regardless of which model you choose, using the correct one ensures you're loading both the correct **RL state** (from the TmrlData folder) and the matching **IL model** (`bc_model.pth` for the same permutation in the project folder).
 
-#### Running Without Further Training
+### Running Without Further Training
 If you simply want to **run the model without continuing training**:
 - Launch the hybrid batch script as usual.
 - Once the trainer window appears, **just close it**.
 - The server and worker will continue to run the existing model in inference mode.
 
-## Extra - Imitation Learning
+# Extra - Imitation Learning
 If you want to train a pure imitation learning model or create a hybrid model that combines your custom IL with reinforcement learning, this section explains how to collect driving data, train the model, and run it in both training and evaluation modes.
 
-### Collect Imitation Data Yourself
+## Collect Imitation Data Yourself
 To start, you need to record your own driving data from TrackMania.
 This data will be used to train the IL model.
 
-#### 1. **Run the following batch file**: `Collect-IL-Data.bat`
+### 1. **Run the following batch file**: `Collect-IL-Data.bat`
 This runs:
 - `python tmrl/__main__.py --serve`
 - `python tmrl/__main__.py --imitation`
@@ -139,7 +154,7 @@ This will:
 > [!NOTE]
 > 50000 lines/steps is approximately 60-70 laps
 
-#### 2. **Run the following batch file to train the IL Model**: `Train-IL-model.bat`
+### 2. **Run the following batch file to train the IL Model**: `Train-IL-model.bat`
 This runs `csvModifier.py` which filters `demonstration_data.csv` and give you `demonstration_filtered.csv`\
 (removes the idle steps. Otherwise the model won’t be able to start).
 
@@ -148,15 +163,15 @@ Then runs `IL-nn.py` to create `bc_model.pth`
 > [!TIP]
 > You should make a copy of `bc_model.pth` which you call something unique like `bc_model_custom.pth`, this way when `bc_model.pth` is overwritten from running `Train Hybrid-model-P3.bat` (or something), you still have the model saved.
 
-### Run the IL Model
+## Run the IL Model
 At this point, your imitation learning model is ready to use.
 
-#### Option 1: Train Hybrid Model Using IL
+### Option 1: Train Hybrid Model Using IL
 Run: “Train Hybrid-model.bat”
 - This will begin training using the `bc_model.pth` file.
 - If you’ve trained your own IL model, **back it up and rename** it to avoid it being overwritten by another batch file (e.g., `bc_model_custom.pth`).
 
-#### Option 2: Run IL-Only Mode
+### Option 2: Run IL-Only Mode
 To run the IL on its own, similar to how we tested the IL models with the 30-laps test, run `Imitation-Worker.bat`.
 - This will use the current `bc_model.pth` file
 - Starts the server `python tmrl/__main__.py --server`
@@ -164,7 +179,7 @@ To run the IL on its own, similar to how we tested the IL models with the 30-lap
 
 This will produce `IL-rew.json` which saves the reward at the end of each lap and can be used in `IL_model_analysis.py` to map how far the IL model got through multiple runs.
 
-## Data Analysis Tools
+# Data Analysis Tools
 We've created several graphing tools to visualize and compare model performance. These scripts were used for generating report figures and internal analysis:
 - `Box_plot_results.py` \
 → Generates box plots to compare different model groups.
@@ -175,12 +190,12 @@ We've created several graphing tools to visualize and compare model performance.
 - `IL_model_analysis.py`
 → (*Tool-specific functionality; likely supports IL evaluation and visualization.*)
 
-### Time Alignment for 24-Hour Analysis
+## Time Alignment for 24-Hour Analysis
 Our analytics scripts are designed to isolate performance data across 24-hour periods, using timestamps from goal_timestamps.json. To make this work
 > [!IMPORTANT]
 > You must provide the **correct training start time** (e.g., 2025-05-01 18:07).
 
-## Config Template
+# Config Template
 ```json
 {
   "RUN_NAME": "SAC_4_lidar_Examinator",
