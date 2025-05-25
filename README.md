@@ -77,8 +77,9 @@ Before training a new model, if you want to train from scratch you:
   - `Train-Hybrid-model-P1.bat` for hybrid.
   > [!IMPORTANT]
   > This is the P1 hybrid specifically, so make sure you select the right permutation you want
+
   >[!NOTE]
-  >It can take as much as a minute or two before the trainer starts receiving step data.\
+  >It can take as much as a minute or two before the trainer starts receiving step data.
 
 ### Run Existing Model
 To run one of the models we trained through our tests:
@@ -210,6 +211,8 @@ This script behaves like the RL trainer but starts with a few key steps:
 - Copies the desired IL model (f.ex. P1) and renames it to `bc_model.pth`
 
 - And then it runs `--worker` instead of `--rl-worker`
+>[!NOTE]
+  >It can take as much as a minute or two before the trainer starts receiving step data.
 
 ## 4. Running Existing Models
 If you want to **resume training or continue from a previously trained model:**
