@@ -7,8 +7,8 @@ Then you’ll be familiar with which folders are created, what goes where, and w
 Below that we have a more detailed description of how to create and run your own imitation learning model, under [Extra – Imitation Learning](#extra---imitation-learning).
 And then there’s more details about the data analytic programs we’ve used under [Data Analysis Tools](#data-analysis-tools).
 
-And then there’s more details about the data analytic programs we’ve used under [Weird Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into. 
-The issues all seem to stem from the original library, as it has such a convoluted and fragmented structure. 
+We have also added a last section, [Weird Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into.
+The issues all seem to stem from the original library, as it has such a convoluted and fragmented structure.
 
 ### Table of Content
 - [How to Run](#how-to-run)
@@ -104,7 +104,7 @@ Once replaced:
     -  `Imitation-Worker.bat` to test the IL model on its own
 
 ## Instructions & Setup
-Before using the TMRL library, there are a few external applications you need to install and some initial setup steps to follow. 
+Before using the TMRL library, there are a few external applications you need to install and some initial setup steps to follow.
 This section covers all of that in detail.
 
 ### 1. Required Applications
@@ -283,7 +283,7 @@ To run the IL on its own, similar to how we tested the IL models with the 30-lap
 This will produce `IL-rew.json` which saves the reward at the end of each lap and can be used in `IL_model_analysis.py` to map how far the IL model got through multiple runs.
 
 ## Data Analysis Tools
-We've created several graphing tools to visualize and compare model performance. 
+We've created several graphing tools to visualize and compare model performance.
 These scripts were used for generating report figures and internal analysis:
 - `Box_plot_results.py` \
 → Generates box plots to compare different model groups.
@@ -298,28 +298,28 @@ These scripts were used for generating report figures and internal analysis:
 → (*Tool-specific functionality; likely supports IL evaluation and visualization.*)
 
 ### Time Alignment for 24-Hour Analysis
-Our analytics scripts are designed to isolate performance data across 24-hour periods, using timestamps from `goal_timestamps.json`. 
+Our analytics scripts are designed to isolate performance data across 24-hour periods, using timestamps from `goal_timestamps.json`.
 > [!IMPORTANT]
 > To make this work:\
 > You must provide the **correct training start time** (e.g., 2025-05-01 18:07).
 
 ## Problems and Issues
-There are issues with the library which we haven’t been able to assess. 
+There are issues with the library which we haven’t been able to assess.
 They mostly stem from the fragmented nature of the RL deployment which was already present in the TMRL library.
 
 ### Problem 1
-Only 2 out of 4 computers on the project team can run agents properly. 
+Only 2 out of 4 computers on the project team can run agents properly.
 This does not seem to correlate with versions of Windows (Windows 10 and 11), python, or libraries as changing to what the working PCs have been using have made no difference.
 
 Hardware also doesn’t seem to be the problem either as we’ve tried different GPUs (AMD and Nvidia) and CPUs (AMD and Intel), but these seem to make no feasible difference.
 
-For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended, their act values are much lower than what they should output. 
+For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended, their act values are much lower than what they should output.
 Subsequently the agent drives forward for only 1 step and then stands still until restart.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Any value lower than ~0.6 returns no output for throttle and reverse.
 
-This issue has plagued the team for the entire project period, but no changes seem to make a difference. 
+This issue has plagued the team for the entire project period, but no changes seem to make a difference.
 We believe this issue has something to do with the complexity of the original library since it creates files in two other locations (*that we know of*) which also must be kept up to date as we work on the project.
 
 ### Problem 2
@@ -332,9 +332,9 @@ C:\Users\[Your_user]\AppData\Local\Programs\Python\Python313\Lib\site-packages\t
 Just copy+paste the `networking.py` and `__main__.py` files over to the `tmrl-0.7.0-py3.13.egg\tmrl` library and overwrite their respective files.
 
 ### Problem 3
-When attempting to change the IL model_path in the code from `bc_model.pth` to something else, runtime errors occur. 
-Even if all different codes at different locations has it set to the same name, it still doesn’t work. 
-But it’s not the case for everyone, one project member which had issues with the RL deployment was able to avoid this runtime error when changing names. 
+When attempting to change the IL model_path in the code from `bc_model.pth` to something else, runtime errors occur.
+Even if all different codes at different locations has it set to the same name, it still doesn’t work.
+But it’s not the case for everyone, one project member which had issues with the RL deployment was able to avoid this runtime error when changing names.
 
 We believe this might be a problem with inference, but we struggle to understand where/how exactly.
 
