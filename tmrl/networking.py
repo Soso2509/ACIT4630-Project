@@ -1462,7 +1462,8 @@ class Imitation:
             run_id = getattr(self, "current_lap_id", 0)  
 
         self.write_to_csv(run_id, act, obs_to_store, terminated, truncated, info)
-
+        
+        '''
         # Save when the agent made it to the goal within time
         if terminated and not truncated and rew > 40:
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -1488,6 +1489,7 @@ class Imitation:
             # Write back updated list
             with open(filename, "w") as f:
                 json.dump(existing_data, f, indent=4)
+        '''
 
         if self.get_local_buffer_sample:
             sample = self.get_local_buffer_sample(act, obs_to_store, rew, terminated, truncated, info)
