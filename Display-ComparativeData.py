@@ -97,17 +97,21 @@ for agent in agent_types:
 # Plot
 x_ticks = np.arange(0, time_limit + 1, 1)
 
+# Configure global font size
+plt.rcParams.update({'font.size': 14})  # base font size
+
 plt.figure(figsize=(14, 7))
 for hours, counts, label, color in zip(all_hours, all_counts, labels, plot_colors):
-    plt.plot(hours, counts, label=label, color=color)
+    plt.plot(hours, counts, label=label, color=color, linewidth=2)
 
-plt.xticks(ticks=x_ticks)
+plt.xticks(ticks=x_ticks, fontsize=14)
+plt.yticks(fontsize=14)
 plt.xlim(0, time_limit)
 plt.ylim(0, goals_axis_max)
-plt.xlabel("Hours Since Start")
-plt.ylabel("Total Completed Laps")
-plt.title("Completed Laps Within 24 Hours")
-plt.legend()
+plt.xlabel("Hours Since Start", fontsize=16)
+plt.ylabel("Total Completed Laps", fontsize=16)
+plt.title("Completed Laps Within 24 Hours", fontsize=18, fontweight='bold')
+plt.legend(fontsize=12)
 plt.grid(True)
 plt.tight_layout()
 plt.show()

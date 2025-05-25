@@ -87,6 +87,9 @@ if combined_data:
     positions['All IL models'] = avg_comb_pos
     average_first_goals['All IL models'] = avg_comb_pos
 
+# Global font settings
+plt.rcParams.update({'font.size': 14})
+
 # Plotting
 fig, ax = plt.subplots(figsize=(14, 7))
 labels, data, pos, face_colors = [], [], [], []
@@ -97,7 +100,8 @@ for k in sorted(box_data.keys(), key=lambda x: positions[x]):
     pos.append(positions[k])
     face_colors.append(colors.get(k, "#000000"))
 
-bp = ax.boxplot(data, positions=pos, widths=0.5, patch_artist=True)
+bp = ax.boxplot(data, positions=pos, widths=0.5, patch_artist=True, boxprops=dict(linewidth=2),
+                medianprops=dict(linewidth=2), whiskerprops=dict(linewidth=2), capprops=dict(linewidth=2))
 
 # Color boxes
 for patch, color in zip(bp['boxes'], face_colors):
@@ -107,10 +111,12 @@ for patch, color in zip(bp['boxes'], face_colors):
 ax.set_xlim(0, 24)
 ax.set_ylim(0, 60)
 ax.set_xticks(np.arange(1, 25, 1))
-ax.set_xticklabels([str(i) for i in range(1, 25)])
-ax.set_xlabel("Average First Completed Lap (Hour)")
-ax.set_ylabel("Avg Completed Laps per Hour (after 5th Completed Lap)")
-ax.set_title("Box Plot of Completed Lap Rates by Model Type")
+ax.set_xticklabels([str(i) for i in range(1, 25)], fontsize=14)
+ax.set_yticks(np.arange(0, 65, 5))
+ax.set_yticklabels([str(i) for i in range(0, 65, 5)], fontsize=14)
+ax.set_xlabel("Average First Completed Lap (Hour)", fontsize=16)
+ax.set_ylabel("Avg Completed Laps per Hour (after 5th Completed Lap)", fontsize=16)
+ax.set_title("Box Plot of Completed Lap Rates by Model Type", fontsize=18, fontweight='bold')
 
 # Legend with first goal time
 legend_patches = []
@@ -119,7 +125,7 @@ for k in sorted(average_first_goals.keys(), key=lambda x: positions[x]):
     label = f"{k.upper()} (first: {average_first_goals[k]:.2f}h)"
     legend_patches.append(Patch(color=color, label=label))
 
-ax.legend(handles=legend_patches, loc='upper left', title="Avg First Completed Lap")
+ax.legend(handles=legend_patches, loc='upper left', title="Avg First Completed Lap", fontsize=12, title_fontsize=14)
 
 plt.tight_layout()
 plt.show()
