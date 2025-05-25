@@ -8,7 +8,7 @@ Below that we have a more detailed description of how to create and run your own
 And then there’s more details about the data analytic programs we’ve used under [Data Analysis Tools](#data-analysis-tools).
 
 We have also added a last section, [Weird Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into.
-The issues all seem to stem from the original library, as it has such a convoluted and fragmented structure.
+Most of the issues seem to stem from the original library, as it has such a convoluted and fragmented structure. You should look at this section to know what problem may occur, and potential solutions.
 
 ### Table of Content
 - [How to Run](#how-to-run)
@@ -339,6 +339,10 @@ But it’s not the case for everyone, one project member which had issues with t
 
 We believe this might be a problem with inference, but we struggle to understand where/how exactly.
 
+### Problem 4
+Hardware can impact how some libraries work. The most notable being PyTorch which struggles to run the Trainer if you are on a cuda system. So if the trainer gets this error:
+```RuntimeError: Attempting to deserialize object on a CUDA device but torch.cuda.is_available() is False. If you are running on a CPU-only machine, please use torch.load with map_location=torch.device('cpu') to map your storages to the CPU. ```
+**Solution**: You have get a version of pytorch that supports the appropriate cuda platform.
 
 
 ## Config Template
