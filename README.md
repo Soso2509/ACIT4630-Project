@@ -76,7 +76,7 @@ Before training a new model, if you want to train from scratch you:
 
   - `Train Hybrid-model-P1.bat` for hybrid.
   > [!IMPORTANT]
-  > This P1 specifically, so make sure you select the right permutation you want
+  > This is the P1 hybrid specifically, so make sure you select the right permutation you want
 
 ### Run Existing Model
 To run one of the models we trained through our tests:
