@@ -3,15 +3,18 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import pandas as pd
 
+# You can access our JSON file in this folder "goalTimestamps"
+# This script only displays for one model / file
+
 # Load the JSON data from the uploaded file
 file_path = "goal_timestamps.json"
 with open(file_path, "r") as f:
     data = json.load(f)
 
-# Define the start time 
+# Define the start time
 '''
 Test RL1: 2025-05-01 18:07
-Test_RL2: 2025-05-08 12:48 
+Test_RL2: 2025-05-08 12:48
 Test RL3: 2025-05-13 15:50
 
 Test P1: 2025-05-02 21:35 **(3-layer)**

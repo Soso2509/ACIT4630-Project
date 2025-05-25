@@ -1,6 +1,9 @@
 import json
 import matplotlib.pyplot as plt
 
+# You can access our JSON file in this folder "IL_rew"
+# This script only displays for one model / file
+
 # Load the IL_rew.json file
 with open('IL_rew.json', 'r') as f:
     data = json.load(f)
