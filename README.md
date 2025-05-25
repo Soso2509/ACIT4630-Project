@@ -62,7 +62,7 @@ You can also go to settings (which can only be accessed on the start screen), cl
 Before training a new model, if you want to train from scratch you:
 1. Delete this folder --> `C:\Users\[Your_user]\TmrlData`
 
-2. Run `newModel.bat` which will create a new `TmrlData` folder
+2. Run `New-Model.bat` which will create a new `TmrlData` folder
 
 3. Find `C:\Users\[Your_user]\TmrlData\config\config.json` and replace the contents with the config at [the end of this document](#config-template).
 
@@ -72,9 +72,9 @@ Before training a new model, if you want to train from scratch you:
 >You can skip to this next step if the TmrlData folder is as you want it.
 
 4. Then you can start training by running:
-  - `Train RL-model.bat` for regular reinforcement learning
+  - `Train-RL-model.bat` for regular reinforcement learning
 
-  - `Train Hybrid-model-P1.bat` for hybrid.
+  - `Train-Hybrid-model-P1.bat` for hybrid.
   > [!IMPORTANT]
   > This is the P1 hybrid specifically, so make sure you select the right permutation you want
 
@@ -90,7 +90,7 @@ To run one of the models we trained through our tests:
 
 Once replaced:
 - Start the server and training using the **corresponding hybrid batch file**, e.g.:
-  - `Train Hybrid-model-P1.bat`
+  - `Train-Hybrid-model-P1.bat`
   - _Optional_: cross out the `TRAINER` window if you don’t want to train the model
 
 ### Custom Imitation Learning
@@ -100,7 +100,7 @@ Once replaced:
      - You should save a copy of this `bc_model.pth` output which you rename to something **unique** (e.g. `bc_model_custom.pth`)
 
 3. Run either of these for hybrid training, or IL model test
-    - `Train Hybrid-model.bat` to train the hybrid based on current `bc_model.pth`
+    - `Train-Hybrid-model.bat` to train the hybrid based on current `bc_model.pth`
     -  `Imitation-Worker.bat` to test the IL model on its own
 
 ## Instructions & Setup
@@ -178,14 +178,14 @@ C:\Users\[Your_user]\TmrlData
 If you want to **start training from scratch**, you need to:
 1. **Delete** the existing TmrlData folder.
 
-2. Run `newModel.bat` to generate a clean one.
+2. Run `New-Model.bat` to generate a clean one.
 
 3. Open the config file at `TmrlData/config/config.json`, and **manually update its contents** using the provided config template ([see bottom of this document](#config-template))
 >[!IMPORTANT]
 > Make sure the `"RUN_NAME"` field is set to something **unique**
 
 #### <ins> Pure Reinforcement Learning (RL) Models </ins>
-To train a model using pure reinforcement learning run `Train RL-model.bat`
+To train a model using pure reinforcement learning run `Train-RL-model.bat`
 
 The batch file will
 - Start the server `python tmrl/__main__.py --server` on port 55555
@@ -200,7 +200,7 @@ Hybrid models combine reinforcement learning with imitation learning, and each i
 
 To train a hybrid model:
 -  Run the batch file corresponding to the model variant, for example:
-    - `Train Hybrid-model-P1.bat`
+    - `Train-Hybrid-model-P1.bat`
 
 This script behaves like the RL trainer but starts with a few key steps:
 - Deletes any existing `bc_model.pth` file.
@@ -222,7 +222,7 @@ If you want to **resume training or continue from a previously trained model:**
 Once replaced:
 
 Start the server and training using the **corresponding hybrid batch file**, e.g.:
-- `Train Hybrid-model-P1.bat`
+- `Train-Hybrid-model-P1.bat`
 > [!NOTE]
 > Even though the batch script will run regardless of which model you choose, using the correct one ensures you're loading both the correct **RL state** (from the TmrlData folder) and the matching **IL model** (`bc_model.pth` for the same permutation in the project folder).
 
@@ -262,13 +262,13 @@ Then runs `IL-nn.py` to create `bc_model.pth`
   o	Although, the current implementation trains the 3-layer architecture. So you'll have to change it in the code if you want a different structure
 
 > [!TIP]
-> You should make a copy of `bc_model.pth` which you call something unique like `bc_model_custom.pth`, this way when `bc_model.pth` is overwritten from running `Train Hybrid-model-P3.bat` (or something), you still have the model saved.
+> You should make a copy of `bc_model.pth` which you call something unique like `bc_model_custom.pth`, this way when `bc_model.pth` is overwritten from running `Train-Hybrid-model-P3.bat` (or something), you still have the model saved.
 
 ### Run the IL Model
 At this point, your imitation learning model is ready to use.
 
 #### <ins>Option 1: Train Hybrid Model Using IL</ins>
-Run: “Train Hybrid-model.bat”
+Run: “Train-Hybrid-model.bat”
 - This will begin training using the `bc_model.pth` file.
 > [!TIP]
 > If you’ve trained your own IL model, **back it up and rename** it to avoid it being overwritten by another batch file (e.g., `bc_model_custom.pth`).
