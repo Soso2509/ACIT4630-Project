@@ -236,7 +236,7 @@ If you simply want to **run the model without continuing training**:
 
 
 ## Extra - Imitation Learning
-If you want to train a pure imitation learning model or create a hybrid model that combines your custom IL with reinforcement learning, this section explains how to collect driving data, train the model, and run it in both training and evaluation modes.
+If you want to train a pure imitation learning model or create a hybrid model that combines your custom IL with reinforcement learning, this section explains how to collect driving data, train the model, and run it with the hybrid and standalone.
 
 ### Collect Imitation Data Yourself
 To start, you need to record your own driving data from TrackMania.
