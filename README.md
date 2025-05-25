@@ -2,13 +2,15 @@
 
 The first section, [How to Run](#how-to-run), contains a shortened version of how to setup and run the program features.
 However, we’ve experienced many irregularities between different machines and code iterations that we feel it’s necessary to have a more detailed description for how each step operates below, in the section [Instructions & Setup](#instructions--setup).
+Then you’ll be familiar with which folders are created, what goes where, and which commands does what. So, it’s all to prepare you for the unknown.
+
 Below that we have a more detailed description of how to create and run your own imitation learning model, under [Extra – Imitation Learning](#extra---imitation-learning).
-And then there’s more details about the data analytic programs we used under [Data Analysis Tools](#data-analysis-tools).
+And then there’s more details about the data analytic programs we’ve used under [Data Analysis Tools](#data-analysis-tools).
 
-We have also added a last section, [Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into. The issues all stem from the original library, as it has such a convoluted structure.
+And then there’s more details about the data analytic programs we’ve used under [Weird Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into. 
+The issues all seem to stem from the original library, as it has such a convoluted and fragmented structure. 
 
-
-Table of Content
+### Table of Content
 - [How to Run](#how-to-run)
   - [Setup](#setup)
   - [Training](#training)
@@ -23,6 +25,7 @@ Table of Content
     - [Collect own Imitation Data](#collect-imitation-data-yourself)
     - [Running IL Model](#run-the-il-model)
 - [Data Analysis Tools](#data-analysis-tools)
+- [Weird Problems and Issues](#problems-and-issues)
 - [Config Template](#config-template)
 
 Link to the TMRL library [README](/Environment_README.md)
@@ -34,13 +37,15 @@ The environment:
 Visit [Ubisoft](https://www.ubisoft.com/) and create an account.
 
 2. **Download Ubisoft Connect**\
-Download and install Ubisoft Connect from [here](https://ubisoftconnect.com/). This is required to play **TrackMania**, which is also available on Steam but still requires a Ubisoft account.
+Download and install Ubisoft Connect from [here](https://ubisoftconnect.com/).
+This is required to play **TrackMania**, which is also available on Steam but still requires a Ubisoft account.
 
-3. **Install Openplanet**\
-Download and install the [Openplanet client](https://openplanet.dev/download) for TrackMania. This is essential for interacting with game data and automation.
+4. **Install Openplanet**\
+Download and install the [Openplanet client](https://openplanet.dev/download) for TrackMania.
+This is essential for interacting with game data and automation.
 
 
-The Library
+Setup the Library:
 1. Run `setup.bat`
 
 Enter the environment with the correct map:
@@ -89,7 +94,7 @@ Once replaced:
   - _Optional_: cross out the `TRAINER` window if you don’t want to train the model
 
 ### Custom Imitation Learning
-1. Run `Collect-IL-Data.bat` and drive for as many laps as you want (we did 65-80 laps for the project models)
+1. Run `Collect-IL-Data.bat` and drive for as many laps as you want (_we did 65-80 laps for the project models_)
 
 2. Run `Train-IL-model.bat`
      - You should save a copy of this `bc_model.pth` output which you rename to something **unique** (e.g. `bc_model_custom.pth`)
@@ -99,7 +104,7 @@ Once replaced:
     -  `Imitation-Worker.bat` to test the IL model on its own
 
 ## Instructions & Setup
-Before using the TMRL library, there are a few external applications you need to install and some initial setup steps to follow.
+Before using the TMRL library, there are a few external applications you need to install and some initial setup steps to follow. 
 This section covers all of that in detail.
 
 ### 1. Required Applications
@@ -122,7 +127,7 @@ This section covers all of that in detail.
 ### 2. Library Setup
 Once the applications above are ready, you can move on to setting up the TMRL library itself.
 
-#### Run setup.bat
+#### <ins>Run setup.bat </ins>
 Start by running the setup.bat script in your project directory.
 This script will sequentially execute:
 ``` bash
@@ -134,38 +139,21 @@ python tmrl/__main__.py --install
 ```
 
 These commands will create **two important folders**:
-| Egg Folder |
-|:---------------------------|
-| **Path:** C:\Users\[Your_User]\AppData\Local\Programs\Python\Python313\Lib\site-packages\tmrl-0.7.0-py3.13.egg\tmrl  <br /> **Contents**: A clone of the tmrl library, including files such as `networking.py`, `__main__.py`, and others. |
+> **Egg Folder**\
+> **Path:** `C:\Users\[Your_User]\AppData\Local\Programs\Python\Python313\Lib\site-packages\tmrl-0.7.0-py3.13.egg\tmrl`\
+> **Contents**: A clone of the tmrl library, including files such as `networking.py`, `__main__.py`, and others.
 
 > [!CAUTION]
 > These files must exactly match the versions in your main TMRL project folder.\
 > If they are not identical, you will likely run into runtime errors or inconsistencies during execution.
 
-<table>
-  <thead>
-    <tr>
-      <td align="left">
-        <b>Model Data Folder</b>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-          <b>Path:</b> C:\Users\[Your_user]\TmrlData  <br/>
-          <b>Purpose:</b> <br />
-          This folder stores all model-related data, including:
-            <ul>
-                <li>Trained weights</li>
-                <li>Reward function settings</li>
-                <li>Checkpoints</li>
-                <li>Configuration files</li>
-            </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+> **Model Data Folder**\
+>**Path:** `C:\Users\[Your_user]\TmrlData`\
+> **Purpose:**  This folder stores all model-related data, including:
+> - Trained weights
+> - Reward function settings
+> - Checkpoints
+> - Configuration files
 
 To use the same map as we used:
 1. Go to `C:\Users\[Your_user]\TmrlData\resources` and copy `tmrl-test.map.Gbx`
@@ -196,7 +184,7 @@ If you want to **start training from scratch**, you need to:
 >[!IMPORTANT]
 > Make sure the `"RUN_NAME"` field is set to something **unique**
 
-#### Pure Reinforcement Learning (RL) Models
+#### <ins> Pure Reinforcement Learning (RL) Models </ins>
 To train a model using pure reinforcement learning run `Train RL-model.bat`
 
 The batch file will
@@ -207,7 +195,7 @@ The batch file will
 
 These components work together to generate rollouts and update the RL model in real-time.
 
-### Hybrid Models (RL + Imitation Learning)
+#### <ins>Hybrid Models (RL + Imitation Learning)</ins>
 Hybrid models combine reinforcement learning with imitation learning, and each implemented variant has its own batch file.
 
 To train a hybrid model:
@@ -238,7 +226,7 @@ Start the server and training using the **corresponding hybrid batch file**, e.g
 > [!NOTE]
 > Even though the batch script will run regardless of which model you choose, using the correct one ensures you're loading both the correct **RL state** (from the TmrlData folder) and the matching **IL model** (`bc_model.pth` for the same permutation in the project folder).
 
-#### Running Without Further Training
+#### <ins>Running Without Further Training</ins>
 If you simply want to **run the model without continuing training**:
 - Launch the hybrid batch script as usual.
 
@@ -267,7 +255,7 @@ This will:
 > 50000 lines/steps is approximately 60-70 laps
 
 #### 2. **Run the following batch file to train the IL Model**: `Train-IL-model.bat`
-This runs `csvModifier.py` which filters `demonstration_data.csv` and give you `demonstration_filtered.csv`\
+This runs `csvModifier.py` which filters `demonstration_data.csv` and gives you `demonstration_filtered.csv`\
 (removes the idle steps. Otherwise the model won’t be able to start).
 
 Then runs `IL-nn.py` to create `bc_model.pth`
@@ -278,13 +266,13 @@ Then runs `IL-nn.py` to create `bc_model.pth`
 ### Run the IL Model
 At this point, your imitation learning model is ready to use.
 
-#### Option 1: Train Hybrid Model Using IL
+#### <ins>Option 1: Train Hybrid Model Using IL</ins>
 Run: “Train Hybrid-model.bat”
 - This will begin training using the `bc_model.pth` file.
+> [!TIP]
+> If you’ve trained your own IL model, **back it up and rename** it to avoid it being overwritten by another batch file (e.g., `bc_model_custom.pth`).
 
-- If you’ve trained your own IL model, **back it up and rename** it to avoid it being overwritten by another batch file (e.g., `bc_model_custom.pth`).
-
-#### Option 2: Run IL-Only Mode
+#### <ins>Option 2: Run IL-Only Mode</ins>
 To run the IL on its own, similar to how we tested the IL models with the 30-laps test, run `Imitation-Worker.bat`.
 - This will use the current `bc_model.pth` file
 
@@ -295,7 +283,8 @@ To run the IL on its own, similar to how we tested the IL models with the 30-lap
 This will produce `IL-rew.json` which saves the reward at the end of each lap and can be used in `IL_model_analysis.py` to map how far the IL model got through multiple runs.
 
 ## Data Analysis Tools
-We've created several graphing tools to visualize and compare model performance. These scripts were used for generating report figures and internal analysis:
+We've created several graphing tools to visualize and compare model performance. 
+These scripts were used for generating report figures and internal analysis:
 - `Box_plot_results.py` \
 → Generates box plots to compare different model groups.
 
@@ -309,25 +298,29 @@ We've created several graphing tools to visualize and compare model performance.
 → (*Tool-specific functionality; likely supports IL evaluation and visualization.*)
 
 ### Time Alignment for 24-Hour Analysis
-Our analytics scripts are designed to isolate performance data across 24-hour periods, using timestamps from goal_timestamps.json. To make this work
+Our analytics scripts are designed to isolate performance data across 24-hour periods, using timestamps from `goal_timestamps.json`. 
 > [!IMPORTANT]
+> To make this work:\
 > You must provide the **correct training start time** (e.g., 2025-05-01 18:07).
 
 ## Problems and Issues
-There are issues with the library which we haven’t been able to assess.
+There are issues with the library which we haven’t been able to assess. 
 They mostly stem from the fragmented nature of the RL deployment which was already present in the TMRL library.
 
 ### Problem 1
-Only 2 out of 4 computers on the project team can run agents properly.
-This does not seem to correlate with versions of Windows, python, or libraries as changing to what the working PCs have been using have made no difference.
+Only 2 out of 4 computers on the project team can run agents properly. 
+This does not seem to correlate with versions of Windows (Windows 10 and 11), python, or libraries as changing to what the working PCs have been using have made no difference.
 
-For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended, their act values are much lower than what they should output.
+Hardware also doesn’t seem to be the problem either as we’ve tried different GPUs (AMD and Nvidia) and CPUs (AMD and Intel), but these seem to make no feasible difference.
+
+For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended, their act values are much lower than what they should output. 
 Subsequently the agent drives forward for only 1 step and then stands still until restart.
 
-This issue has plagued the team for the entire project period, but no changes seem to make a difference.
-We believe this issue has something to do with the complexity of the original library since it creates files in two other locations (that we know of) which also must be kept up to date as we work on the project.
+> [!IMPORTANT]  
+> Any value lower than ~0.6 returns no output for throttle and reverse.
 
-Hardware should not be the issue either
+This issue has plagued the team for the entire project period, but no changes seem to make a difference. 
+We believe this issue has something to do with the complexity of the original library since it creates files in two other locations (*that we know of*) which also must be kept up to date as we work on the project.
 
 ### Problem 2
 If any changes are made in the library, then these changes need to be made to the corresponding files in the folder (this folder is downloaded on setup)
@@ -339,11 +332,12 @@ C:\Users\[Your_user]\AppData\Local\Programs\Python\Python313\Lib\site-packages\t
 Just copy+paste the `networking.py` and `__main__.py` files over to the `tmrl-0.7.0-py3.13.egg\tmrl` library and overwrite their respective files.
 
 ### Problem 3
-When attempting to change the IL model_path in the code from `bc_model.pth` to something else, runtime errors occur.
-Even if all different codes at different locations has it set to the same name, it still doesn’t work.
-But it’s not the case for everyone, one project member which had issues with the RL deployment was able to avoid this runtime error when changing names.
+When attempting to change the IL model_path in the code from `bc_model.pth` to something else, runtime errors occur. 
+Even if all different codes at different locations has it set to the same name, it still doesn’t work. 
+But it’s not the case for everyone, one project member which had issues with the RL deployment was able to avoid this runtime error when changing names. 
 
 We believe this might be a problem with inference, but we struggle to understand where/how exactly.
+
 
 
 ## Config Template
