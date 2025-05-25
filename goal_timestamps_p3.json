@@ -1,0 +1,3752 @@
+[
+    {
+        "timestamp": "2025-05-14 17:19:20",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 17:38:29",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 17:46:19",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 17:50:39",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 17:52:23",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 17:56:44",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 17:58:28",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 18:00:12",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 18:02:48",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 21:04:11",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.382
+    },
+    {
+        "timestamp": "2025-05-14 21:11:57",
+        "elapsed_time_seconds": 50.52,
+        "IL_chance": 0.383
+    },
+    {
+        "timestamp": "2025-05-14 22:29:34",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 22:53:05",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:00:55",
+        "elapsed_time_seconds": 50.73,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:02:39",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:05:15",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:06:07",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:07:51",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:08:43",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:10:27",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:12:10",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:13:54",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:22:36",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:23:28",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:25:12",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:26:03",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:26:55",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:29:31",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:30:23",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:41:42",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:45:11",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:47:47",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:54:45",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-14 23:57:21",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:03:26",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:06:55",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:07:47",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:10:24",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:11:16",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:19:30",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.351
+    },
+    {
+        "timestamp": "2025-05-15 00:32:34",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:37:47",
+        "elapsed_time_seconds": 50.39,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:45:10",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 00:56:29",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:13:54",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:22:09",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.351
+    },
+    {
+        "timestamp": "2025-05-15 01:28:14",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.351
+    },
+    {
+        "timestamp": "2025-05-15 01:29:58",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:30:49",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:32:34",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:35:10",
+        "elapsed_time_seconds": 50.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:42:08",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:49:05",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:49:57",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:53:25",
+        "elapsed_time_seconds": 49.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:55:10",
+        "elapsed_time_seconds": 50.34,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:56:01",
+        "elapsed_time_seconds": 50.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 01:57:46",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:02:07",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:07:20",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:09:56",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:11:41",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:12:32",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:13:24",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:17:45",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:22:06",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:22:58",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:23:50",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:24:40",
+        "elapsed_time_seconds": 49.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:25:31",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:27:16",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:28:08",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:29:51",
+        "elapsed_time_seconds": 49.06,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:31:34",
+        "elapsed_time_seconds": 49.23,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:34:09",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:36:45",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:37:37",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:38:28",
+        "elapsed_time_seconds": 49.67,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:41:05",
+        "elapsed_time_seconds": 50.66,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:42:21",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.351
+    },
+    {
+        "timestamp": "2025-05-15 02:43:13",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:45:48",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:46:40",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:47:30",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:48:21",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:49:13",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:50:30",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.357
+    },
+    {
+        "timestamp": "2025-05-15 02:52:38",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.352
+    },
+    {
+        "timestamp": "2025-05-15 02:53:31",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:54:23",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:57:51",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:58:43",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 02:59:35",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:02:11",
+        "elapsed_time_seconds": 50.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:07:45",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:11:59",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:12:51",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:14:33",
+        "elapsed_time_seconds": 48.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:15:25",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:17:09",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:18:00",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:18:52",
+        "elapsed_time_seconds": 50.61,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:19:44",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:20:36",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:21:27",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:23:12",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:24:04",
+        "elapsed_time_seconds": 50.66,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:25:48",
+        "elapsed_time_seconds": 50.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:27:32",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:28:24",
+        "elapsed_time_seconds": 50.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:29:15",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:30:06",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:30:58",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:32:42",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:33:33",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:34:25",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:36:08",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:37:52",
+        "elapsed_time_seconds": 49.93,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:38:44",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:41:20",
+        "elapsed_time_seconds": 50.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:42:12",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:43:04",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:44:48",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:45:40",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:46:32",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:47:24",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:48:15",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:49:07",
+        "elapsed_time_seconds": 50.31,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:49:59",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:50:51",
+        "elapsed_time_seconds": 50.58,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:51:43",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:52:35",
+        "elapsed_time_seconds": 50.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:53:25",
+        "elapsed_time_seconds": 48.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:54:17",
+        "elapsed_time_seconds": 49.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:55:09",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:56:00",
+        "elapsed_time_seconds": 50.11,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 03:58:37",
+        "elapsed_time_seconds": 50.54,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:01:14",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:02:05",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:02:56",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:03:48",
+        "elapsed_time_seconds": 50.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:05:32",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:06:24",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:07:15",
+        "elapsed_time_seconds": 49.61,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:08:07",
+        "elapsed_time_seconds": 50.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:08:59",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:11:35",
+        "elapsed_time_seconds": 50.51,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:13:19",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:14:12",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:15:02",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:15:53",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:16:44",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:18:28",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:22:49",
+        "elapsed_time_seconds": 49.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:23:41",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:24:32",
+        "elapsed_time_seconds": 50.02,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:26:16",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:27:08",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:29:43",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:30:35",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:31:27",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:32:18",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:33:10",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:34:54",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:35:44",
+        "elapsed_time_seconds": 48.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:36:35",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:38:18",
+        "elapsed_time_seconds": 49.51,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:39:09",
+        "elapsed_time_seconds": 49.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:41:46",
+        "elapsed_time_seconds": 50.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:42:37",
+        "elapsed_time_seconds": 49.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:45:14",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:46:58",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:47:49",
+        "elapsed_time_seconds": 50.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:49:33",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:52:09",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:53:00",
+        "elapsed_time_seconds": 49.47,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:53:52",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:54:43",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:55:35",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:57:18",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:59:02",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 04:59:53",
+        "elapsed_time_seconds": 49.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:00:45",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:02:28",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:04:12",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:05:03",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:05:55",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:07:38",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:09:20",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:11:04",
+        "elapsed_time_seconds": 50.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:11:55",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:12:47",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:13:40",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:14:32",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:15:24",
+        "elapsed_time_seconds": 50.31,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:17:07",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:18:50",
+        "elapsed_time_seconds": 48.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:22:17",
+        "elapsed_time_seconds": 48.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:24:00",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:24:51",
+        "elapsed_time_seconds": 48.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:28:18",
+        "elapsed_time_seconds": 48.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:29:10",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:30:01",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:30:52",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:33:28",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:39:05",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:43:51",
+        "elapsed_time_seconds": 48.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:47:20",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:48:10",
+        "elapsed_time_seconds": 48.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:49:02",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:51:37",
+        "elapsed_time_seconds": 48.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:52:28",
+        "elapsed_time_seconds": 50.11,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:53:18",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:55:02",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:55:53",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:57:36",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:58:28",
+        "elapsed_time_seconds": 49.67,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 05:59:18",
+        "elapsed_time_seconds": 48.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:00:09",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:02:45",
+        "elapsed_time_seconds": 49.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:03:36",
+        "elapsed_time_seconds": 49.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:04:26",
+        "elapsed_time_seconds": 48.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:05:18",
+        "elapsed_time_seconds": 50.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:06:09",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:06:58",
+        "elapsed_time_seconds": 47.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:07:51",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:08:43",
+        "elapsed_time_seconds": 50.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:11:18",
+        "elapsed_time_seconds": 49.51,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:12:09",
+        "elapsed_time_seconds": 49.06,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:13:00",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:14:43",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:15:34",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:16:26",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:17:16",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:18:07",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:19:20",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.383
+    },
+    {
+        "timestamp": "2025-05-15 06:21:04",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:21:55",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:22:46",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:23:38",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:24:28",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:25:18",
+        "elapsed_time_seconds": 48.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:26:09",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:27:00",
+        "elapsed_time_seconds": 49.86,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:27:52",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:30:28",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:31:19",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:33:02",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:33:53",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:34:45",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:35:37",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:36:29",
+        "elapsed_time_seconds": 50.34,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:37:19",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:38:11",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:39:55",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:40:47",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:41:38",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:42:28",
+        "elapsed_time_seconds": 48.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:43:19",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:44:09",
+        "elapsed_time_seconds": 48.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:45:01",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:46:43",
+        "elapsed_time_seconds": 48.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:47:35",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:48:48",
+        "elapsed_time_seconds": 48.65,
+        "IL_chance": 0.383
+    },
+    {
+        "timestamp": "2025-05-15 06:50:32",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:51:23",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:52:13",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:53:05",
+        "elapsed_time_seconds": 50.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:54:48",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:55:40",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:57:23",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:58:13",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:59:05",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 06:59:56",
+        "elapsed_time_seconds": 49.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:00:47",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:01:38",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:02:29",
+        "elapsed_time_seconds": 49.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:03:20",
+        "elapsed_time_seconds": 49.62,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:05:27",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.383
+    },
+    {
+        "timestamp": "2025-05-15 07:06:17",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:07:07",
+        "elapsed_time_seconds": 48.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:07:59",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:08:51",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:09:43",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:10:34",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:11:25",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:12:16",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:13:07",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:13:59",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:14:50",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:15:42",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:16:33",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:18:01",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.082
+    },
+    {
+        "timestamp": "2025-05-15 07:18:52",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:19:44",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:22:19",
+        "elapsed_time_seconds": 48.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:23:10",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:24:00",
+        "elapsed_time_seconds": 48.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:24:52",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:25:42",
+        "elapsed_time_seconds": 49.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:26:33",
+        "elapsed_time_seconds": 48.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:28:00",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.071
+    },
+    {
+        "timestamp": "2025-05-15 07:28:51",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:29:43",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:30:34",
+        "elapsed_time_seconds": 48.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:31:26",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:32:18",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:33:08",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:33:59",
+        "elapsed_time_seconds": 48.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:34:50",
+        "elapsed_time_seconds": 49.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:35:41",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:37:24",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:38:16",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:40:00",
+        "elapsed_time_seconds": 49.61,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:40:50",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:42:33",
+        "elapsed_time_seconds": 48.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:44:00",
+        "elapsed_time_seconds": 49.17,
+        "IL_chance": 0.07
+    },
+    {
+        "timestamp": "2025-05-15 07:44:50",
+        "elapsed_time_seconds": 48.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:46:17",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.068
+    },
+    {
+        "timestamp": "2025-05-15 07:47:08",
+        "elapsed_time_seconds": 50.11,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:48:00",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:48:51",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:49:41",
+        "elapsed_time_seconds": 48.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:50:31",
+        "elapsed_time_seconds": 48.86,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:51:23",
+        "elapsed_time_seconds": 50.06,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:52:14",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:53:05",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:53:56",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:54:47",
+        "elapsed_time_seconds": 49.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:55:37",
+        "elapsed_time_seconds": 48.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:56:28",
+        "elapsed_time_seconds": 49.66,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:57:21",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:58:11",
+        "elapsed_time_seconds": 48.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 07:59:54",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:00:45",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:01:36",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:03:19",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:04:10",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:05:54",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:06:45",
+        "elapsed_time_seconds": 49.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:07:37",
+        "elapsed_time_seconds": 50.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:08:28",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:09:18",
+        "elapsed_time_seconds": 48.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:10:09",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:11:00",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:11:51",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:12:43",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:13:34",
+        "elapsed_time_seconds": 49.02,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:14:24",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:15:16",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:18:44",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:20:28",
+        "elapsed_time_seconds": 49.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:22:12",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:23:03",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:23:54",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:24:46",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:25:37",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:26:28",
+        "elapsed_time_seconds": 49.13,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:27:18",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:29:38",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:30:29",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:31:19",
+        "elapsed_time_seconds": 48.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:32:10",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:33:02",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:33:52",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:35:35",
+        "elapsed_time_seconds": 48.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:36:27",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:37:41",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.384
+    },
+    {
+        "timestamp": "2025-05-15 08:38:32",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:39:24",
+        "elapsed_time_seconds": 50.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:40:16",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:41:41",
+        "elapsed_time_seconds": 48.7,
+        "IL_chance": 0.072
+    },
+    {
+        "timestamp": "2025-05-15 08:42:31",
+        "elapsed_time_seconds": 48.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:43:22",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:44:13",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:45:04",
+        "elapsed_time_seconds": 49.31,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:45:55",
+        "elapsed_time_seconds": 49.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:46:45",
+        "elapsed_time_seconds": 48.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:47:37",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:50:12",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:51:04",
+        "elapsed_time_seconds": 50.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:51:54",
+        "elapsed_time_seconds": 48.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:52:45",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:53:36",
+        "elapsed_time_seconds": 49.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:55:19",
+        "elapsed_time_seconds": 48.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:56:10",
+        "elapsed_time_seconds": 50.14,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:57:54",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:58:44",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 08:59:36",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:00:27",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:02:10",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:03:00",
+        "elapsed_time_seconds": 48.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:03:52",
+        "elapsed_time_seconds": 50.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:05:34",
+        "elapsed_time_seconds": 48.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:06:26",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:08:09",
+        "elapsed_time_seconds": 48.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:09:00",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:09:51",
+        "elapsed_time_seconds": 50.06,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:10:41",
+        "elapsed_time_seconds": 48.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:11:31",
+        "elapsed_time_seconds": 48.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:12:23",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:13:14",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:14:04",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:14:54",
+        "elapsed_time_seconds": 48.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:15:46",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:16:37",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:18:18",
+        "elapsed_time_seconds": 48.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:19:09",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:20:34",
+        "elapsed_time_seconds": 47.6,
+        "IL_chance": 0.073
+    },
+    {
+        "timestamp": "2025-05-15 09:21:25",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:22:17",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:23:08",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:23:59",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:24:51",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:25:41",
+        "elapsed_time_seconds": 48.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:27:25",
+        "elapsed_time_seconds": 49.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:29:09",
+        "elapsed_time_seconds": 50.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:30:51",
+        "elapsed_time_seconds": 48.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:31:43",
+        "elapsed_time_seconds": 50.06,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:33:26",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:34:17",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:35:08",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:35:59",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:36:50",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:37:42",
+        "elapsed_time_seconds": 50.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:38:34",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:39:26",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:40:16",
+        "elapsed_time_seconds": 48.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:41:05",
+        "elapsed_time_seconds": 48.23,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:41:57",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:42:47",
+        "elapsed_time_seconds": 48.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:44:29",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:45:20",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:46:10",
+        "elapsed_time_seconds": 48.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:47:03",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:48:46",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:49:38",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:50:30",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:51:22",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:52:13",
+        "elapsed_time_seconds": 48.89,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:53:03",
+        "elapsed_time_seconds": 48.68,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:53:54",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:54:46",
+        "elapsed_time_seconds": 50.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:55:38",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:57:41",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.36
+    },
+    {
+        "timestamp": "2025-05-15 09:58:32",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 09:59:23",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:00:15",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:01:06",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:01:57",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:02:48",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:04:03",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.362
+    },
+    {
+        "timestamp": "2025-05-15 10:05:55",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:07:39",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:08:30",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:09:21",
+        "elapsed_time_seconds": 49.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:11:04",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:12:47",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:13:39",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:15:22",
+        "elapsed_time_seconds": 48.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:16:13",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:17:04",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:19:29",
+        "elapsed_time_seconds": 48.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:20:21",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:21:12",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:22:04",
+        "elapsed_time_seconds": 49.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:23:47",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:24:39",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:25:31",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:26:22",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:27:13",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:28:55",
+        "elapsed_time_seconds": 48.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:29:46",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:33:34",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.352
+    },
+    {
+        "timestamp": "2025-05-15 10:34:25",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:36:18",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:38:00",
+        "elapsed_time_seconds": 48.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:38:51",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:39:43",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:40:35",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:41:27",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:43:01",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:43:52",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:44:44",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:45:35",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:46:25",
+        "elapsed_time_seconds": 48.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:47:16",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:48:08",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:48:58",
+        "elapsed_time_seconds": 48.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:49:49",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:50:40",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:51:32",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:52:24",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:54:07",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:54:58",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:55:49",
+        "elapsed_time_seconds": 49.66,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:56:40",
+        "elapsed_time_seconds": 49.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:57:32",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 10:58:23",
+        "elapsed_time_seconds": 49.79,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:00:07",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:00:59",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:02:42",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:03:33",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:04:25",
+        "elapsed_time_seconds": 49.94,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:05:16",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:07:00",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:08:43",
+        "elapsed_time_seconds": 48.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:09:34",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:11:16",
+        "elapsed_time_seconds": 48.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:12:06",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:13:49",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:15:32",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:16:24",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:17:15",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:18:06",
+        "elapsed_time_seconds": 49.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:18:58",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:19:50",
+        "elapsed_time_seconds": 50.31,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:20:41",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:21:33",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:22:25",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:23:17",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:24:09",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:25:00",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:26:43",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:27:33",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:28:25",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:29:17",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:32:37",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:35:13",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:36:05",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:36:57",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:37:48",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:38:39",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:39:30",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:40:22",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:41:13",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:42:04",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:42:55",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:43:47",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:44:39",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:45:29",
+        "elapsed_time_seconds": 48.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:46:21",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:47:12",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:48:04",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:48:55",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:49:47",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:51:30",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:52:22",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:53:13",
+        "elapsed_time_seconds": 49.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:54:04",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:54:56",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:56:38",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:57:30",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 11:58:21",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:01:49",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:02:40",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:03:32",
+        "elapsed_time_seconds": 50.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:04:23",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:05:14",
+        "elapsed_time_seconds": 49.86,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:11:46",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:12:36",
+        "elapsed_time_seconds": 49.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:14:20",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:15:11",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:16:02",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:16:54",
+        "elapsed_time_seconds": 49.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:17:45",
+        "elapsed_time_seconds": 49.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:18:36",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:19:28",
+        "elapsed_time_seconds": 50.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:20:19",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:22:02",
+        "elapsed_time_seconds": 49.02,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:23:45",
+        "elapsed_time_seconds": 48.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:24:37",
+        "elapsed_time_seconds": 50.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:26:21",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:27:12",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:28:56",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:29:46",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:31:30",
+        "elapsed_time_seconds": 50.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:32:22",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:33:13",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:34:05",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:36:40",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:37:33",
+        "elapsed_time_seconds": 50.66,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:39:07",
+        "elapsed_time_seconds": 50.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:39:59",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:40:51",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:41:43",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:42:35",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:45:10",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:46:02",
+        "elapsed_time_seconds": 50.51,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:46:54",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:47:44",
+        "elapsed_time_seconds": 49.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:49:29",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:50:21",
+        "elapsed_time_seconds": 50.52,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:51:13",
+        "elapsed_time_seconds": 50.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:53:49",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:54:41",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:56:25",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:57:16",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:58:07",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:58:59",
+        "elapsed_time_seconds": 50.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 12:59:50",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:01:34",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:02:25",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:03:17",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:04:08",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:04:59",
+        "elapsed_time_seconds": 49.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:07:35",
+        "elapsed_time_seconds": 49.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:08:26",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:11:03",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:11:55",
+        "elapsed_time_seconds": 50.45,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:12:47",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:13:38",
+        "elapsed_time_seconds": 48.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:14:29",
+        "elapsed_time_seconds": 49.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:15:20",
+        "elapsed_time_seconds": 49.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:17:55",
+        "elapsed_time_seconds": 48.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:18:47",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:19:39",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:21:24",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:22:15",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:23:06",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:23:58",
+        "elapsed_time_seconds": 49.91,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:25:42",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:26:34",
+        "elapsed_time_seconds": 50.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:27:26",
+        "elapsed_time_seconds": 49.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:28:17",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:29:09",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:30:53",
+        "elapsed_time_seconds": 50.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:31:44",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:32:36",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:33:27",
+        "elapsed_time_seconds": 49.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:34:19",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:36:03",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:36:53",
+        "elapsed_time_seconds": 48.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:37:45",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:41:13",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:42:57",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:43:49",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:44:40",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:46:23",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:47:15",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:48:07",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:48:59",
+        "elapsed_time_seconds": 50.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:50:42",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:54:10",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:57:39",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:58:31",
+        "elapsed_time_seconds": 50.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 13:59:22",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:00:14",
+        "elapsed_time_seconds": 50.61,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:01:05",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:01:57",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:02:47",
+        "elapsed_time_seconds": 48.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:03:38",
+        "elapsed_time_seconds": 49.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:07:28",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.382
+    },
+    {
+        "timestamp": "2025-05-15 14:10:02",
+        "elapsed_time_seconds": 48.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:11:46",
+        "elapsed_time_seconds": 49.86,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:12:38",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:13:29",
+        "elapsed_time_seconds": 49.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:15:12",
+        "elapsed_time_seconds": 48.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:16:04",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:16:56",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:17:47",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:19:30",
+        "elapsed_time_seconds": 49.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:20:22",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:22:58",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:23:49",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:25:24",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:26:15",
+        "elapsed_time_seconds": 48.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:27:07",
+        "elapsed_time_seconds": 50.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:27:58",
+        "elapsed_time_seconds": 49.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:28:50",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:29:41",
+        "elapsed_time_seconds": 49.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:30:32",
+        "elapsed_time_seconds": 49.4,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:31:24",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:32:16",
+        "elapsed_time_seconds": 50.51,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:33:07",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:33:58",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:36:34",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:37:26",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:38:18",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:39:10",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:40:02",
+        "elapsed_time_seconds": 49.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:40:53",
+        "elapsed_time_seconds": 50.11,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:41:45",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:43:30",
+        "elapsed_time_seconds": 50.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:44:21",
+        "elapsed_time_seconds": 50.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:45:13",
+        "elapsed_time_seconds": 49.73,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:46:03",
+        "elapsed_time_seconds": 49.01,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:47:47",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:48:37",
+        "elapsed_time_seconds": 48.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:49:29",
+        "elapsed_time_seconds": 50.56,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:50:20",
+        "elapsed_time_seconds": 49.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:51:11",
+        "elapsed_time_seconds": 50.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:52:02",
+        "elapsed_time_seconds": 49.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:52:53",
+        "elapsed_time_seconds": 48.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:54:36",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:56:19",
+        "elapsed_time_seconds": 49.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:57:11",
+        "elapsed_time_seconds": 50.16,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:58:02",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:58:53",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 14:59:44",
+        "elapsed_time_seconds": 49.17,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:01:27",
+        "elapsed_time_seconds": 49.5,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:02:20",
+        "elapsed_time_seconds": 50.75,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:03:11",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:04:54",
+        "elapsed_time_seconds": 49.36,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:06:38",
+        "elapsed_time_seconds": 49.71,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:07:29",
+        "elapsed_time_seconds": 49.96,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:08:21",
+        "elapsed_time_seconds": 50.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:10:05",
+        "elapsed_time_seconds": 49.81,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:10:57",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:11:48",
+        "elapsed_time_seconds": 49.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:12:39",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:14:23",
+        "elapsed_time_seconds": 50.1,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:15:15",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:16:06",
+        "elapsed_time_seconds": 49.51,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:16:57",
+        "elapsed_time_seconds": 49.26,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:17:48",
+        "elapsed_time_seconds": 50.15,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:18:39",
+        "elapsed_time_seconds": 49.62,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:19:31",
+        "elapsed_time_seconds": 49.85,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:20:21",
+        "elapsed_time_seconds": 48.41,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:21:12",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:22:03",
+        "elapsed_time_seconds": 49.7,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:22:54",
+        "elapsed_time_seconds": 49.6,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:23:47",
+        "elapsed_time_seconds": 50.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:24:37",
+        "elapsed_time_seconds": 49.3,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:27:24",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.745
+    },
+    {
+        "timestamp": "2025-05-15 15:40:11",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:41:02",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:41:54",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:42:45",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:43:36",
+        "elapsed_time_seconds": 49.21,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:44:27",
+        "elapsed_time_seconds": 49.95,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:45:19",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:47:01",
+        "elapsed_time_seconds": 48.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:47:52",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:48:43",
+        "elapsed_time_seconds": 48.76,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:49:33",
+        "elapsed_time_seconds": 48.9,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:50:24",
+        "elapsed_time_seconds": 49.25,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:52:08",
+        "elapsed_time_seconds": 50.55,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:53:00",
+        "elapsed_time_seconds": 50.49,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:53:51",
+        "elapsed_time_seconds": 49.05,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:54:41",
+        "elapsed_time_seconds": 48.94,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:55:33",
+        "elapsed_time_seconds": 50.35,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:56:24",
+        "elapsed_time_seconds": 49.46,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:57:16",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:58:07",
+        "elapsed_time_seconds": 49.66,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:58:58",
+        "elapsed_time_seconds": 49.65,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 15:59:50",
+        "elapsed_time_seconds": 50.2,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 16:00:40",
+        "elapsed_time_seconds": 48.8,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 16:01:32",
+        "elapsed_time_seconds": 50.0,
+        "IL_chance": 0.0
+    },
+    {
+        "timestamp": "2025-05-15 16:02:21",
+        "elapsed_time_seconds": 47.7,
+        "IL_chance": 0.0
+    }
+]

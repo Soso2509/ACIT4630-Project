@@ -1,0 +1,19 @@
+@echo off
+echo Starting SERVER...
+start "SERVER" cmd /k python tmrl\__main__.py --server
+
+echo Waiting for server port 55555 to be open...
+:waitloop
+powershell -Command "exit !(Test-NetConnection 127.0.0.1 -Port 55555).TcpTestSucceeded"
+if errorlevel 1 (
+    timeout /t 1 >nul
+    goto waitloop
+)
+
+echo Starting TRAINER...
+start "TRAINER" cmd /k python tmrl\__main__.py --trainer
+
+echo Starting WORKER...
+start "WORKER" cmd /k python tmrl\__main__.py --worker
+
+echo All components launched.
