@@ -341,7 +341,9 @@ We believe this might be a problem with inference, but we struggle to understand
 
 ### Problem 4
 Hardware can impact how some libraries work. The most notable being PyTorch which struggles to run the Trainer if you are on a cuda system. So if the trainer gets this error:
+
 ```RuntimeError: Attempting to deserialize object on a CUDA device but torch.cuda.is_available() is False. If you are running on a CPU-only machine, please use torch.load with map_location=torch.device('cpu') to map your storages to the CPU. ```
+
 **Solution**: You have get a version of pytorch that supports the appropriate cuda platform.
 
 
