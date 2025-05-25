@@ -67,7 +67,7 @@ Before training a new model, if you want to train from scratch you:
 3. Find `C:\Users\[Your_user]\TmrlData\config\config.json` and replace the contents with the config at [the end of this document](#config-template).
 
 >[!NOTE]
->But if it’s not that important to keep it clean, then you could just keep the TmrlData folder as is.\
+>But if it’s not that important to train from scratch, then you could just keep the TmrlData folder as is.\
 >Just make sure that the `config.json` file contains the same as the config at the end of this document. \
 >You can skip to this next step if the TmrlData folder is as you want it.
 
