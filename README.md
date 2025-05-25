@@ -319,8 +319,7 @@ This does not seem to correlate with versions of Windows (Windows 10 and 11), py
 
 Hardware also doesn’t seem to be the problem either as we’ve tried different GPUs (AMD and Nvidia) and CPUs (AMD and Intel), but these seem to make no feasible difference.
 
-For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended, their act values are much lower than what they should output.
-Subsequently the agent drives forward for only 1 step and then stands still until restart.
+For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended (not even the proven ones like bc_model_P1.pth), their act values are much lower than what they should output. This might also manifest itself as generally bad performance by the imitation learning model especially. 
 
 > [!IMPORTANT]
 > Any value lower than ~0.6 returns no output for throttle and reverse.
