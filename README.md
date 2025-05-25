@@ -67,7 +67,7 @@ Before training a new model, if you want to train from scratch you:
 3. Find `C:\Users\[Your_user]\TmrlData\config\config.json` and replace the contents with the config at [the end of this document](#config-template).
 
 >[!NOTE]
->But if it’s not that important to keep it clean, then you could just keep the TmrlData folder as is.\
+>But if it’s not that important to train from scratch, then you could just keep the TmrlData folder as is.\
 >Just make sure that the `config.json` file contains the same as the config at the end of this document. \
 >You can skip to this next step if the TmrlData folder is as you want it.
 
@@ -76,7 +76,7 @@ Before training a new model, if you want to train from scratch you:
 
   - `Train Hybrid-model-P1.bat` for hybrid.
   > [!IMPORTANT]
-  > This P1 specifically, so make sure you select the right permutation you want
+  > This is the P1 hybrid specifically, so make sure you select the right permutation you want
 
 ### Run Existing Model
 To run one of the models we trained through our tests:
