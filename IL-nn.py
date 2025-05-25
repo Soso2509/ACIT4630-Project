@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 
 # === Load and preprocess data ===
-df = pd.read_csv('demonstration_filtered_J.csv')
+df = pd.read_csv('demonstration_filtered.csv')
 
 # Parse strings into Python objects
 df['Action'] = df['Action'].apply(ast.literal_eval)
@@ -32,6 +32,76 @@ val_dataset = TensorDataset(torch.tensor(X_val, dtype=torch.float32), torch.tens
 
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size)
+
+
+''' PICK YOUR MODEL OF CHOICE
+# === 3-layer structure ===
+class BCNet(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+        nn.Linear(input_dim, 256),
+        nn.ReLU(),
+        nn.Linear(256, 128),
+        nn.ReLU(),
+        nn.Linear(128, 64),
+        nn.ReLU(),
+        nn.Linear(64, output_dim)
+    )
+
+
+    def forward(self, x):
+        return self.net(x)
+
+=============================================   
+
+# === 4-layer structure ===
+class BCNet(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+        nn.Linear(input_dim, 512),
+        nn.ReLU(),
+        nn.Linear(512, 256),
+        nn.ReLU(),
+        nn.Linear(256, 128),
+        nn.ReLU(),
+        nn.Linear(128, 64),
+        nn.ReLU(),
+        nn.Linear(64, output_dim)
+    )
+
+
+    def forward(self, x):
+        return self.net(x)
+
+=============================================           
+
+# === 6-layer structure ===        
+class BCNet(nn.Module):
+    def __init__(self, input_dim, output_dim=3):
+        super().__init__()
+        self.net = nn.Sequential(
+        nn.Linear(input_dim, 512),
+        nn.ReLU(),
+        nn.Linear(512, 1024),
+        nn.ReLU(),
+        nn.Linear(1024, 512),
+        nn.ReLU(),
+        nn.Linear(512, 256),
+        nn.ReLU(),
+        nn.Linear(256, 128),
+        nn.ReLU(),
+        nn.Linear(128, 64),
+        nn.ReLU(),
+        nn.Linear(64, output_dim)
+    )
+
+
+    def forward(self, x):
+        return self.net(x)
+
+'''
 
 # === Model Definition ===
 class BCNet(nn.Module):

@@ -4,7 +4,7 @@ from datetime import datetime
 import pandas as pd
 
 # Load the JSON data from the uploaded file
-file_path = "goal_timestamps_j1.json"
+file_path = "goal_timestamps.json"
 with open(file_path, "r") as f:
     data = json.load(f)
 
@@ -17,14 +17,17 @@ Test RL3: 2025-05-13 15:50
 Test P1: 2025-05-02 21:35 **(3-layer)**
 Test P2: 2025-05-10 12:56 **(4-layer)**
 Test P3: 2025-05-14 16:02 **(6-layer)**
+Test P4: 2025-05-18 23:23 (Same model as P3)
 
 Test J1: 2025-05-12 15:38 **(3-layer)**
 Test J2: 2025-05-04 18:40 **(4-layer)**
-Test J3 (J-good): 2025-05-09 12:48 **(6-layer)**
+Test J3: 2025-05-09 12:48 **(6-layer)**
+Test J4: 2025-05-17 23:06 (Same model as J1)
 
-Test slow1: 2025-05-15 16:40 **(3-layer)**
-Test slow2: 2025-05-11 15:26 **(4-layer)**
-Test slow3: 2025-05-07 12:23 **( 6-layer)**
+Test S1: 2025-05-15 16:40 **(3-layer)**
+Test S2: 2025-05-11 15:26 **(4-layer)**
+Test S3: 2025-05-07 12:23 **( 6-layer)**
+Test S4: 2025-05-16 16:42 (Same model as S1)
 '''
 start_time = datetime.strptime("2025-05-12 15:38", "%Y-%m-%d %H:%M")
 

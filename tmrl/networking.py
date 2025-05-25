@@ -1158,7 +1158,7 @@ class RolloutWorker:
 
 
 
-# IMITATION WORKER (This runs the model)
+# This is old. Not in use
 class BCNet(nn.Module):
     def __init__(self, input_dim, output_dim=3):
         super().__init__()
@@ -1176,6 +1176,7 @@ class BCNet(nn.Module):
     def forward(self, x):
         return self.net(x)
 
+# IMITATION WORKER (This runs the IL model on its own)
 class ImitationWorker:
     def __init__(self, env_cls, device="cpu", model_path="bc_model.pth", max_samples_per_episode=np.inf):
         self.device = torch.device(device)
@@ -1187,13 +1188,25 @@ class ImitationWorker:
         # Observation shape: assuming (velocity + lidar)
         obs_sample, _ = self.env.reset()
         flat_obs = self.flatten_obs(obs_sample)
-        self.model = BCNet(input_dim=len(flat_obs)).to(self.device)
-        self.model.load_state_dict(torch.load(self.model_path, map_location=self.device))
-        self.model.eval()
+        self.model = self._load_best_bcnet_model(len(flat_obs), self.model_path)
+
 
     def flatten_obs(self, obs):
         velocity, lidar = obs[0], obs[1]
         return velocity.tolist() + lidar.flatten().tolist()
+
+    def _load_best_bcnet_model(self, input_dim, path, output_dim=3):
+        model_classes = [BCNetSmall, BCNetMedium, BCNetLarge]
+        for ModelCls in model_classes:
+            try:
+                model = ModelCls(input_dim, output_dim).to(self.device)
+                model.load_state_dict(torch.load(path, map_location=self.device))
+                model.eval()
+                print(f"[INFO] Successfully loaded: {ModelCls.__name__}")
+                return model
+            except Exception as e:
+                print(f"[WARNING] Failed to load {ModelCls.__name__}: {e}")
+        raise RuntimeError("No compatible BCNet model variant could be loaded.")
 
 
 
