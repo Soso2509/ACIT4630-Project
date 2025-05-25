@@ -7,10 +7,10 @@ from matplotlib.patches import Patch
 
 # Configurations
 configs = {
-    'rl': ['goal_timestamps_RL1.json', 'goal_timestamps_RL2.json', 'goal_timestamps_RL3.json'],
-    'j': ['goal_timestamps_j1.json', 'goal_timestamps_j2.json', 'goal_timestamps_j3.json', 'goal_timestamps_j4.json'],
-    'p': ['goal_timestamps_p1.json', 'goal_timestamps_p2.json', 'goal_timestamps_p3.json', 'goal_timestamps_p4.json'],
-    's': ['goal_timestamps_s1.json', 'goal_timestamps_s2.json', 'goal_timestamps_s3.json', 'goal_timestamps_s4.json']
+    'rl': ['./goalTimestamps/goal_timestamps_RL1.json', './goalTimestamps/goal_timestamps_RL2.json', './goalTimestamps/goal_timestamps_RL3.json'],
+    'j': ['./goalTimestamps/goal_timestamps_j1.json', './goalTimestamps/goal_timestamps_j2.json', './goalTimestamps/goal_timestamps_j3.json', './goalTimestamps/goal_timestamps_j4.json'],
+    'p': ['./goalTimestamps/goal_timestamps_p1.json', './goalTimestamps/goal_timestamps_p2.json', './goalTimestamps/goal_timestamps_p3.json', './goalTimestamps/goal_timestamps_p4.json'],
+    's': ['./goalTimestamps/goal_timestamps_s1.json', './goalTimestamps/goal_timestamps_s2.json', './goalTimestamps/goal_timestamps_s3.json', './goalTimestamps/goal_timestamps_s4.json']
 }
 
 start_times = {

@@ -16,17 +16,17 @@ goals_axis_max = 1100  # maximum number of goals to display on y-axis
 
 # Define the configurations for all agents and runs
 configs = {
-    'rl': ['goal_timestamps_RL1.json', 'goal_timestamps_RL2.json', 'goal_timestamps_RL3.json'],         # 
-    'j': ['goal_timestamps_j1.json','goal_timestamps_j2.json', 'goal_timestamps_j3.json', 'goal_timestamps_j4.json'],             #  
-    'p': ['goal_timestamps_p1.json', 'goal_timestamps_p2.json', 'goal_timestamps_p3.json', 'goal_timestamps_p4.json'],             # 
-    's': ['goal_timestamps_s1.json', 'goal_timestamps_s2.json', 'goal_timestamps_s3.json', 'goal_timestamps_s4.json']  # 
+    'rl': ['./goalTimestamps/goal_timestamps_RL1.json', './goalTimestamps/goal_timestamps_RL2.json', './goalTimestamps/goal_timestamps_RL3.json'],         #
+    'j': ['./goalTimestamps/goal_timestamps_j1.json','./goalTimestamps/goal_timestamps_j2.json', './goalTimestamps/goal_timestamps_j3.json', './goalTimestamps/goal_timestamps_j4.json'],             #
+    'p': ['./goalTimestamps/goal_timestamps_p1.json', './goalTimestamps/goal_timestamps_p2.json', './goalTimestamps/goal_timestamps_p3.json', './goalTimestamps/goal_timestamps_p4.json'],             #
+    's': ['./goalTimestamps/goal_timestamps_s1.json', './goalTimestamps/goal_timestamps_s2.json', './goalTimestamps/goal_timestamps_s3.json', './goalTimestamps/goal_timestamps_s4.json']  #
 }
 
 start_times = {
-    'rl1': "2025-05-01 18:07", 'rl2': "2025-05-08 12:37", 'rl3': "2025-05-13 15:50",                # 
-    'j1': "2025-05-12 15:38", 'j2': "2025-05-04 18:40", 'j3': "2025-05-09 12:48", 'j4': "2025-05-17 23:06",                  #   
-    'p1': "2025-05-02 21:35", 'p2': "2025-05-10 12:56", 'p3': "2025-05-14 16:02", 'p4': "2025-05-18 23:23",                  # 
-    's1': "2025-05-15 16:40", 's2': "2025-05-11 15:26", 's3': "2025-05-07 12:23", 's4': "2025-05-16 16:42"           #  
+    'rl1': "2025-05-01 18:07", 'rl2': "2025-05-08 12:37", 'rl3': "2025-05-13 15:50",                #
+    'j1': "2025-05-12 15:38", 'j2': "2025-05-04 18:40", 'j3': "2025-05-09 12:48", 'j4': "2025-05-17 23:06",                  #
+    'p1': "2025-05-02 21:35", 'p2': "2025-05-10 12:56", 'p3': "2025-05-14 16:02", 'p4': "2025-05-18 23:23",                  #
+    's1': "2025-05-15 16:40", 's2': "2025-05-11 15:26", 's3': "2025-05-07 12:23", 's4': "2025-05-16 16:42"           #
 }
 
 colors = {
@@ -46,7 +46,7 @@ plot_colors = []
 for agent in agent_types:
     for i in range(1, max_runs_per_agent + 1):
         name = f"{agent}{i}"
-        filename = f"goal_timestamps_{name.upper()}.json"
+        filename = f"./goalTimestamps/goal_timestamps_{name.upper()}.json"
         if not os.path.exists(filename):
             continue
         try:
@@ -54,7 +54,7 @@ for agent in agent_types:
                 data = json.load(f)
 
             start_time = datetime.strptime(start_times[name], "%Y-%m-%d %H:%M")
-            
+
             if not data:
                 # File exists but is empty
                 print(f"{name.upper()} | Never Completed a Lap")
