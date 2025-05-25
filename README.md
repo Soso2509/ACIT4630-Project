@@ -1,532 +1,447 @@
-# TMRL
+# Instruction Manual for the TMRL Modified Library
 
-[![PyPI version](https://badge.fury.io/py/tmrl.svg)](https://badge.fury.io/py/tmrl)
-[![PyPI - License](https://img.shields.io/pypi/l/tmrl?color=blue)](https://github.com/trackmania-rl/tmrl/blob/master/LICENSE)
-[![DOI](https://zenodo.org/badge/277973609.svg)](https://zenodo.org/badge/latestdoi/277973609)
+The first section, [How to Run](#how-to-run), contains a shortened version of how to setup and run the program features.
+However, we’ve experienced many irregularities between different machines and code iterations that we feel it’s necessary to have a more detailed description for how each step operates below, in the section [Instructions & Setup](#instructions--setup).
+Then you’ll be familiar with which folders are created, what goes where, and which commands does what. So, it’s all to prepare you for the unknown.
 
-| **`API reference`**                                                                                                                         |
-|---------------------------------------------------------------------------------------------------------------------------------------------|
-| [![Documentation Status](https://readthedocs.org/projects/tmrl/badge/?version=latest)](https://tmrl.readthedocs.io/en/latest/?badge=latest) |
+Below that we have a more detailed description of how to create and run your own imitation learning model, under [Extra – Imitation Learning](#extra---imitation-learning).
+And then there’s more details about the data analytic programs we’ve used under [Data Analysis Tools](#data-analysis-tools).
 
+And then there’s more details about the data analytic programs we’ve used under [Weird Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into. 
+The issues all seem to stem from the original library, as it has such a convoluted and fragmented structure. 
 
-`tmrl` is a fully-fledged distributed RL framework for robotics, designed to help you train Deep Reinforcement Learning AIs in real-time applications.
+### Table of Content
+- [How to Run](#how-to-run)
+  - [Setup](#setup)
+  - [Training](#training)
+  - [Run Existing Model](#run-existing-model)
+  - [Custom Imitation Learning](#custom-imitation-learning)
+- [Instructions and Setup](#instructions--setup)
+    - [Required Applications](#1-required-applications)
+    - [Library Setup](#2-library-setup)
+    - [Training Models](#3-training-models)
+    - [Running Existing Models](#4-running-existing-models)
+- [Extra - Imitation Learning](#extra---imitation-learning)
+    - [Collect own Imitation Data](#collect-imitation-data-yourself)
+    - [Running IL Model](#run-the-il-model)
+- [Data Analysis Tools](#data-analysis-tools)
+- [Weird Problems and Issues](#problems-and-issues)
+- [Config Template](#config-template)
 
-`tmrl` comes with an example self-driving pipeline for the TrackMania 2020 video game.
+Link to the TMRL library [README](/Environment_README.md)
 
-![example](https://github.com/trackmania-rl/tmrl/releases/download/v0.2.0/video_lidar.gif)
+## How to Run
+### Setup
+The environment:
+1. **Create a Ubisoft Account**\
+Visit [Ubisoft](https://www.ubisoft.com/) and create an account.
 
+2. **Download Ubisoft Connect**\
+Download and install Ubisoft Connect from [here](https://ubisoftconnect.com/).
+This is required to play **TrackMania**, which is also available on Steam but still requires a Ubisoft account.
 
- **TL;DR:**
-
-- :red_car: **AI and TM enthusiasts:**\
-`tmrl` enables you to train AIs in TrackMania with minimal effort. Tutorial for you guys [here](readme/get_started.md), video of a pre-trained AI [here](https://www.youtube.com/watch?v=hQkltOX0TYw), and beginner introduction to the SAC algorithm [here](https://www.youtube.com/watch?v=LN29DDlHp1U).
-
-- :rocket: **ML developers / roboticists:**\
-`tmrl` is a python library designed to facilitate the implementation of ad-hoc RL pipelines for industrial applications, and most notably real-time control. Minimal example [here](https://github.com/trackmania-rl/tmrl/blob/master/tmrl/tuto/tuto_minimal_drone.py), full tutorial [here](readme/tuto_library.md) and documentation [here](https://tmrl.readthedocs.io/en/latest/).
-
-- :ok_hand: **ML developers who are TM enthusiasts with no interest in learning this huge thing:**\
-`tmrl` provides a Gymnasium environment for TrackMania that is easy to use. Fast-track for you guys [here](#trackmania-gymnasium-environment).
-
-- :earth_americas: **Everyone:**\
-`tmrl` hosts the [TrackMania Roborace League](readme/competition.md), a vision-based AI competition where participants design real-time self-racing AIs in the TrackMania 2020 video game.
-
-
-## Quick links
-- [The TMRL Project](#the-tmrl-project)
-  - [Introduction](#introduction)
-    - [User features](#user-features-trackmania-example-pipeline)
-    - [Developer features](#developer-features-real-world-applications-in-python)
-    - [TMRL in the media](#tmrl-in-the-media)
-  - [Installation](readme/Install.md)
-    - [Windows](readme/Install.md)
-    - [Linux](readme/install_linux.md)
-  - [Getting started](readme/get_started.md)
-    - [Quick reference guide](readme/reference_guide.md)
-  - [TMRL python library for robot learning](readme/tuto_library.md)
-    - [API reference](https://tmrl.readthedocs.io/en/latest/)
-  - [Security (important)](#security)
-- [TrackMania applications](#autonomous-driving-in-trackmania)
-  - [TrackMania Roborace League](readme/competition.md)
-  - [TrackMania Gymnasium environment](#trackmania-gymnasium-environment)
-    - [LIDAR environment](#lidar-environment)
-    - [Full environment](#full-environment)
-  - [TrackMania training details](#trackmania-training-details)
-    - [RL basics](#reinforcement-learning-basics)
-    - [SAC](#soft-actor-critic)
-    - [REDQ](#randomized-ensembled-double-q-learning)
-    - [A clever reward](#a-clever-reward)
-    - [Available action spaces](#available-action-spaces)
-    - [Available observation spaces](#available-observation-spaces)
-    - [Results](#results)
-- [Framework details](#framework-details)
-    - [Real-time Gym framework](#real-time-gym-framework)
-      - [rtgym repo](https://github.com/yannbouteiller/rtgym)
-  - [Remote training architecture](#remote-training-architecture)
-- [Contribute](#authors)
-- [Sponsors](#sponsors)
+4. **Install Openplanet**\
+Download and install the [Openplanet client](https://openplanet.dev/download) for TrackMania.
+This is essential for interacting with game data and automation.
 
 
-# The TMRL project
+Setup the Library:
+1. Run `setup.bat`
 
-## Introduction
+Enter the environment with the correct map:
+1. Go to `C:\Users\[Your_user]\TmrlData\resources` and copy `tmrl-test.map.Gbx`
 
-`tmrl` is a python framework designed to help you train Artificial Intelligences (AIs) through deep Reinforcement Learning (RL) in real-time applications (robots, video-games, high-frequency control...).
+2. Paste it in this folder `C:\Users\[Your_user]\Documents\Trackmania\Maps\My Maps`
 
-As a fun and safe robot proxy for vision-based autonomous driving, `tmrl` features a readily-implemented example pipeline for the TrackMania 2020 racing video game.
+3. You can now access it in the game from the main/starting screen by clicking *CREATE > TRACK EDITOR > EDIT A TRACK > MY LOCAL TRACKS > MY MAPS > TMRL-TEST*, and then the green flag in the bottom left to drive the track.
 
-_Note: In the context of RL, an AI is called a policy._
+4. Now it’s important to click "NUM 3" twice to get into the appropriate camera view model (so that you can’t see the car).\
+You can also go to settings (which can only be accessed on the start screen), click the "CONTROLS" tab, and then scroll to the bottom to rebind "Camera 3" to another key, like "3".
 
-### User features (TrackMania example pipeline):
+### Training
+Before training a new model, if you want to train from scratch you:
+1. Delete this folder --> `C:\Users\[Your_user]\TmrlData`
 
-* **Training algorithms:**
-`tmrl` comes with a readily implemented example pipeline that lets you easily train policies in TrackMania 2020 with state-of-the-art Deep Reinforcement Learning algorithms such as [Soft Actor-Critic](https://www.youtube.com/watch?v=LN29DDlHp1U) (SAC) and [Randomized Ensembled Double Q-Learning](https://arxiv.org/abs/2101.05982) (REDQ).
-These algorithms store collected samples in a large dataset, called a replay memory.
-In parallel, these samples are used to train an artificial neural network (policy) that maps observations (images, speed...) to relevant actions (gas, break, steering angle...).
+2. Run `newModel.bat` which will create a new `TmrlData` folder
 
-* **Analog control from screenshots:**
-The `tmrl` example pipeline trains policies that are able to drive from raw screenshots captured in real-time.
-For beginners, we also provide simpler rangefinder ("LIDAR") observations, which are less potent but easier to learn from.
-The example pipeline controls the game via a virtual gamepad, which enables analog actions.
+3. Find `C:\Users\[Your_user]\TmrlData\config\config.json` and replace the contents with the config at [the end of this document](#config-template).
 
-* **Models:**
-To process LIDAR measurements, the example `tmrl` pipeline uses a Multi-Layer Perceptron (MLP).
-To process raw camera images (snapshots), it uses a Convolutional Neural Network (CNN).
-These models learn the physics of the game from histories or observations equally spaced in time.
+>[!NOTE]
+>But if it’s not that important to keep it clean, then you could just keep the TmrlData folder as is.\
+>Just make sure that the `config.json` file contains the same as the config at the end of this document. \
+>You can skip to this next step if the TmrlData folder is as you want it.
 
-### Developer features (real-world applications in Python):
+4. Then you can start training by running:
+  - `Train RL-model.bat` for regular reinforcement learning
 
-* **Python library:**
-`tmrl` is a complete framework designed to help you successfully implement ad-hoc RL pipelines for real-world applications. It features secure remote training, fine-grained customizability, and it is fully compatible with [real-time environments](#real-time-gym-framework) (e.g., robots...).
-It is based on a [single-server / multiple-clients architecture](#remote-training-architecture), which enables collecting samples locally from one to arbitrarily many workers, and training remotely on a High Performance Computing cluster.
-A complete tutorial toward doing this for your specific application is provided [here](readme/tuto_library.md).
+  - `Train Hybrid-model-P1.bat` for hybrid.
+  > [!IMPORTANT]
+  > This P1 specifically, so make sure you select the right permutation you want
 
-* **TrackMania Gymnasium environment:**
-`tmrl` comes with a Gymnasium environment for TrackMania 2020, based on [rtgym](https://pypi.org/project/rtgym/). Once the library is installed, it is easy to use this environment in your own training framework. More information [here](#trackmania-gymnasium-environment).
+### Run Existing Model
+To run one of the models we trained through our tests:
+1. Navigate to the `All Models TmrlData` folder in the project folder. This contains saved `TmrlData` directories.
 
-* **External libraries:**
-`tmrl` gave birth to some sub-projects of more general interest, that were cut out and packaged as standalone python libraries.
-In particular, [rtgym](https://github.com/yannbouteiller/rtgym) enables implementing Gymnasium environments in real-time applications,
-[vgamepad](https://github.com/yannbouteiller/vgamepad) enables emulating virtual game controllers,
-and [tlspyo](https://github.com/MISTLab/tls-python-object) enables transferring python object over the Internet in a secure fashion.
+2. Pick the model folder you want to use.
 
-### TMRL in the media:
-- In the french show [Underscore_ (2022-06-08)](https://www.youtube.com/watch?v=c1xq7iJ3f9E), we used a vision-based (LIDAR) policy to play against the TrackMania world champions. Spoiler: our policy lost by far (expectedly :smile:); the superhuman target was set to about 32s on the `tmrl-test` track, while the trained policy had a mean performance of about 45.5s. The Gymnasium environment that we used for the show is available [here](#lidar-with-track-progress).
+3. **Delete or rename** your current TmrlData folder (`C:\Users\[Your_user]\TmrlData`)
 
-- In 2023, we were [invited at Ubisoft Montreal](https://youtu.be/Nm71G0-wnFU?feature=shared&t=4317) to give a talk describing how video games could serve as visual simulators for vision-based autonomous driving in the near future.
+4. **Copy and paste** the chosen model folder into the `C:\Users\[Your_user]\` path and rename it to *TmrlData*.
 
-## Installation
+Once replaced:
+- Start the server and training using the **corresponding hybrid batch file**, e.g.:
+  - `Train Hybrid-model-P1.bat`
+  - _Optional_: cross out the `TRAINER` window if you don’t want to train the model
 
-Detailed instructions for installation are provided at [this link](readme/Install.md).
+### Custom Imitation Learning
+1. Run `Collect-IL-Data.bat` and drive for as many laps as you want (_we did 65-80 laps for the project models_)
 
-## Getting started
+2. Run `Train-IL-model.bat`
+     - You should save a copy of this `bc_model.pth` output which you rename to something **unique** (e.g. `bc_model_custom.pth`)
 
-Full guidance toward setting up an environment in TrackMania 2020, testing pre-trained weights, as well as a beginner-friendly tutorial to train, test, and fine-tune your own models, are provided at [this link](readme/get_started.md).
+3. Run either of these for hybrid training, or IL model test
+    - `Train Hybrid-model.bat` to train the hybrid based on current `bc_model.pth`
+    -  `Imitation-Worker.bat` to test the IL model on its own
 
-## TMRL python library
+## Instructions & Setup
+Before using the TMRL library, there are a few external applications you need to install and some initial setup steps to follow. 
+This section covers all of that in detail.
 
-An advanced tutorial toward implementing your own ad-hoc optimized training pipelines for your own real-time tasks is provided [here](readme/tuto_library.md).
+### 1. Required Applications
 
-## Security
+#### Ubisoft Account & TrackMania
+- Create a Ubisoft account via the [official website](https://www.ubisoft.com/).
 
-:warning: **IMPORTANT: READ AND UNDERSTAND THIS SECTION BEFORE YOU USE `tmrl` ON A PUBLIC NETWORK.**
+- Download and install **Ubisoft Connect (Uplay)** from [here](https://ubisoftconnect.com/).
 
-Security-wise, `tmrl` is based on [tlspyo](https://github.com/MISTLab/tls-python-object).
+- Use Ubisoft Connect to install **TrackMania**.
 
-By default, `tmrl` transfers objects via non-encrypted TCP in order to work out-of-the-box.
-This is fine as long as you use `tmrl` on your own private network.
+> [!NOTE]
+> TrackMania is available on Steam as well, but it still requires a Ubisoft account and Ubisoft Connect to run.
 
-HOWEVER, THIS IS A SECURITY BREACH IF YOU START USING `tmrl` ON A PUBLIC NETWORK.
+#### Openplanet Client
+- Download the Openplanet client for TrackMania from [openplanet.dev](https://openplanet.dev/download).
 
-To securely use `tmrl` on a public network (for instance, on the Internet), enable Transport Layer Security (TLS).
-To do so, follow these instructions on all your machines:
+- This is a required tool that enables custom scripting and external interaction with TrackMania during training and evaluation.
 
-- Open `config.json`;
-- Set the `"TLS"` entry to `true`;
-- Replace the `"PASSWORD"` entry with a strong password of your own (the same on all your machines);
-- On the machine hosting your `Server`, generate a TLS key and certificate (follow the [tlspyo instructions](https://github.com/MISTLab/tls-python-object#tls-setup));
-- Copy your generated certificate on all other machines (either in the default tlspyo credentials directory or in a directory of your choice);
-- If you used your own directory in the previous step, replace the `"TLS_CREDENTIALS_DIRECTORY"` entry with its path.
+### 2. Library Setup
+Once the applications above are ready, you can move on to setting up the TMRL library itself.
 
-If for any reason you do not wish to use TLS (not recommended), you should still at least use a custom password in `config.json` when training over a public network.
-HOWEVER, DO NOT USE A PASSWORD THAT YOU USE FOR OTHER APPLICATIONS.
-This is because, without TLS encryption, this password will be readable in the packets sent by your machines over the network and can be intercepted.
+#### <ins>Run setup.bat </ins>
+Start by running the setup.bat script in your project directory.
+This script will sequentially execute:
+``` bash
+python setup.py --install
 
-# Autonomous driving in TrackMania
+python setup.py --build
 
-## TrackMania Roborace League
-
-We host the [TrackMania Roborace League](readme/competition.md), a fun way of benchmarking self-racing approaches in the TrackMania 2020 video game.
-Follow the link for information about the competition, including the current leaderboard and instructions to participate.
-
-Regardless of whether they want to compete or not, ML developers will find the [competition tutorial script](https://github.com/trackmania-rl/tmrl/blob/master/tmrl/tuto/competition/custom_actor_module.py) handy for creating advanced training pipelines in TrackMania.
-
-## TrackMania Gymnasium environment
-In case you only wish to use the `tmrl` Real-Time Gym environment for TrackMania in your own training framework, this is made possible by the `get_environment()` method:
-
-_(NB: the game needs to be set up as described in the [getting started](readme/get_started.md) instructions)_
-```python
-from tmrl import get_environment
-from time import sleep
-import numpy as np
-
-# LIDAR observations are of shape: ((1,), (4, 19), (3,), (3,))
-# representing: (speed, 4 last LIDARs, 2 previous actions)
-# actions are [gas, break, steer], analog between -1.0 and +1.0
-def model(obs):
-    """
-    simplistic policy for LIDAR observations
-    """
-    deviation = obs[1].mean(0)
-    deviation /= (deviation.sum() + 0.001)
-    steer = 0
-    for i in range(19):
-        steer += (i - 9) * deviation[i]
-    steer = - np.tanh(steer * 4)
-    steer = min(max(steer, -1.0), 1.0)
-    return np.array([1.0, 0.0, steer])
-
-# Let us retrieve the TMRL Gymnasium environment.
-# The environment you get from get_environment() depends on the content of config.json
-env = get_environment()
-
-sleep(1.0)  # just so we have time to focus the TM20 window after starting the script
-
-obs, info = env.reset()  # reset environment
-for _ in range(200):  # rtgym ensures this runs at 20Hz by default
-    act = model(obs)  # compute action
-    obs, rew, terminated, truncated, info = env.step(act)  # step (rtgym ensures healthy time-steps)
-    if terminated or truncated:
-        break
-env.wait()  # rtgym-specific method to artificially 'pause' the environment when needed
+python tmrl/__main__.py --install
 ```
 
-The environment flavor can be chosen and customized by changing the content of the `ENV` entry in `TmrlData\config\config.json`:
+These commands will create **two important folders**:
+> **Egg Folder**\
+> **Path:** `C:\Users\[Your_User]\AppData\Local\Programs\Python\Python313\Lib\site-packages\tmrl-0.7.0-py3.13.egg\tmrl`\
+> **Contents**: A clone of the tmrl library, including files such as `networking.py`, `__main__.py`, and others.
 
-_(NB: do not copy-paste the examples, comments are not supported in vanilla .json files)_
+> [!CAUTION]
+> These files must exactly match the versions in your main TMRL project folder.\
+> If they are not identical, you will likely run into runtime errors or inconsistencies during execution.
 
-### Full environment:
-This version of the environment features full screenshots to be processed with, e.g., a CNN.
-In addition, this version features the speed, gear and RPM.
-This works on any track, using any (sensible) camera configuration.
+> **Model Data Folder**\
+>**Path:** `C:\Users\[Your_user]\TmrlData`\
+> **Purpose:**  This folder stores all model-related data, including:
+> - Trained weights
+> - Reward function settings
+> - Checkpoints
+> - Configuration files
 
-```json5
-{
-  "ENV": {
-    "RTGYM_INTERFACE": "TM20FULL",  // TrackMania 2020 with full screenshots
-    "WINDOW_WIDTH": 256,  // width of the game window (min: 256)
-    "WINDOW_HEIGHT": 128,  // height of the game window (min: 128)
-    "SLEEP_TIME_AT_RESET": 1.5,  // the environment sleeps for this amount of time after each reset
-    "IMG_HIST_LEN": 4,  // length of the history of images in observations (set to 1 for RNNs)
-    "IMG_WIDTH": 64,  // actual (resized) width of the images in observations
-    "IMG_HEIGHT": 64,  // actual (resized) height of the images in observations
-    "IMG_GRAYSCALE": true,  // true for grayscale images, false for color images
-    "RTGYM_CONFIG": {
-      "time_step_duration": 0.05,  // duration of a time step
-      "start_obs_capture": 0.04,  // duration before an observation is captured
-      "time_step_timeout_factor": 1.0,  // maximum elasticity of a time step
-      "act_buf_len": 2,  // length of the history of actions in observations (set to 1 for RNNs)
-      "benchmark": false,  // enables benchmarking your environment when true
-      "wait_on_done": true,  // true
-      "ep_max_length": 1000  // episodes are truncated after this number of time steps
-    },
-    "REWARD_CONFIG": {
-      "END_OF_TRACK": 100.0,  // reward for reaching the finish line
-      "CONSTANT_PENALTY": 0.0,  // constant reward at every time-step
-      "CHECK_FORWARD": 500,  // maximum computed cut from last point
-      "CHECK_BACKWARD": 10,  // maximum computed backtracking from last point
-      "FAILURE_COUNTDOWN": 10,  // early termination after this number time steps
-      "MIN_STEPS": 70,  // number of time steps before early termination kicks in
-      "MAX_STRAY": 100.0  // early termination if further away from the demo trajectory
-    }
-  }
-}
+To use the same map as we used:
+1. Go to `C:\Users\[Your_user]\TmrlData\resources` and copy `tmrl-test.map.Gbx`
+
+2. Paste it in this folder `C:\Users\[Your_user]\Documents\Trackmania\Maps\My Maps`
+
+3. You can now access it in the game from the main/starting screen by clicking *CREATE > TRACK EDITOR > EDIT A TRACK > MY LOCAL TRACKS > MY MAPS > TMRL-TEST*, and then the green flag in the bottom left to drive the track.
+
+4. Now it’s important to click "NUM 3" twice to get into the appropriate camera view model (so that you can’t see the car).\
+You can also go to settings (which can only be accessed on the start screen), click the "CONTROLS" tab, and then scroll to the bottom to rebind "Camera 3" to another key, like "3".
+
+![The Point-of-View with the correct camera view model. Not seeing the car at all](./readme/img/driverPOV.png)
+
+
+### 3. Training Models
+All model weights, logs, and configuration are stored in the TmrlData folder located at:
+
 ```
-Note that human players can see or hear the features provided by this environment: we provide no "cheat" that would render the approach non-transferable to the real world.
-In case you do wish to cheat, though, you can easily take inspiration from our [rtgym interfaces](https://github.com/trackmania-rl/tmrl/blob/master/tmrl/custom/custom_gym_interfaces.py) to build your own custom environment for TrackMania.
-
-The `Full` environment is used in the official [TMRL competition](https://github.com/trackmania-rl/tmrl/blob/master/readme/competition.md), and custom environments are featured in the "off" competition :wink:
-
-### LIDAR environment:
-In this version of the environment, screenshots are reduced to 19-beam LIDARs to be processed with, e.g., an MLP.
-In addition, this version features the speed (that human players can see).
-This works only on plain road with black borders, using the front camera with car hidden.
-```json5
-{
-  "ENV": {
-    "RTGYM_INTERFACE": "TM20LIDAR",  // TrackMania 2020 with LIDAR observations
-    "WINDOW_WIDTH": 958,  // width of the game window (min: 256)
-    "WINDOW_HEIGHT": 488,  // height of the game window (min: 128)
-    "SLEEP_TIME_AT_RESET": 1.5,  // the environment sleeps for this amount of time after each reset
-    "IMG_HIST_LEN": 4,  // length of the history of LIDAR measurements in observations (set to 1 for RNNs)
-    "RTGYM_CONFIG": {
-      "time_step_duration": 0.05,  // duration of a time step
-      "start_obs_capture": 0.04,  // duration before an observation is captured
-      "time_step_timeout_factor": 1.0,  // maximum elasticity of a time step
-      "act_buf_len": 2,  // length of the history of actions in observations (set to 1 for RNNs)
-      "benchmark": false,  // enables benchmarking your environment when true
-      "wait_on_done": true,  // true
-      "ep_max_length": 1000  // episodes are truncated after this number of time steps
-    },
-    "REWARD_CONFIG": {
-      "END_OF_TRACK": 100.0,  // reward for reaching the finish line
-      "CONSTANT_PENALTY": 0.0,  // constant reward at every time-step
-      "CHECK_FORWARD": 500,  // maximum computed cut from last point
-      "CHECK_BACKWARD": 10,  // maximum computed backtracking from last point
-      "FAILURE_COUNTDOWN": 10,  // early termination after this number time steps
-      "MIN_STEPS": 70,  // number of time steps before early termination kicks in
-      "MAX_STRAY": 100.0  // early termination if further away from the demo trajectory
-    }
-  }
-}
+C:\Users\[Your_user]\TmrlData
 ```
 
-### LIDAR with track progress
+If you want to **start training from scratch**, you need to:
+1. **Delete** the existing TmrlData folder.
 
-If you have watched the [2022-06-08 episode](https://www.youtube.com/watch?v=c1xq7iJ3f9E) of the Underscore_ talk show (french), note that the policy you have seen has been trained in a slightly augmented version of the LIDAR environment: on top of LIDAR and speed value, we have added a value representing the percentage of completion of the track, so that the model can know the turns in advance similarly to humans practicing a given track.
-This environment will not be accepted in the competition, as it is de-facto less generalizable.
-However, if you wish to use this environment, e.g., to beat our results, you can use the following `config.json`:
+2. Run `newModel.bat` to generate a clean one.
 
-```json5
-{
-  "ENV": {
-    "RTGYM_INTERFACE": "TM20LIDARPROGRESS",  // TrackMania 2020 with LIDAR and percentage of completion
-    "WINDOW_WIDTH": 958,  // width of the game window (min: 256)
-    "WINDOW_HEIGHT": 488,  // height of the game window (min: 128)
-    "SLEEP_TIME_AT_RESET": 1.5,  // the environment sleeps for this amount of time after each reset
-    "IMG_HIST_LEN": 4,  // length of the history of LIDAR measurements in observations (set to 1 for RNNs)
-    "RTGYM_CONFIG": {
-      "time_step_duration": 0.05,  // duration of a time step
-      "start_obs_capture": 0.04,  // duration before an observation is captured
-      "time_step_timeout_factor": 1.0,  // maximum elasticity of a time step
-      "act_buf_len": 2,  // length of the history of actions in observations (set to 1 for RNNs)
-      "benchmark": false,  // enables benchmarking your environment when true
-      "wait_on_done": true,  // true
-      "ep_max_length": 1000  // episodes are truncated after this number of time steps
-    },
-    "REWARD_CONFIG": {
-      "END_OF_TRACK": 100.0,  // reward for reaching the finish line
-      "CONSTANT_PENALTY": 0.0,  // constant reward at every time-step
-      "CHECK_FORWARD": 500,  // maximum computed cut from last point
-      "CHECK_BACKWARD": 10,  // maximum computed backtracking from last point
-      "FAILURE_COUNTDOWN": 10,  // early termination after this number time steps
-      "MIN_STEPS": 70,  // number of time steps before early termination kicks in
-      "MAX_STRAY": 100.0  // early termination if further away from the demo trajectory
-    }
-  }
-}
+3. Open the config file at `TmrlData/config/config.json`, and **manually update its contents** using the provided config template ([see bottom of this document](#config-template))
+>[!IMPORTANT]
+> Make sure the `"RUN_NAME"` field is set to something **unique**
+
+#### <ins> Pure Reinforcement Learning (RL) Models </ins>
+To train a model using pure reinforcement learning run `Train RL-model.bat`
+
+The batch file will
+- Start the server `python tmrl/__main__.py --server` on port 55555
+- Once the server is up, it automatically launches:
+    - A worker: `python tmrl/__main__.py --rl-worker`
+    - A trainer: `python tmrl/__main__.py --trainer`
+
+These components work together to generate rollouts and update the RL model in real-time.
+
+#### <ins>Hybrid Models (RL + Imitation Learning)</ins>
+Hybrid models combine reinforcement learning with imitation learning, and each implemented variant has its own batch file.
+
+To train a hybrid model:
+-  Run the batch file corresponding to the model variant, for example:
+    - `Train Hybrid-model-P1.bat`
+
+This script behaves like the RL trainer but starts with a few key steps:
+- Deletes any existing `bc_model.pth` file.
+
+- Copies the desired IL model (f.ex. P1) and renames it to `bc_model.pth`
+
+- And then it runs `--worker` instead of `--rl-worker`
+
+## 4. Running Existing Models
+If you want to **resume training or continue from a previously trained model:**
+1. Navigate to the `All Models TmrlData` folder — this contains saved `TmrlData` directories from earlier test runs.
+
+2. Pick the model folder you want to use.
+
+3. **Delete or rename** your current *TmrlData* folder (This one: `C:\Users\[Your_user]\TmrlData`)
+
+4. **Copy and paste** the chosen model folder into the same location and rename it to *TmrlData*.
+
+Once replaced:
+
+Start the server and training using the **corresponding hybrid batch file**, e.g.:
+- `Train Hybrid-model-P1.bat`
+> [!NOTE]
+> Even though the batch script will run regardless of which model you choose, using the correct one ensures you're loading both the correct **RL state** (from the TmrlData folder) and the matching **IL model** (`bc_model.pth` for the same permutation in the project folder).
+
+#### <ins>Running Without Further Training</ins>
+If you simply want to **run the model without continuing training**:
+- Launch the hybrid batch script as usual.
+
+- Once the trainer window appears, **just close it**.
+
+- The server and worker will continue to run the existing model in inference mode.
+
+
+## Extra - Imitation Learning
+If you want to train a pure imitation learning model or create a hybrid model that combines your custom IL with reinforcement learning, this section explains how to collect driving data, train the model, and run it in both training and evaluation modes.
+
+### Collect Imitation Data Yourself
+To start, you need to record your own driving data from TrackMania.
+This data will be used to train the IL model.
+
+#### 1. **Run the following batch file** -> `Collect-IL-Data.bat`
+This runs:
+- `python tmrl/__main__.py --serve`
+- `python tmrl/__main__.py --imitation`
+
+This will:
+- Collect LiDAR readings, velocity data, and your manual driving inputs.
+
+- Save each step to a file called “demonstration_data.csv”
+> [!NOTE]
+> 50000 lines/steps is approximately 60-70 laps
+
+#### 2. **Run the following batch file to train the IL Model**: `Train-IL-model.bat`
+This runs `csvModifier.py` which filters `demonstration_data.csv` and gives you `demonstration_filtered.csv`\
+(removes the idle steps. Otherwise the model won’t be able to start).
+
+Then runs `IL-nn.py` to create `bc_model.pth`
+
+> [!TIP]
+> You should make a copy of `bc_model.pth` which you call something unique like `bc_model_custom.pth`, this way when `bc_model.pth` is overwritten from running `Train Hybrid-model-P3.bat` (or something), you still have the model saved.
+
+### Run the IL Model
+At this point, your imitation learning model is ready to use.
+
+#### <ins>Option 1: Train Hybrid Model Using IL</ins>
+Run: “Train Hybrid-model.bat”
+- This will begin training using the `bc_model.pth` file.
+> [!TIP]
+> If you’ve trained your own IL model, **back it up and rename** it to avoid it being overwritten by another batch file (e.g., `bc_model_custom.pth`).
+
+#### <ins>Option 2: Run IL-Only Mode</ins>
+To run the IL on its own, similar to how we tested the IL models with the 30-laps test, run `Imitation-Worker.bat`.
+- This will use the current `bc_model.pth` file
+
+- Starts the server `python tmrl/__main__.py --server`
+
+- And then `python tmrl/__main__.py --imitation-worker`
+
+This will produce `IL-rew.json` which saves the reward at the end of each lap and can be used in `IL_model_analysis.py` to map how far the IL model got through multiple runs.
+
+## Data Analysis Tools
+We've created several graphing tools to visualize and compare model performance. 
+These scripts were used for generating report figures and internal analysis:
+- `Box_plot_results.py` \
+→ Generates box plots to compare different model groups.
+
+- `Display-ComparativeData.py`\
+→ Plots side-by-side comparisons of various model runs.
+
+- `Display-GoalData.py`\
+→ Plots a single model’s performance over time.
+
+- `IL_model_analysis.py`\
+→ (*Tool-specific functionality; likely supports IL evaluation and visualization.*)
+
+### Time Alignment for 24-Hour Analysis
+Our analytics scripts are designed to isolate performance data across 24-hour periods, using timestamps from `goal_timestamps.json`. 
+> [!IMPORTANT]
+> To make this work:\
+> You must provide the **correct training start time** (e.g., 2025-05-01 18:07).
+
+## Problems and Issues
+There are issues with the library which we haven’t been able to assess. 
+They mostly stem from the fragmented nature of the RL deployment which was already present in the TMRL library.
+
+### Problem 1
+Only 2 out of 4 computers on the project team can run agents properly. 
+This does not seem to correlate with versions of Windows (Windows 10 and 11), python, or libraries as changing to what the working PCs have been using have made no difference.
+
+Hardware also doesn’t seem to be the problem either as we’ve tried different GPUs (AMD and Nvidia) and CPUs (AMD and Intel), but these seem to make no feasible difference.
+
+For this problem the agent can be loaded and such, but the neural network behind the IL and RL isn’t working as intended, their act values are much lower than what they should output. 
+Subsequently the agent drives forward for only 1 step and then stands still until restart.
+
+> [!IMPORTANT]  
+> Any value lower than ~0.6 returns no output for throttle and reverse.
+
+This issue has plagued the team for the entire project period, but no changes seem to make a difference. 
+We believe this issue has something to do with the complexity of the original library since it creates files in two other locations (*that we know of*) which also must be kept up to date as we work on the project.
+
+### Problem 2
+If any changes are made in the library, then these changes need to be made to the corresponding files in the folder (this folder is downloaded on setup)
+```
+C:\Users\[Your_user]\AppData\Local\Programs\Python\Python313\Lib\site-packages\tmrl-0.7.0-py3.13.egg\tmrl
 ```
 
-## TrackMania training details
+**Solution**:\
+Just copy+paste the `networking.py` and `__main__.py` files over to the `tmrl-0.7.0-py3.13.egg\tmrl` library and overwrite their respective files.
 
-In the example `tmrl` pipeline, an AI (policy) that knows absolutely nothing about driving or even about what a road is, is set at the starting point of a track.
-Its goal is to learn how to complete the track as fast as possible by exploring its own capabilities and environment.
+### Problem 3
+When attempting to change the IL model_path in the code from `bc_model.pth` to something else, runtime errors occur. 
+Even if all different codes at different locations has it set to the same name, it still doesn’t work. 
+But it’s not the case for everyone, one project member which had issues with the RL deployment was able to avoid this runtime error when changing names. 
 
-The car feeds observations such as images to an artificial neural network, which must output the best possible controls from these observations.
-This implies that the AI must understand its environment in some way.
-To achieve this understanding, it explores the world for a few hours (up to a few days), slowly gaining an understanding of how to act efficiently.
-This is accomplished through Deep Reinforcement Learning (RL).
+We believe this might be a problem with inference, but we struggle to understand where/how exactly.
 
-### Reinforcement Learning basics
 
-Most RL algorithms are based on a mathematical description of the environment called Markov Decision Process (MDP).
-A policy trained via RL interacts with an MDP as follows:
 
-![reward](readme/img/mrp.png)
-
-In this illustration, the policy is represented as the stickman, and time is represented as time-steps of fixed duration.
-At each time-step, the policy applies an action (float values for gas, brake, and steering) computed from an observation.
-The action is applied to the environment, which yields a new observation at the end of the transition.
-
-For the purpose of training this policy, the environment also provides another signal, called the "reward".
-RL is inspired from behaviorism, which relies on the fundamental idea that intelligence is the result of a history of positive and negative stimuli.
-The reward received by the AI at each time-step is a measure of how well it performs.
-
-In order to learn how to drive, the AI tries random actions in response to incoming observations, gets rewarded positively or negatively, and optimizes its policy so that its long-term reward is maximized.
-
-### Soft Actor-Critic
-
-([Introductory video](https://www.youtube.com/watch?v=LN29DDlHp1U))
-
-([Full paper](https://arxiv.org/abs/1801.01290))
-
-Soft Actor-Critic (SAC) is an algorithm that enables learning continuous stochastic controllers.
-
-More specifically, SAC does this using two separate Artificial Neural Networks (NNs):
-
-- The first one, called the "policy network" (or, in the literature, the "actor"), is the NN the user is ultimately interested in : the controller of the car.
-  It takes observations as input and outputs actions.
-- The second called the "value network" (or, in the literature, the "critic"), is used to train the policy network.
-  It takes an observation ```x``` and an action ```a``` as input, to output a value.
-  This value is an estimate of the expected sum of future rewards if the AI observes ```x```, selects ```a```, and then uses the policy network forever (there is also a discount factor so that this sum is not infinite).
-
-Both networks are trained in parallel using each other.
-The reward signal is used to train the value network, and the value network is used to train the policy network.
-
-Advantages of SAC over other existing methods are the following:
-- It is able to store transitions in a huge circular buffer called the "replay memory" and reuse these transitions several times during training.
-  This is an important property for applications such as TrackMania where only a relatively small number of transitions can be collected due to the Real-Time nature of the setting.
-- It is able to output analog controls. We use this property with a virtual gamepad.
-- It maximizes the entropy of the learned policy.
-  This means that the policy will be as random as possible while maximizing the reward.
-  This property helps explore the environment and is known to produce policies that are robust to external perturbations, which is of central importance in real-world self-driving scenarios.
-
-### Randomized Ensembled Double Q-Learning
-
-([Full paper](https://arxiv.org/abs/2101.05982))
-
-REDQ is a more recent methodology that improves the performance of value-based algorithms like SAC.
-
-The improvement introduced by REDQ consists essentially of training an ensemble of parallel value networks from which a subset is randomly sampled to evaluate target values during training.
-The authors show that this enables low-bias updates and a sample efficiency comparable to model-based algorithms, at a much lower computational cost.
-
-By default, `tmrl` trains policies with vanilla SAC.
-To use REDQ-SAC, edit `TmrlData\config\config.json` on the machine used for training, and replace the `"SAC"` value with `"REDQSAC"` in the `"ALGORITHM"` entry.
-You also need values for the `"REDQ_N"`, `"REDQ_M"` and `"REDQ_Q_UPDATES_PER_POLICY_UPDATE"` entries, where `"REDQ_N"` is the number of parallel critics, `"REDQ_M"` is the size of the subset, and `"REDQ_Q_UPDATES_PER_POLICY_UPDATE"` is a number of critic updates happenning between each actor update.
-
-For instance, a valid `"ALG"` entry using REDQ-SAC is:
-
+## Config Template
 ```json
+{
+  "RUN_NAME": "SAC_4_lidar_Examinator",
+  "RESET_TRAINING": false,
+  "BUFFERS_MAXLEN": 500000,
+  "RW_MAX_SAMPLES_PER_EPISODE": 1000,
+  "CUDA_TRAINING": true,
+  "CUDA_INFERENCE": false,
+  "VIRTUAL_GAMEPAD": true,
+  "DCAC": false,
+  "LOCALHOST_WORKER": true,
+  "LOCALHOST_TRAINER": true,
+  "PUBLIC_IP_SERVER": "0.0.0.0",
+  "PASSWORD": "==>TMRL@UseASecurePasswordHere!<==",
+  "TLS": false,
+  "TLS_HOSTNAME": "default",
+  "TLS_CREDENTIALS_DIRECTORY": "",
+  "NB_WORKERS": -1,
+  "WANDB_PROJECT": "ImitationReinforcment-TrainingData",
+  "WANDB_ENTITY": "sofiehk-oslomet",
+  "WANDB_KEY": "78b365b6e95165722322a2d64629035428c95098",
+  "PORT": 55555,
+  "LOCAL_PORT_SERVER": 55556,
+  "LOCAL_PORT_TRAINER": 55557,
+  "LOCAL_PORT_WORKER": 55558,
+  "BUFFER_SIZE": 536870912,
+  "HEADER_SIZE": 12,
+  "SOCKET_TIMEOUT_CONNECT_TRAINER": 300.0,
+  "SOCKET_TIMEOUT_ACCEPT_TRAINER": 300.0,
+  "SOCKET_TIMEOUT_CONNECT_ROLLOUT": 300.0,
+  "SOCKET_TIMEOUT_ACCEPT_ROLLOUT": 300.0,
+  "SOCKET_TIMEOUT_COMMUNICATE": 30.0,
+  "SELECT_TIMEOUT_OUTBOUND": 30.0,
+  "ACK_TIMEOUT_WORKER_TO_SERVER": 300.0,
+  "ACK_TIMEOUT_TRAINER_TO_SERVER": 300.0,
+  "ACK_TIMEOUT_SERVER_TO_WORKER": 300.0,
+  "ACK_TIMEOUT_SERVER_TO_TRAINER": 7200.0,
+  "RECV_TIMEOUT_TRAINER_FROM_SERVER": 7200.0,
+  "RECV_TIMEOUT_WORKER_FROM_SERVER": 600.0,
+  "WAIT_BEFORE_RECONNECTION": 10.0,
+  "LOOP_SLEEP_TIME": 1.0,
+  "MAX_EPOCHS": 1000,
+  "ROUNDS_PER_EPOCH": 100,
+  "TRAINING_STEPS_PER_ROUND": 200,
+  "MAX_TRAINING_STEPS_PER_ENVIRONMENT_STEP": 4.0,
+  "ENVIRONMENT_STEPS_BEFORE_TRAINING": 1000,
+  "UPDATE_MODEL_INTERVAL": 200,
+  "UPDATE_BUFFER_INTERVAL": 200,
+  "SAVE_MODEL_EVERY": 0,
+  "MEMORY_SIZE": 1000000,
+  "BATCH_SIZE": 256,
   "ALG": {
-    "ALGORITHM": "REDQSAC",
+    "ALGORITHM": "SAC",
     "LEARN_ENTROPY_COEF":false,
-    "LR_ACTOR":0.0003,
+    "LR_ACTOR":0.00001,
     "LR_CRITIC":0.00005,
     "LR_ENTROPY":0.0003,
     "GAMMA":0.995,
     "POLYAK":0.995,
-    "TARGET_ENTROPY":-7.0,
-    "ALPHA":0.37,
+    "TARGET_ENTROPY":-0.5,
+    "ALPHA":0.01,
     "REDQ_N":10,
     "REDQ_M":2,
-    "REDQ_Q_UPDATES_PER_POLICY_UPDATE":20
+    "REDQ_Q_UPDATES_PER_POLICY_UPDATE":20,
+    "OPTIMIZER_ACTOR": "adam",
+    "OPTIMIZER_CRITIC": "adam",
+    "BETAS_ACTOR": [0.997, 0.997],
+    "BETAS_CRITIC": [0.997, 0.997],
+    "L2_ACTOR": 0.0,
+    "L2_CRITIC": 0.0
   },
+  "ENV": {
+    "RTGYM_INTERFACE": "TM20LIDAR",
+    "WINDOW_WIDTH": 958,
+    "WINDOW_HEIGHT": 488,
+    "IMG_WIDTH": 64,
+    "IMG_HEIGHT": 64,
+    "IMG_GRAYSCALE": true,
+    "SLEEP_TIME_AT_RESET": 1.5,
+    "IMG_HIST_LEN": 4,
+    "RTGYM_CONFIG": {
+      "time_step_duration": 0.05,
+      "start_obs_capture": 0.04,
+      "time_step_timeout_factor": 1.0,
+      "act_buf_len": 2,
+      "benchmark": false,
+      "wait_on_done": true,
+      "ep_max_length": 1000,
+      "interface_kwargs": {"save_replays": false}
+    },
+    "REWARD_CONFIG": {
+        "END_OF_TRACK": 100.0,
+        "CONSTANT_PENALTY": 0.0,
+        "CHECK_FORWARD": 500,
+        "CHECK_BACKWARD": 10,
+        "FAILURE_COUNTDOWN": 10,
+        "MIN_STEPS": 70,
+        "MAX_STRAY": 100.0
+    }
+  },
+  "__VERSION__": "0.6.0"
+}
+
 ```
-
-### A clever reward
-
-As mentioned before, a reward function is needed to evaluate how well the policy performs.
-
-There are multiple reward functions that could be used.
-For instance, one could directly use the raw speed of the car as a reward.
-This makes some sense because the car slows down when it crashes and goes fast when it is performing well.
-
-This approach would be naive, though.
-The actual goal of racing is not to move as fast as possible.
-Rather, one wants to complete the largest portion of the track in the smallest possible amount of time.
-This is not equivalent as one should consider the optimal trajectory, which may imply slowing down on sharp turns in order to take the apex of each curve.
-
-In TrackMania 2020, we use a more advanced and conceptually more interesting reward function:
-
-![reward](readme/img/Reward.PNG)
-
-For a given track, we record one single demonstration trajectory.
-This does not have to be a good demonstration, but only to follow the track.
-Once the demonstration trajectory is recorded, it is automatically divided into equally spaced points.
-
-During training, at each time-step, the reward is then the number of such points that the car has passed since the previous time-step.
-In a nutshell, whereas the previous reward function was measuring how fast the car was, this new reward function measures how good it is at covering a big portion of the track in a given amount of time.
-
-### Available action spaces
-
-In `tmrl`, the car can be controlled in two different ways:
-
-- The policy can control the car with analog inputs by emulating an XBox360 controller thanks to the [vgamepad](https://pypi.org/project/vgamepad/) library.
-- The policy can output simple (binary) arrow presses.
-
-### Available observation spaces
-
-Different observation spaces are available in the TrackMania pipeline::
-
-- A history of raw screenshots (typically 4).
-- A history of LIDAR measurement computed from raw screenshots in tracks with black borders.
-
-In addition,the pipeline provides the norm of the velocity as part of the observation space.
-
-Example of `tmrl` environment in TrackMania Nations Forever with a single LIDAR measurement:
-
-![reward](readme/img/lidar.png)
-
-In TrackMania Nations Forever, we use to compute the raw speed from screenshots thanks to the 1-NN algorithm.
-
-In TrackMania 2020, we now use the [OpenPlanet](https://openplanet.nl) API to retrieve the raw speed directly.
-
-### Results
-
-In the following experiment, on top of the raw speed, the blue car is using a single LIDAR measurement whereas the red car is using a history of 4 LIDAR measurements.
-The positions of both cars are captured at constant time intervals in this animation:
-
-![Turn](readme/img/turn_tm20.gif)
-
-The blue car learned to drive at a constant speed, as it is the best it can do from its naive observation space.
-Conversely, the red car is able to infer higher-order dynamics from the history of 4 LIDARs and successfully learned to break, take the apex of the curve, and accelerate again after this sharp turn, which is slightly better in this situation.
-
-# Framework details
-
-## Real-time Gym framework:
-This project uses [Real-Time Gym](https://github.com/yannbouteiller/rtgym) (```rtgym```), a simple python framework that enables efficient real-time implementations of Delayed Markov Decision Processes in real-world applications.
-
-```rtgym``` constrains the times at which actions are sent and observations are retrieved as follows:
-
-![Real-Time Gym Framework](https://raw.githubusercontent.com/yannbouteiller/rtgym/main/figures/rt_gym_env.png "Real-Time Gym Framework")
-
-Time-steps are being elastically constrained to their nominal duration. When this elastic constraint cannot be satisfied, the previous time-step times out and the new time-step starts from the current timestamp.
-
-Custom `rtgym` interfaces for Trackmania used by `tmrl` are implemented in [custom_gym_interfaces.py](https://github.com/yannbouteiller/tmrl/blob/master/tmrl/custom/custom_gym_interfaces.py).
-
-## Remote training architecture:
-
-`tmrl` is built with [tlspyo](https://github.com/MISTLab/tls-python-object).
-Its client-server architecture is similar to [Ray RLlib](https://docs.ray.io/en/latest/rllib.html).
-`tmrl` is not meant to compete with Ray, but it is much simpler to adapt in order to implement ad-hoc pipelines, and works on both Windows and Linux.
-
-`tmrl` collects training samples from several rollout workers (typically several computers and/or robots).
-Each rollout worker stores its collected samples in a local buffer, and periodically sends this replay buffer to the central server.
-Periodically, each rollout worker also receives new policy weights from the central server and updates its policy network.
-
-The central server is located either on the localhost of one of the rollout worker computers, on another computer on the local network, or on another computer on the Internet.
-It collects samples from all the connected rollout workers and stores these in a local buffer.
-This buffer is then sent to the trainer interface.
-The central server receives updated policy weights from the trainer interface and broadcasts these to all connected rollout workers.
-
-The trainer interface is typically located on a non-rollout worker computer of the local network, or on another machine on the Internet (e.g., a GPU cluster).
-Of course, it is also possible to locate everything on localhost when needed.
-The trainer interface periodically receives the samples gathered by the central server and appends these to a replay memory.
-Periodically, it sends the new policy weights to the central server.
-
-These mechanics are summarized as follows:
-
-![Networking architecture](readme/img/network_interface.png "Networking Architecture")
-
-
-# Development roadmap:
-Contributions to `tmrl` are welcome.
-Please consider the following:
-- Further profiling and code optimization,
-- Find the cleanest way to support sequences in `Memory` for RNN training.
-
-You can discuss contribution projects in the [discussions section](https://github.com/trackmania-rl/tmrl/discussions).
-
-
-# Authors:
-
-When contributing, please submit a PR with your name in the contributors list with a short caption.
-
-## Maintainers:
-- Yann Bouteiller
-- Edouard Geze
-
-## Contributors:
-- Simon Ramstedt - initial code base
-- AndrejGobeX - optimization of screen capture (TrackMania)
-- Pius - Linux support (TrackMania)
-
-# License
-
-MIT, Bouteiller and Geze.
-
-# Sponsors:
-
-Many thanks to our sponsors for their support!
-
-![mist](readme/img/mistlogo.png)
-[MISTlab - Polytechnique Montreal](https://mistlab.ca)

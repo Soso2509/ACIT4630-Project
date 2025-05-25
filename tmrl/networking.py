@@ -32,6 +32,7 @@ import tmrl.config.config_constants as cfg
 import tmrl.config.config_objects as cfg_obj
 
 import logging
+import wandb
 
 
 __docformat__ = "google"
@@ -365,7 +366,6 @@ def run_with_wandb(entity, project, run_id, interface, run_cls, checkpoint_path:
     load_run_instance_fn = load_run_instance_fn or load_run_instance
     wandb_dir = tempfile.mkdtemp()  # prevent wandb from polluting the home directory
     atexit.register(shutil.rmtree, wandb_dir, ignore_errors=True)  # clean up after wandb atexit handler finishes
-    import wandb
     logging.debug(f" run_cls: {run_cls}")
     config = partial_to_dict(run_cls)
     config['environ'] = log_environment_variables()
@@ -606,7 +606,6 @@ class RolloutWorker:
         self.model_IL.load_state_dict(torch.load(self.model_path_IL, map_location=self.device))
         self.model_IL.eval()
 
-
         self.server_ip = server_ip if server_ip is not None else '127.0.0.1'
 
         print_with_timestamp(f"server IP: {self.server_ip}")
@@ -685,11 +684,12 @@ class RolloutWorker:
             (nested structure: observation retrieved from the environment,
             dict: information retrieved from the environment)
         """
+        
         RL_chance = self.prev_episode_reward * 0.005
         self.IL_chance = max(0.0, min(1.0, 0.8 - RL_chance))  # Keep within [0, 1]
 
         print_with_timestamp(f"New episode: IL_chance set to {np.round(self.IL_chance, 3)} based on previous reward: {np.round(self.prev_episode_reward, 2)}")
-
+      
         obs = None
         try:
             # Faster than hasattr() in real-time environments
@@ -769,16 +769,19 @@ class RolloutWorker:
                 sample = act, new_obs, rew, terminated, truncated, info
 
 
+
             #act_rounded = np.round(act, 2)
             print(rew)
                 
 
         # Save when the agent made it to the goal within time
         if terminated and not truncated and rew > 40:
+          
             timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             elapsed_time = round(time.time() - self.episode_start_time, 2)
 
             data = {
+
             "timestamp": timestamp,
             "elapsed_time_seconds": elapsed_time,
             "IL_chance": round(float(self.IL_chance), 3) 
@@ -792,6 +795,7 @@ class RolloutWorker:
                     existing_data = json.load(f)
             else:
                 existing_data = []
+
 
             # Add the new entry
             existing_data.append(data)
@@ -1299,7 +1303,7 @@ class Imitation:
         keys_dir=cfg.CREDENTIALS_DIRECTORY,
         hostname=cfg.HOSTNAME
     ):
-        
+
         self.obs_preprocessor = obs_preprocessor
         self.get_local_buffer_sample = sample_compressor
         self.env = env_cls()

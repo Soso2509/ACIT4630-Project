@@ -93,7 +93,7 @@ class TrainingOffline:
             self.agent_scheduler(self.agent, self.epoch)
 
         for rnd in range(self.rounds):
-            logging.info(f"=== epoch {self.epoch}/{self.epochs} ".ljust(20, '=') + f" round {rnd}/{self.rounds} ".ljust(50, '='))
+            logging.info(f"=== epoch {self.epoch+1}/{self.epochs} ".ljust(20, '=') + f" round {rnd+1}/{self.rounds} ".ljust(50, '='))
             logging.debug(f"(Training): current memory size:{len(self.memory)}")
 
             stats_training = []
@@ -128,6 +128,11 @@ class TrainingOffline:
 
                 t_train = time.time()
 
+                if self.memory.stat_train_return > 60:
+                    stats_training_dict["full_lap"] = 1
+                else:
+                    stats_training_dict["full_lap"] = 0
+
                 stats_training_dict["return_test"] = self.memory.stat_test_return
                 stats_training_dict["return_train"] = self.memory.stat_train_return
                 stats_training_dict["episode_length_test"] = self.memory.stat_test_steps
@@ -150,7 +155,7 @@ class TrainingOffline:
             update_buf_time = t2 - t1
             train_time = t3 - t2
             logging.debug(f"round_time:{round_time}, idle_time:{idle_time}, update_buf_time:{update_buf_time}, train_time:{train_time}")
-            stats += pandas_dict(memory_len=len(self.memory), round_time=round_time, idle_time=idle_time, **DataFrame(stats_training).mean(skipna=True)),
+            stats += pandas_dict(epoch=self.epoch, memory_len=len(self.memory), round_time=round_time, idle_time=idle_time, **DataFrame(stats_training).mean(skipna=True)),
 
             logging.info(stats[-1].add_prefix("  ").to_string() + '\n')
 
