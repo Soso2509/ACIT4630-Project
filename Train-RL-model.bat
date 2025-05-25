@@ -13,6 +13,9 @@ if errorlevel 1 (
 echo Starting TRAINER...
 start "TRAINER" cmd /k python tmrl\__main__.py --trainer
 
+echo Waiting 5 seconds...
+timeout /t 5 /nobreak >nul
+
 echo Starting WORKER...
 start "WORKER" cmd /k python tmrl\__main__.py --rl-worker
 
