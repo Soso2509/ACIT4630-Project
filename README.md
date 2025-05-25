@@ -244,7 +244,7 @@ This data will be used to train the IL model.
 
 #### 1. **Run the following batch file** -> `Collect-IL-Data.bat`
 This runs:
-- `python tmrl/__main__.py --serve`
+- `python tmrl/__main__.py --server`
 - `python tmrl/__main__.py --imitation`
 
 This will:
