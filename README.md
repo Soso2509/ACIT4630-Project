@@ -77,6 +77,8 @@ Before training a new model, if you want to train from scratch you:
   - `Train-Hybrid-model-P1.bat` for hybrid.
   > [!IMPORTANT]
   > This is the P1 hybrid specifically, so make sure you select the right permutation you want
+  >[!NOTE]
+  >It can take as much as a minute or two before the trainer starts receiving step data.\
 
 ### Run Existing Model
 To run one of the models we trained through our tests:
