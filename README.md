@@ -259,6 +259,7 @@ This runs `csvModifier.py` which filters `demonstration_data.csv` and gives you 
 (removes the idle steps. Otherwise the model won’t be able to start).
 
 Then runs `IL-nn.py` to create `bc_model.pth`
+  o	Although, the current implementation trains the 3-layer architecture. So you'll have to change it in the code if you want a different structure
 
 > [!TIP]
 > You should make a copy of `bc_model.pth` which you call something unique like `bc_model_custom.pth`, this way when `bc_model.pth` is overwritten from running `Train Hybrid-model-P3.bat` (or something), you still have the model saved.
