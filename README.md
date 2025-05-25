@@ -8,7 +8,7 @@ Below that we have a more detailed description of how to create and run your own
 And then there’s more details about the data analytic programs we’ve used under [Data Analysis Tools](#data-analysis-tools).
 
 We have also added a last section, [Weird Problems and Issues](#problems-and-issues), which underlines some of the weird issues we’ve ran into.
-The issues all seem to stem from the original library, as it has such a convoluted and fragmented structure.
+Most of the issues seem to stem from the original library, as it has such a convoluted and fragmented structure. You should look at this section to know what problem may occur, and potential solutions.
 
 ### Table of Content
 - [How to Run](#how-to-run)
@@ -77,6 +77,9 @@ Before training a new model, if you want to train from scratch you:
   - `Train-Hybrid-model-P1.bat` for hybrid.
   > [!IMPORTANT]
   > This is the P1 hybrid specifically, so make sure you select the right permutation you want
+
+  >[!NOTE]
+  >It can take as much as a minute or two before the trainer starts receiving step data.
 
 ### Run Existing Model
 To run one of the models we trained through our tests:
@@ -208,6 +211,8 @@ This script behaves like the RL trainer but starts with a few key steps:
 - Copies the desired IL model (f.ex. P1) and renames it to `bc_model.pth`
 
 - And then it runs `--worker` instead of `--rl-worker`
+>[!NOTE]
+  >It can take as much as a minute or two before the trainer starts receiving step data.
 
 ## 4. Running Existing Models
 If you want to **resume training or continue from a previously trained model:**
@@ -339,6 +344,12 @@ But it’s not the case for everyone, one project member which had issues with t
 
 We believe this might be a problem with inference, but we struggle to understand where/how exactly.
 
+### Problem 4
+Hardware can impact how some libraries work. The most notable being PyTorch which struggles to run the Trainer if you are on a cuda system. So if the trainer gets this error:
+```
+RuntimeError: Attempting to deserialize object on a CUDA device but torch.cuda.is_available() is False. If you are running on a CPU-only machine, please use torch.load with map_location=torch.device('cpu') to map your storages to the CPU.
+```
+**Solution**: You have get a version of pytorch that supports the appropriate cuda platform.
 
 
 ## Config Template
